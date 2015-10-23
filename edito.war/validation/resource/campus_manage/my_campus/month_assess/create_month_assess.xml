@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE validation-config SYSTEM "../validation-config.dtd">
+<validation-config>
+	<range id="formA" show-error="alert" show-type="all">
+		<field name="instance(SelfAssessExamine).attendanceMark" display-name="出勤情况分数">
+			<depend name="required" />
+			<depend name="integer" />
+		</field>
+		<field name="instance(SelfAssessExamine).behaviorMark" display-name="行为规范分数">
+			<depend name="required" />
+			<depend name="integer" />
+		</field>
+		<field name="instance(SelfAssessExamine).responsibilityMark" display-name="工作责任感分数">
+			<depend name="required" />
+			<depend name="integer" />
+		</field>
+		<field name="instance(SelfAssessExamine).diligenceMark" display-name="工作勤懒分数">
+			<depend name="required" />
+			<depend name="integer" />
+		</field>
+		<field name="instance(SelfAssessExamine).skillMark" display-name="工作技能分数">
+			<depend name="required" />
+			<depend name="integer" />
+		</field>
+		<field name="instance(SelfAssessExamine).coordinationMark" display-name="沟通协调分数">
+			<depend name="required" />
+			<depend name="integer" />
+		</field>
+		<field name="instance(SelfAssessExamine).planMark" display-name="策划能力分数">
+			<depend name="required" />
+			<depend name="integer" />
+		</field>
+		<field name="instance(SelfAssessExamine).executeMark" display-name="执行能力分数">
+			<depend name="required" />
+			<depend name="integer" />
+		</field>
+		<field name="instance(SelfAssessExamine).qualityMark" display-name="工作业绩/质量分数">
+			<depend name="required" />
+			<depend name="integer" />
+		</field>
+		<field name="instance(SelfAssessExamine).efficiencyMark" display-name="工作效率分数">
+			<depend name="required" />
+			<depend name="integer" />
+		</field>
+		<field name="instance(SelfAssessExamine).leaveCount" display-name="请假次数">
+			<depend name="required" />
+			<depend name="integer" />
+		</field>
+		<field name="instance(SelfAssessExamine).lateCount" display-name="迟到次数">
+			<depend name="required" />
+			<depend name="integer" />
+		</field>
+		<field name="instance(SelfAssessExamine).absenceCount" display-name="旷工次数">
+			<depend name="required" />
+			<depend name="integer" />
+		</field>
+		
+	</range>
+</validation-config>

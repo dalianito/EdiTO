@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<references>
+	<reference id="DataManager">
+		<ctx value="dmContext" />
+		<jndi value="DataManager" />
+	</reference>
+	<reference id="ConnectionFactory">
+		<ctx value="queueContext" />
+		<jndi value="ConnectionFactory" />
+	</reference>
+	<reference id="queuelog">
+		<ctx value="queueContext" />
+		<jndi value="queue/queuelog" />
+	</reference>
+</references>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE validation-config SYSTEM "../validation-config.dtd">
+<validation-config>
+	<range id="formA" show-error="alert" show-type="all">
+		<field name="instance(WorkRecord).summary" display-name="今日工作总结">
+			<depend name="required" />
+		</field>
+		<field name="instance(WorkRecord).schedule" display-name="明日工作计划">
+			<depend name="required" />
+		</field>
+		<field name="instance(WorkRecord).share" display-name="今日工作感受">
+			<depend name="required" />
+		</field>
+	</range>
+
+	<range id="formB" show-error="alert" show-type="all">
+		<field name="instance(WorkRecord).summary" display-name="今日工作总结">
+			<depend name="required" />
+		</field>
+		<field name="instance(WorkRecord).schedule" display-name="明日工作计划">
+			<depend name="required" />
+		</field>
+		<field name="instance(WorkRecord).share" display-name="今日工作感受">
+			<depend name="required" />
+		</field>
+	</range>
+</validation-config>

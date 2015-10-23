@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE urlrewrite PUBLIC "-//tuckey.org//DTD UrlRewrite 2.6//EN" "http://tuckey.org/res/dtds/urlrewrite2.6.dtd">
+<!--课程咨询报名管理-->
+<urlrewrite>
+	<!--课程咨询报名管理-->
+	<rule>
+		<from>^/pages/content/consult/manage/communication/consult_student.html$</from>
+		<to>/pages/content/consult/manage/communication/consultStudent.action</to>
+	</rule>
+
+	<rule>
+		<from>^/pages/content/consult/manage/consult/manage/default_options.html$</from>
+		<to>/pages/content/consult/manage/default_options/viewDefaultOptions.action</to>
+	</rule>
+	
+	
+	<!-- 咨询 -->
+	<rule>
+	    <from>^/ajaxs/content/consult/manage/student/query_student.html$</from>
+	    <to>/pages/content/consult/manage/student/queryStudent.action</to>
+	</rule>
+	<rule>
+	    <from>^/ajaxs/content/consult/manage/student/query_student_communication_history.html$</from>
+	    <to>/pages/content/consult/manage/student/queryStudentCommunicationHistory.action</to>
+	</rule>
+	<rule>
+	    <from>^/ajaxs/content/consult/manage/student/create_student.html$</from>
+	    <to>/pages/content/consult/manage/student/createStudent.action</to>
+	</rule>
+	<rule>
+	    <from>^/ajaxs/content/consult/manage/update_student_basic_info.html$</from>
+	    <to>/pages/content/consult/manage/updateStudentBasicInfo.action</to>
+	</rule>
+	<rule>
+	    <from>^/ajaxs/content/consult/manage/save_communication.html$</from>
+	    <to>/pages/content/consult/manage/saveCommunication.action</to>
+	</rule>
+	<rule>
+		<from>^/pages/content/consult/manage/communication/my_communications.html$</from>
+		<to>/pages/content/consult_manage/communication/my_communications.jsp</to>
+	</rule>
+	<rule>
+		<from>^/pages/content/consult/manage/communication/my_todo_follow_ups.html$</from>
+		<to>/pages/content/consult_manage/communication/my_todo_follow_ups.jsp</to>
+	</rule>
+	<rule>
+	    <from>^/ajaxs/content/consult/manage/query_my_communications.html$</from>
+	    <to>/pages/content/consult/manage/queryCommunications.action</to>
+	</rule>
+	<rule>
+	    <from>^/ajaxs/content/consult/manage/query_my_follow_ups.html$</from>
+	    <to>/pages/content/consult/manage/queryFollowUps.action</to>
+	</rule>
+	<rule>
+	    <from>^/ajaxs/content/consult/manage/communication/query_interested_courses.html$</from>
+	    <to>/pages/content/consult/manage/communication/queryInterestedCourses.action</to>
+	</rule>
+	<rule>
+	    <from>^/ajaxs/content/consult/manage/communication/query_recommended_courses.html$</from>
+	    <to>/pages/content/consult/manage/communication/queryRecommendedCourses.action</to>
+	</rule>
+	<rule>
+	    <from>^/ajaxs/content/consult/manage/communication/transfer_follow_up.html$</from>
+	    <to>/pages/content/consult/manage/communication/transferFollowUp.action</to>
+	</rule>
+	<rule>
+	    <from>^/ajaxs/content/consult/manage/communication/change_follow_up_time.html$</from>
+	    <to>/pages/content/consult/manage/communication/changeFollowUpTime.action</to>
+	</rule>
+	<rule>
+	    <from>^/ajaxs/content/consult/manage/communication/cancel_follow_up.html$</from>
+	    <to>/pages/content/consult/manage/communication/cancelFollowUp.action</to>
+	</rule>
+	<rule>
+		<from>^/views/content/consult/manage/communication/view_communication_info.html$</from>
+		<to>/pages/content/consult/manage/communication/viewCommunicationInfo.action</to>
+	</rule>
+	<rule>
+        <from>^/https/content/consult/manage/communication/follow_up.html\?followUpUuid=(.*)$</from>
+        <to>/pages/content/consult/manage/communication/followUp.action?followUpUuid=$1</to>
+    </rule>
+	
+
+	<!-- 基表设置 -->
+	<rule>
+	    <from>^/ajaxs/content/consult/manage/default_options/update_default_option.html$</from>
+	    <to>/pages/content/consult/manage/default_options/updateDefaultOption.action</to>
+	</rule>
+	<rule>
+        <from>^/ajaxs/content/consult/manage/default_options/delete_default_option.html$</from>
+        <to>/pages/content/consult/manage/default_options/deleteDefaultOption.action</to>
+    </rule>
+    
+    <!-- 咨询师管理 -->
+	<rule>
+		<from>^/pages/content/consult/manage/consultant/manage_consultants.html$</from>
+		<to>/pages/content/consult_manage/consultant/manage_consultants.jsp</to>
+	</rule>
+	<rule>
+        <from>^/ajaxs/content/consult/manage/consultant/query_consultants.html$</from>
+        <to>/pages/content/consult/manage/consultant/queryConsultants.action</to>
+    </rule>
+	<rule>
+        <from>^/ajaxs/content/consult/manage/consultant/query_active_consultants.html$</from>
+        <to>/pages/content/consult/manage/consultant/queryActiveConsultants.action</to>
+    </rule>
+	<rule>
+        <from>^/ajaxs/content/consult/manage/consultant/create_consultant.html$</from>
+        <to>/pages/content/consult/manage/consultant/createConsultant.action</to>
+    </rule>
+	<rule>
+        <from>^/ajaxs/content/consult/manage/consultant/delete_consultant.html$</from>
+        <to>/pages/content/consult/manage/consultant/deleteConsultant.action</to>
+    </rule>
+	<rule>
+        <from>^/https/content/consult/manage/consultant/create.html$</from>
+        <to>/pages/content/consult_manage/consultant/create_consultant.jsp</to>
+    </rule>
+    
+    <!-- Consultant Dashboard -->
+	<rule>
+		<from>^/pages/content/consult/manage/consultant/dashboard.html$</from>
+		<to>/pages/content/consult_manage/consultant/dashboard.jsp</to>
+	</rule>
+	<rule>
+        <from>^/ajaxs/content/consult/manage/consultant/dashboard_data.html$</from>
+        <to>/pages/content/consult/manage/consultant/queryConsultantDashboardData.action</to>
+    </rule>
+    
+    
+    <!-- Admin -->
+	<rule>
+		<from>^/pages/content/consult/manage/admin/dashboard.html$</from>
+		<to>/pages/content/consult_manage/admin/dashboard.jsp</to>
+	</rule>
+	<rule>
+        <from>^/ajaxs/content/consult/manage/admin/dashboard_data.html$</from>
+        <to>/pages/content/consult/manage/admin/queryAdminDashboardData.action</to>
+    </rule>
+	<rule>
+        <from>^/ajaxs/content/consult/manage/admin/query_daily_dashboard_data.html$</from>
+        <to>/pages/content/consult/manage/admin/queryDailyDashboardData.action</to>
+    </rule>
+	<rule>
+        <from>^/ajaxs/content/consult/manage/admin/query_weekly_communication_data_by_consultant.html$</from>
+        <to>/pages/content/consult/manage/admin/queryWeeklyCommunicationDataByConsultant.action</to>
+    </rule>
+    
+    <!-- Student Data Analysis -->
+	<rule>
+		<from>^/pages/content/consult/manage/admin/student_data_analysis.html$</from>
+		<to>/pages/content/consult_manage/admin/student_data_analysis.jsp</to>
+	</rule>
+	<rule>
+        <from>^/ajaxs/content/consult/manage/admin/query_student_data_for_analysis.html$</from>
+        <to>/pages/content/consult/manage/admin/queryStudentDataForAnalysis.action</to>
+    </rule>
+	<rule>
+        <from>^/ajaxs/content/consult/manage/admin/query_weekly_consult_source.html$</from>
+        <to>/pages/content/consult/manage/admin/queryWeeklyConsultSource.action</to>
+    </rule>
+</urlrewrite>

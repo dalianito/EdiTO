@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE validation-config SYSTEM "../validation-config.dtd">
+<validation-config>
+	<range id="formA" show-error="alert" show-type="all">
+		<field name="instance(Supplier).description" display-name="供方名录">
+			<depend name="required" />
+		</field>
+		<field name="instance(MaterialInfo).materialUuid" display-name="供应物资">
+			<depend name="required" />
+		</field>
+		<field name="instance(Supplier).contact" display-name="联系人">
+			<depend name="required" />
+		</field>
+		<field name="instance(Supplier).telephone" display-name="联系电话">
+			<depend name="required" />
+			<depend name="phone" />
+		</field>
+	</range>
+</validation-config>

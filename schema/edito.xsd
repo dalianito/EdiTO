@@ -1,0 +1,5539 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2011 rel. 2 sp1 (http://www.altova.com) by iTO (iTO) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:edito="http://www.ito.com.cn/edito" targetNamespace="http://www.ito.com.cn/edito" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:include schemaLocation="base.xsd"/>
+	<xs:complexType name="BizData">
+		<xs:annotation>
+			<xs:documentation>@ucid 9900000001000002
+@chinese 业务数据</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:Base"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="Record">
+		<xs:annotation>
+			<xs:documentation>@ucid 9900000001000003
+@chinese 事件记录对象</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:BizData">
+				<xs:sequence>
+					<xs:element name="fromDt" type="xs:dateTime">
+						<xs:annotation>
+							<xs:documentation>@chinese 开始时间</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="toDt" type="xs:dateTime">
+						<xs:annotation>
+							<xs:documentation>@chinese 结束时间</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="recorder" type="edito:Person">
+						<xs:annotation>
+							<xs:documentation>@chinese 记录人</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="recordTime" type="xs:dateTime">
+						<xs:annotation>
+							<xs:documentation>@chinese 记录时间</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="notes" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 500
+@chinese 说明</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="status" type="edito:RecordStatus">
+						<xs:annotation>
+							<xs:documentation>@chinese 状态</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="Info">
+		<xs:annotation>
+			<xs:documentation>@ucid 9900000001000004
+@chinese 详细信息</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:BizData">
+				<xs:sequence>
+					<xs:element name="bizData" type="edito:BizData">
+						<xs:annotation>
+							<xs:documentation>@lazy-load
+@no-fk</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="operationStatus" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@no-make
+@sql-size 1
+@chinese 操作状态</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="JdoVirtual">
+		<xs:annotation>
+			<xs:documentation>@ucid 1100000001000000
+@table JdoVirtual
+@chinese 数据对象虚拟表</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:BizData">
+				<xs:sequence>
+					<xs:element name="count" type="xs:double">
+						<xs:annotation>
+							<xs:documentation>@chinese 数量</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="Department">
+		<xs:annotation>
+			<xs:documentation>@ucid 1100000001001000
+@table Department
+@chinese 组织机构</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:BaseData"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="Person">
+		<xs:annotation>
+			<xs:documentation>@ucid 1100000001002000
+@table Person
+@chinese 人员</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:BizData">
+				<xs:sequence>
+					<xs:element name="photo" type="edito:RelatedFile">
+						<xs:annotation>
+							<xs:documentation>@chinese 照片</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="personNo" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 20
+@chinese 人员编号</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="name" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 15
+@chinese 姓名</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="gender" type="edito:Gender">
+						<xs:annotation>
+							<xs:documentation>@chinese 性别</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="birthDate" type="xs:dateTime">
+						<xs:annotation>
+							<xs:documentation>@chinese 出生日期</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="nativePlace" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 30
+@chinese 籍贯</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="idNo" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 20
+@chinese 身份证号</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="address" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 30
+@chinese 居住地</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="nationality" type="edito:Nationality">
+						<xs:annotation>
+							<xs:documentation>@chinese 民族</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="country" type="edito:Country">
+						<xs:annotation>
+							<xs:documentation>@chinese 国籍</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="education" type="edito:Education">
+						<xs:annotation>
+							<xs:documentation>@chinese 学历</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="political" type="edito:Political">
+						<xs:annotation>
+							<xs:documentation>@chinese 政治面貌</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="cellPhone" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 15
+@chinese 手机</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="email" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 50
+@chinese 电子邮件</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="marriage" type="edito:MarriageState">
+						<xs:annotation>
+							<xs:documentation>@chinese 婚否</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="realAddress" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 30
+@chinese 实际地址</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="EducationExpInfo" type="edito:EducationExpInfo" maxOccurs="unbounded">
+						<xs:annotation>
+							<xs:documentation>@no-make
+@chinese 过往教育经历</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="qq" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 20
+@chinese QQ</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="parentName" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 30
+@chinese 家长姓名</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="parentPhone" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 30
+@chinese 家长电话</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="specialExpertise" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 500
+@chinese 特殊专长</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="foreignLanguageAndQualification" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 500
+@chinese 外语及熟练程度</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="ifUsing" type="xs:boolean">
+						<xs:annotation>
+							<xs:documentation>@chinese 是否在用</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="estAge" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 预计年龄</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="employmentStatus" type="edito:EmploymentStatus">
+						<xs:annotation>
+							<xs:documentation>@chinese 在职状态</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="employer" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 60
+@chinese 在职单位</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="Menu">
+		<xs:annotation>
+			<xs:documentation>@ucid 1100000001003000
+@table Menu
+@chinese 功能菜单 </xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:BizData">
+				<xs:sequence>
+					<xs:element name="id" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 50
+@chinese 标识</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="description" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 50
+@chinese 描述</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="parent" type="edito:Menu">
+						<xs:annotation>
+							<xs:documentation>@no-fk
+@chinese 上级菜单</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="sequence" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 2
+@chinese 次序</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="link" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 200
+@chinese 链接</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="stationName" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 20
+@chinese 平台名称</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="children" type="edito:Menu" maxOccurs="unbounded">
+						<xs:annotation>
+							<xs:documentation>@no-make
+@chinese 子菜单</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="child" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@no-make
+@sql-size 2
+@chinese 子菜单个数</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="focus" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@no-make
+@sql-size 1
+@chinese 是否当前项</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="opened" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@no-make
+@sql-size 1
+@chinese 是否展开</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="User">
+		<xs:annotation>
+			<xs:documentation>@ucid 1100000001004000
+@table User
+@chinese 用户 </xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:BizData">
+				<xs:sequence>
+					<xs:element name="account" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 50
+@chinese 用户名</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="password" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 50
+@chinese 密码</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="person" type="edito:Person">
+						<xs:annotation>
+							<xs:documentation>@chinese 人员</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="authority" type="edito:Authority" maxOccurs="unbounded">
+						<xs:annotation>
+							<xs:documentation>@no-make
+@chinese 权限</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="ifUsing" type="xs:boolean" default="0">
+						<xs:annotation>
+							<xs:documentation>@chinese 是否在用</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="Employee">
+		<xs:annotation>
+			<xs:documentation>@ucid 1100000001005000
+@table Employee
+@chinese 员工</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:BizData">
+				<xs:sequence>
+					<xs:element name="person" type="edito:Person">
+						<xs:annotation>
+							<xs:documentation>@chinese 人员</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="campus" type="edito:Campus">
+						<xs:annotation>
+							<xs:documentation>@chinese 所属校区</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="job" type="edito:Job">
+						<xs:annotation>
+							<xs:documentation>@chinese 岗位</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="department" type="edito:Department">
+						<xs:annotation>
+							<xs:documentation>@chinese 组织机构</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="workPhone" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 15
+@chinese 工作电话</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="fromDate" type="xs:dateTime">
+						<xs:annotation>
+							<xs:documentation>@chinese 入职时间</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="toDate" type="xs:dateTime">
+						<xs:annotation>
+							<xs:documentation>@chinese 离职时间</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="workingState" type="edito:WorkingStateType">
+						<xs:annotation>
+							<xs:documentation>@chinese 员工状态</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="summary" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 500
+@chinese 简介</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="introduction" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 500
+@chinese 详细介绍</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="openId" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 50
+@chinese 微信号</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="ifUsing" type="xs:boolean">
+						<xs:annotation>
+							<xs:documentation>@chinese 是否在用</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="ifShow" type="xs:boolean">
+						<xs:annotation>
+							<xs:documentation>@chinese 是否显示</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="Student">
+		<xs:annotation>
+			<xs:documentation>@ucid 1100000001006000
+@table Student
+@chinese 学员</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:BizData">
+				<xs:sequence>
+					<xs:element name="person" type="edito:Person">
+						<xs:annotation>
+							<xs:documentation>@chinese 人员</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="studentID" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 20
+@chinese 学生编号</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="note" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 500
+@chinese 备注</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="ifUsing" type="xs:boolean">
+						<xs:annotation>
+							<xs:documentation>@chinese 是否在用</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="consultant" type="edito:Consultant">
+						<xs:annotation>
+							<xs:documentation>@chinese 咨询师</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="RelatedFile">
+		<xs:annotation>
+			<xs:documentation>@ucid 1100000001007000
+@table RelatedFile
+@chinese 相关文件</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:BizData">
+				<xs:sequence>
+					<xs:element name="type" type="edito:FileType">
+						<xs:annotation>
+							<xs:documentation>@chinese 文件类别</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="name" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 100
+@chinese 名称</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="path" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 100
+@chinese 存储路径</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="uploadPerson" type="edito:BizData">
+						<xs:annotation>
+							<xs:documentation>@lazy-load
+@no-fk
+@chinese 上传人</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="uploadTime" type="xs:dateTime">
+						<xs:annotation>
+							<xs:documentation>@chinese 上传时间</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="Mistake">
+		<xs:annotation>
+			<xs:documentation>@ucid 1100000001008000
+@table Mistake
+@chinese 差错</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:BizData">
+				<xs:sequence>
+					<xs:element name="title" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 100
+@chinese 标题</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="content" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 500
+@chinese 内容</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="recordTime" type="xs:dateTime">
+						<xs:annotation>
+							<xs:documentation>@chinese 记录时间</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="recorder" type="edito:Employee">
+						<xs:annotation>
+							<xs:documentation>@chinese 记录人</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="ifUsing" type="xs:boolean">
+						<xs:annotation>
+							<xs:documentation>@chinese 是否可用 </xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="Apply">
+		<xs:annotation>
+			<xs:documentation>@ucid 1100000001009000
+@table Apply
+@chinese 申请</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:BizData">
+				<xs:sequence>
+					<xs:element name="type" type="edito:ApplicationType">
+						<xs:annotation>
+							<xs:documentation>@chinese 申请类型</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="applicationTime" type="xs:dateTime">
+						<xs:annotation>
+							<xs:documentation>@chinese 申请时间</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="applicant" type="edito:Employee">
+						<xs:annotation>
+							<xs:documentation>@chinese 申请人</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="checkTimeOne" type="xs:dateTime">
+						<xs:annotation>
+							<xs:documentation>@chinese 审核时间1</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="checkerOne" type="edito:Employee">
+						<xs:annotation>
+							<xs:documentation>@chinese 审核人1</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="notesOne" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 100
+@chinese 审核意见1</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="checkStateOne" type="edito:ExaminationState">
+						<xs:annotation>
+							<xs:documentation>@chinese 审核状态1</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="checkTimeTwo" type="xs:dateTime">
+						<xs:annotation>
+							<xs:documentation>@chinese 审核时间2</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="checkerTwo" type="edito:Employee">
+						<xs:annotation>
+							<xs:documentation>@chinese 审核人2</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="notesTwo" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 100
+@chinese 审核意见2</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="checkStateTwo" type="edito:ExaminationState">
+						<xs:annotation>
+							<xs:documentation>@chinese 审核状态2</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="checkTimeThree" type="xs:dateTime">
+						<xs:annotation>
+							<xs:documentation>@chinese 审核时间3</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="checkerThree" type="edito:Employee">
+						<xs:annotation>
+							<xs:documentation>@chinese 审核人3</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="notesThree" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 100
+@chinese 审核意见3</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="checkStateThree" type="edito:ExaminationState">
+						<xs:annotation>
+							<xs:documentation>@chinese 审核状态3</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="checkTimeFour" type="xs:dateTime">
+						<xs:annotation>
+							<xs:documentation>@chinese 审核时间4</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="checkerFour" type="edito:Employee">
+						<xs:annotation>
+							<xs:documentation>@chinese 审核人4</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="notesFour" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 100
+@chinese 审核意见4</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="checkStateFour" type="edito:ExaminationState">
+						<xs:annotation>
+							<xs:documentation>@chinese 审核状态4</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="checkTimeFive" type="xs:dateTime">
+						<xs:annotation>
+							<xs:documentation>@chinese 审核时间5</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="checkerFive" type="edito:Employee">
+						<xs:annotation>
+							<xs:documentation>@chinese 审核人5</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="notesFive" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 100
+@chinese 审核意见5</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="checkStateFive" type="edito:ExaminationState">
+						<xs:annotation>
+							<xs:documentation>@chinese 审核状态5</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="state" type="edito:ExaminationState">
+						<xs:annotation>
+							<xs:documentation>@chinese 审核状态</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="ifUsing" type="xs:boolean">
+						<xs:annotation>
+							<xs:documentation>@chinese 是否可用 </xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="Recruitment">
+		<xs:annotation>
+			<xs:documentation>@ucid 1100000001010000
+@table Recruitment
+@chinese 招聘申请</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:BizData">
+				<xs:sequence>
+					<xs:element name="apply" type="edito:Apply">
+						<xs:annotation>
+							<xs:documentation>@chinese 申请</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="department" type="edito:Department">
+						<xs:annotation>
+							<xs:documentation>@chinese 需求部门</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="existingNo" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 现有人数</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="budgetNo" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 预算人数</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="position" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 20
+@chinese 职位名称</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="demandNo" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 需求人数</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="rank" type="edito:LevelType">
+						<xs:annotation>
+							<xs:documentation>@chinese 级别</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="leader" type="edito:Employee">
+						<xs:annotation>
+							<xs:documentation>@chinese 上级</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="subordinate" type="edito:Employee">
+						<xs:annotation>
+							<xs:documentation>@chinese 下级</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="subordinatesNo" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 下属人数</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="other" type="edito:OtherType">
+						<xs:annotation>
+							<xs:documentation>@chinese 其他</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="probationLow" type="xs:double">
+						<xs:annotation>
+							<xs:documentation>@chinese 试用期最低工资</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="probationHigh" type="xs:double">
+						<xs:annotation>
+							<xs:documentation>@chinese 试用期最高工资</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="positiveLow" type="xs:double">
+						<xs:annotation>
+							<xs:documentation>@chinese 转正最低工资</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="positiveHigh" type="xs:double">
+						<xs:annotation>
+							<xs:documentation>@chinese 转正最高工资</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="welfare" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 200
+@chinese 福利</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="duty" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 500
+@chinese 工作职责</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="gender" type="edito:Gender">
+						<xs:annotation>
+							<xs:documentation>@chinese 性别</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="ageLow" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 最小年龄</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="ageHigh" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 最大年龄</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="education" type="edito:Education">
+						<xs:annotation>
+							<xs:documentation>@chinese 学历</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="major" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 50
+@chinese 主修专业</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="professional" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 200
+@chinese 专业技术</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="managementAbility" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 200
+@chinese 管理能力</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="background" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 200
+@chinese 工作背景</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="otherTechnology" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 100
+@chinese 其他技术</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="weeks" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 100
+@chinese 周</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="specificTime" type="xs:dateTime">
+						<xs:annotation>
+							<xs:documentation>@chinese 具体到岗时间</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="director" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 200
+@chinese 部门处长意见</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="humanOpinion" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 200
+@chinese 人力资源意见</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="ifUsing" type="xs:boolean">
+						<xs:annotation>
+							<xs:documentation>@chinese 是否可用 </xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="Relationship">
+		<xs:annotation>
+			<xs:documentation>@ucid 1100000001011000
+@table Relationship
+@chinese 关系调整申请</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:BizData">
+				<xs:sequence>
+					<xs:element name="apply" type="edito:Apply">
+						<xs:annotation>
+							<xs:documentation>@chinese 申请</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="teacher" type="edito:Employee">
+						<xs:annotation>
+							<xs:documentation>@chinese 转岗老师</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="original" type="edito:Department">
+						<xs:annotation>
+							<xs:documentation>@chinese 原岗位</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="transfer" type="edito:Department">
+						<xs:annotation>
+							<xs:documentation>@chinese 调往岗位</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="postTime" type="xs:dateTime">
+						<xs:annotation>
+							<xs:documentation>@chinese 离岗时间</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="arrivalTime" type="xs:dateTime">
+						<xs:annotation>
+							<xs:documentation>@chinese 到岗时间</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="ifDeal" type="xs:boolean">
+						<xs:annotation>
+							<xs:documentation>@chinese 是否处理</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="ifUsing" type="xs:boolean">
+						<xs:annotation>
+							<xs:documentation>@chinese 是否可用 </xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="Quit">
+		<xs:annotation>
+			<xs:documentation>@ucid 1100000001012000
+@table Quit
+@chinese 离职申请</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:BizData">
+				<xs:sequence>
+					<xs:element name="apply" type="edito:Apply">
+						<xs:annotation>
+							<xs:documentation>@chinese 申请</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="employee" type="edito:Employee">
+						<xs:annotation>
+							<xs:documentation>@chinese 离职员工</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="department" type="edito:Department">
+						<xs:annotation>
+							<xs:documentation>@chinese 组织机构</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="departureTime" type="xs:dateTime">
+						<xs:annotation>
+							<xs:documentation>@chinese 离职日期</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="departureType" type="edito:DepartureType">
+						<xs:annotation>
+							<xs:documentation>@chinese 离职类别</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="reason" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 300
+@chinese 离职原因</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="ifDeal" type="xs:boolean">
+						<xs:annotation>
+							<xs:documentation>@chinese 是否处理</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="ifUsing" type="xs:boolean">
+						<xs:annotation>
+							<xs:documentation>@chinese 是否可用 </xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="LeaveApplication">
+		<xs:annotation>
+			<xs:documentation>@ucid 1100000001013000
+@table LeaveApplication
+@chinese 请假申请</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:BizData">
+				<xs:sequence>
+					<xs:element name="apply" type="edito:Apply">
+						<xs:annotation>
+							<xs:documentation>@chinese 申请</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="department" type="edito:Department">
+						<xs:annotation>
+							<xs:documentation>@chinese 组织机构</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="campus" type="edito:Campus">
+						<xs:annotation>
+							<xs:documentation>@chinese 校区</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="position" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 50
+@chinese 职务</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="leaveType" type="edito:LeaveType">
+						<xs:annotation>
+							<xs:documentation>@chinese 请假类别</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="leaveReason" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 300
+@chinese 请假事由</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="fromDt" type="xs:dateTime">
+						<xs:annotation>
+							<xs:documentation>@chinese 请假开始时间</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="toDt" type="xs:dateTime">
+						<xs:annotation>
+							<xs:documentation>@chinese 请假结束时间</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="days" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 请假天数</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="ifUsing" type="xs:boolean">
+						<xs:annotation>
+							<xs:documentation>@chinese 是否可用 </xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="Candidates">
+		<xs:annotation>
+			<xs:documentation>@ucid 1100000001014000
+@table Candidates
+@chinese 应聘员工</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:BizData">
+				<xs:sequence>
+					<xs:element name="person" type="edito:Person">
+						<xs:annotation>
+							<xs:documentation>@chinese 人员</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="years" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 工作年限</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="workExperienceInfo" type="edito:WorkExperienceInfo" maxOccurs="unbounded">
+						<xs:annotation>
+							<xs:documentation>@no-make
+@chinese 工作经历</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="educateInfo" type="edito:EducateInfo" maxOccurs="unbounded">
+						<xs:annotation>
+							<xs:documentation>@no-make
+@chinese 教育背景</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="certificate" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 200
+@chinese 资格证书</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="post" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 200
+@chinese 应聘岗位</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="hobby" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 200
+@chinese 兴趣爱好</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="pay" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 200
+@chinese 期望薪酬</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="inviteDate" type="xs:dateTime">
+						<xs:annotation>
+							<xs:documentation>@chinese 邀约时间</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="recruitState" type="edito:RecruitState">
+						<xs:annotation>
+							<xs:documentation>@chinese 应聘状态</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="remarks" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 300
+@chinese 备注</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="ifUsing" type="xs:boolean">
+						<xs:annotation>
+							<xs:documentation>@chinese 是否可用 </xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="Assessment">
+		<xs:annotation>
+			<xs:documentation>@ucid 1100000001015000
+@table Assessment
+@chinese 试用考核</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:BizData">
+				<xs:sequence>
+					<xs:element name="employee" type="edito:Employee">
+						<xs:annotation>
+							<xs:documentation>@chinese 人员</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="month" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 试用期</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="assessmentTime" type="xs:dateTime">
+						<xs:annotation>
+							<xs:documentation>@chinese 考核日期</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="evaluation" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 300
+@chinese 自我评价</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="evaluationTime" type="xs:dateTime">
+						<xs:annotation>
+							<xs:documentation>@chinese 评价日期</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="opinion" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 300
+@chinese 领导意见</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="leader" type="edito:Employee">
+						<xs:annotation>
+							<xs:documentation>@chinese 直属领导</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="opinionTime" type="xs:dateTime">
+						<xs:annotation>
+							<xs:documentation>@chinese 签字日期</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="attendance" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 出勤情况</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="duty" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 责任感</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="cost" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 成本意识</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="diligence" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 工作勤惰</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="standard" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 行为规范</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="skill" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 工作技能</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="capacity" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 处理能力</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="plan" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 策划能力</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="communicate" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 协调能力</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="execution" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 执行能力</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="expand" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 拓展能力</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="complete" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 任务达成度</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="efficiency" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 工作效率</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="quality" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 工作质量</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="targetCompletion" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 质量目标完成性</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="results" type="edito:ResultType">
+						<xs:annotation>
+							<xs:documentation>@chinese 考核结果</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="score" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 总分</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="remarks" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 200
+@chinese 备注</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="ifUsing" type="xs:boolean">
+						<xs:annotation>
+							<xs:documentation>@chinese 是否可用 </xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ContractMould">
+		<xs:annotation>
+			<xs:documentation>@ucid 1100000001016000
+@table ContractMould
+@chinese 合同模板</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:BaseData">
+				<xs:sequence>
+					<xs:element name="creator" type="edito:Employee">
+						<xs:annotation>
+							<xs:documentation>@chinese 创建人</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="createTime" type="xs:dateTime">
+						<xs:annotation>
+							<xs:documentation>@chinese 创建时间</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="content" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 65536
+@chinese 内容</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="Material">
+		<xs:annotation>
+			<xs:documentation>@ucid 1100000003003000
+@table Material
+@chinese 物资</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:BizData">
+				<xs:sequence>
+					<xs:element name="materialNo" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 20
+@chinese 编号</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="specification" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 50
+@chinese 规格型号</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="unit" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 5
+@chinese 单位</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="type" type="edito:MaterialType">
+						<xs:annotation>
+							<xs:documentation>@chinese 类别</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="minValue" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 警戒线 </xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="notes" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 200
+@chinese 备注</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="recorder" type="edito:Employee">
+						<xs:annotation>
+							<xs:documentation>@chinese 记录人</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="recordTime" type="xs:dateTime">
+						<xs:annotation>
+							<xs:documentation>@chinese 记录时间</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="ifUsing" type="xs:boolean">
+						<xs:annotation>
+							<xs:documentation>@chinese 是否可用</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="Contract">
+		<xs:annotation>
+			<xs:documentation>@ucid 1100000001017000
+@table Contract
+@chinese 合同</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:BizData">
+				<xs:sequence>
+					<xs:element name="mould" type="edito:ContractMould">
+						<xs:annotation>
+							<xs:documentation>@chinese 模板</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="contractNo" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 20
+@chinese 编号</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="recorder" type="edito:Employee">
+						<xs:annotation>
+							<xs:documentation>@chinese 记录人</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="signer" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 20
+@chinese 签约者</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="signTime" type="xs:dateTime">
+						<xs:annotation>
+							<xs:documentation>@chinese 签订时间</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="expireTime" type="xs:dateTime">
+						<xs:annotation>
+							<xs:documentation>@chinese 到期时间</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="content" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 65536
+@chinese 内容</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="ifUsing" type="xs:boolean">
+						<xs:annotation>
+							<xs:documentation>@chinese 是否可用 </xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="TrainingPlan">
+		<xs:annotation>
+			<xs:documentation>@ucid 1100000001018000
+@table TrainingPlan
+@chinese 培训计划</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:BizData">
+				<xs:sequence>
+					<xs:element name="title" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 300
+@chinese 培训主题</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="lecturer" type="edito:Employee">
+						<xs:annotation>
+							<xs:documentation>@chinese 讲师</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="trainingTime" type="xs:dateTime">
+						<xs:annotation>
+							<xs:documentation>@chinese 培训日期</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="department" type="edito:Department">
+						<xs:annotation>
+							<xs:documentation>@chinese 组织机构</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="content" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 500
+@chinese 内容</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="state" type="edito:ExaminationState">
+						<xs:annotation>
+							<xs:documentation>@chinese 审核状态</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="publisher" type="edito:Employee">
+						<xs:annotation>
+							<xs:documentation>@chinese 发布人</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="type" type="edito:TrainingType">
+						<xs:annotation>
+							<xs:documentation>@chinese 类型</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="receiverInfo" type="edito:ReceiverInfo" maxOccurs="unbounded">
+						<xs:annotation>
+							<xs:documentation>@no-make
+@chinese 接受者信息</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="applyInfo" type="edito:ApplyInfo" maxOccurs="unbounded">
+						<xs:annotation>
+							<xs:documentation>@no-make
+@chinese 申请信息</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="curriculum" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 300
+@chinese 培训课程设置</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="effect" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 300
+@chinese 教学效果</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="situation" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 300
+@chinese 实际情况</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="suggest" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 300
+@chinese 建议</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="ifUsing" type="xs:boolean">
+						<xs:annotation>
+							<xs:documentation>@chinese 是否可用 </xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="Job">
+		<xs:annotation>
+			<xs:documentation>@ucid 1100000001019000
+@table Job
+@chinese 职位</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:BaseData"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="Attendance">
+		<xs:annotation>
+			<xs:documentation>@ucid 1100000002001000
+@table Attendance
+@chinese 考勤</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:BizData">
+				<xs:sequence>
+					<xs:element name="employee" type="edito:Employee">
+						<xs:annotation>
+							<xs:documentation>@chinese 员工</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="timesFlag" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 1
+@chinese 考核具体时间标记</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="checkDate" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 12
+@chinese 考核时间</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="recordTime" type="xs:dateTime">
+						<xs:annotation>
+							<xs:documentation>@chinese 记录时间</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="recorder" type="edito:Employee">
+						<xs:annotation>
+							<xs:documentation>@chinese 记录人</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="type" type="edito:AttendanceType">
+						<xs:annotation>
+							<xs:documentation>@chinese 类型</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="introduction" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 200
+@chinese 介绍</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="BehaviourStandard">
+		<xs:annotation>
+			<xs:documentation>@ucid 1100000002002000
+@table BehaviourStandard
+@chinese 行为规范</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:BizData">
+				<xs:sequence>
+					<xs:element name="employee" type="edito:Employee">
+						<xs:annotation>
+							<xs:documentation>@chinese 员工</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="timesFlag" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 1
+@chinese 考核时间标记
+</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="checkDate" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 12
+@chinese 考核时间</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="recordTime" type="xs:dateTime">
+						<xs:annotation>
+							<xs:documentation>@chinese 记录时间</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="recorder" type="edito:Employee">
+						<xs:annotation>
+							<xs:documentation>@chinese 记录人</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="type" type="edito:BehaviourStandardType">
+						<xs:annotation>
+							<xs:documentation>@chinese 类型</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="introduction" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 200
+@chinese 介绍</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="PublicityApplication">
+		<xs:annotation>
+			<xs:documentation>@ucid 1100000002003000
+@table PublicityApplication
+@chinese 市场活动申请</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:BizData">
+				<xs:sequence>
+					<xs:element name="apply" type="edito:Apply">
+						<xs:annotation>
+							<xs:documentation>@chinese 申请</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="department" type="edito:Department">
+						<xs:annotation>
+							<xs:documentation>@chinese 申请部门</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="campus" type="edito:Campus">
+						<xs:annotation>
+							<xs:documentation>@chinese 申请校区</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="description" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 500
+@chinese 活动简述</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="activityTime" type="xs:dateTime">
+						<xs:annotation>
+							<xs:documentation>@chinese 活动时间</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="location" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 100
+@chinese 活动地点</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="copyContent" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 500
+@chinese 文案内容</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="copyFile" type="edito:RelatedFile">
+						<xs:annotation>
+							<xs:documentation>@chinese 文案文件</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="preParticipator" type="edito:PreParticipatorInfo" maxOccurs="unbounded">
+						<xs:annotation>
+							<xs:documentation>@no-make
+@chinese 预参与员工详细</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="preCost" type="xs:double">
+						<xs:annotation>
+							<xs:documentation>@chinese 预估成本</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="notes" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 500
+@chinese 备注</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="material" type="edito:PropagandaMaterialInfo" maxOccurs="unbounded">
+						<xs:annotation>
+							<xs:documentation>@no-make
+@chinese 宣传品详细</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="participator" type="edito:ParticipatorInfo" maxOccurs="unbounded">
+						<xs:annotation>
+							<xs:documentation>@no-make
+@chinese 参与员工详细</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="cost" type="xs:double">
+						<xs:annotation>
+							<xs:documentation>@chinese 实际成本</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="effect" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 500
+@chinese 活动效果</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="evaluate" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 500
+@chinese 评价</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="ifUsing" type="xs:boolean">
+						<xs:annotation>
+							<xs:documentation>@chinese 是否可用 </xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="WorkRecord">
+		<xs:annotation>
+			<xs:documentation>@ucid 1100000002004000
+@table WorkRecord
+@chinese 工作日志</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:BizData">
+				<xs:sequence>
+					<xs:element name="record" type="edito:Employee">
+						<xs:annotation>
+							<xs:documentation>@chinese 记录人</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="recordTime" type="xs:dateTime">
+						<xs:annotation>
+							<xs:documentation>@chinese 记录时间</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="summary" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 500
+@chinese 工作总结</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="schedule" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 500
+@chinese 工作计划</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="share" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 500
+@chinese 工作总结</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="file" type="edito:RelatedFile">
+						<xs:annotation>
+							<xs:documentation>@chinese 上传文件</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="ifUsing" type="xs:boolean">
+						<xs:annotation>
+							<xs:documentation>@chinese 是否可用 </xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="reviewFlag" type="edito:ReviewState">
+						<xs:annotation>
+							<xs:documentation>@chinese 审阅标记</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="reviewComment" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 500
+@chinese 审阅评语</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="reviewEmployee" type="edito:Employee">
+						<xs:annotation>
+							<xs:documentation>@chinese 审阅人</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="reviewTime" type="xs:dateTime">
+						<xs:annotation>
+							<xs:documentation>@chinese 审阅时间</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="InternetPublicity">
+		<xs:annotation>
+			<xs:documentation>@ucid 1100000002005000
+@table InternetPublicity
+@chinese 网络宣传</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:BizData">
+				<xs:sequence>
+					<xs:element name="record" type="edito:Employee">
+						<xs:annotation>
+							<xs:documentation>@chinese 记录人</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="recordTime" type="xs:dateTime">
+						<xs:annotation>
+							<xs:documentation>@chinese 记录时间</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="posterInfo" type="edito:PosterInfo" maxOccurs="unbounded">
+						<xs:annotation>
+							<xs:documentation>@no-make
+@chinese 发帖信息</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="notes" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 500
+@chinese 备注</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="ifUsing" type="xs:boolean">
+						<xs:annotation>
+							<xs:documentation>@chinese 是否可用 </xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="reviewFlag" type="edito:ReviewState">
+						<xs:annotation>
+							<xs:documentation>@chinese 审阅标记</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="reviewComment" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 500
+@chinese 审阅评语</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="reviewEmployee" type="edito:Employee">
+						<xs:annotation>
+							<xs:documentation>@chinese 审阅人</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="reviewTime" type="xs:dateTime">
+						<xs:annotation>
+							<xs:documentation>@chinese 审阅时间</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="Classroom">
+		<xs:annotation>
+			<xs:documentation>@ucid 1100000002006000
+@table Classroom
+@chinese 教室信息</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:BizData">
+				<xs:sequence>
+					<xs:element name="doorplate" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 门牌号</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="address" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 50
+@chinese 位置</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="numberOf" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 人数</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="classroomType" type="edito:ClassroomType">
+						<xs:annotation>
+							<xs:documentation>@chinese 教室类型</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="campus" type="edito:Campus">
+						<xs:annotation>
+							<xs:documentation>@chinese 所属校区</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="remarks" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 300
+@chinese 备注</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="ifUsing" type="xs:boolean">
+						<xs:annotation>
+							<xs:documentation>@chinese 是否可用 </xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="RegularApplication">
+		<xs:annotation>
+			<xs:documentation>@ucid 1100000002007000
+@table RegularApplication
+@chinese 转正申请</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:BizData">
+				<xs:sequence>
+					<xs:element name="apply" type="edito:Apply">
+						<xs:annotation>
+							<xs:documentation>@chinese 申请</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="approval" type="edito:RegularApproval">
+						<xs:annotation>
+							<xs:documentation>@chinese 审批内容</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="department" type="edito:Department">
+						<xs:annotation>
+							<xs:documentation>@chinese 组织机构</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="campus" type="edito:Campus">
+						<xs:annotation>
+							<xs:documentation>@chinese 校区</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="job" type="edito:Job">
+						<xs:annotation>
+							<xs:documentation>@chinese 岗位</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="fromDt" type="xs:dateTime">
+						<xs:annotation>
+							<xs:documentation>@chinese 试用期开始时间</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="toDt" type="xs:dateTime">
+						<xs:annotation>
+							<xs:documentation>@chinese 试用期结束时间</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="debrief" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 300
+@chinese 述职报告</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="workPlan" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 300
+@chinese 工作计划</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="suggestion" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 300
+@chinese 其他建议</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="ifUsing" type="xs:boolean">
+						<xs:annotation>
+							<xs:documentation>@chinese 是否可用 </xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="RegularApproval">
+		<xs:annotation>
+			<xs:documentation>@ucid 1100000002008000
+@table RegularApproval
+@chinese 转正审批</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:BizData">
+				<xs:sequence>
+					<xs:element name="attendanceMark" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 出勤评分</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="leaveCount" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 请假次数</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="lateCount" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 迟到次数</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="absenceCount" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 旷工次数</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="behaviorMark" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 行为规范评分</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="responsibilityMark" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 工作责任感评分</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="diligenceMark" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 勤奋评分</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="skillMark" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 工作技能评分</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="coordinationMark" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 沟通协调评分</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="planMark" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 策划能力评分</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="executeMark" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 执行能力评分</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="qualityMark" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 工作质量评分</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="efficiencyMark" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 工作效率评分</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="totalScore" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 试用总得分</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="prolongMonth" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 延期时间</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="teachPerformance" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 300
+@chinese 教研表现</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="teachEXInfo" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 300
+@chinese 教育经历</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="approvalState" type="edito:ApprovalState">
+						<xs:annotation>
+							<xs:documentation>@chinese 审批状态</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="ifUsing" type="xs:boolean">
+						<xs:annotation>
+							<xs:documentation>@chinese 是否可用 </xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="SelfAssess">
+		<xs:annotation>
+			<xs:documentation>@ucid 1100000002010000
+@table SelfAssess
+@chinese 月度自评</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:BizData">
+				<xs:sequence>
+					<xs:element name="selfAssessEmployee" type="edito:Employee">
+						<xs:annotation>
+							<xs:documentation>@chinese 自评人</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="selfAssessTime" type="xs:dateTime">
+						<xs:annotation>
+							<xs:documentation>@chinese 自评时间</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="examine" type="edito:SelfAssessExamine">
+						<xs:annotation>
+							<xs:documentation>@chinese 考核内容</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="department" type="edito:Department">
+						<xs:annotation>
+							<xs:documentation>@chinese 组织机构</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="campus" type="edito:Campus">
+						<xs:annotation>
+							<xs:documentation>@chinese 校区</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="job" type="edito:Job">
+						<xs:annotation>
+							<xs:documentation>@chinese 岗位</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="fromDt" type="xs:dateTime">
+						<xs:annotation>
+							<xs:documentation>@chinese 试用期开始时间</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="toDt" type="xs:dateTime">
+						<xs:annotation>
+							<xs:documentation>@chinese 试用期结束时间</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="workContant" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 300
+@chinese 工作内容</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="thinkings" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 300
+@chinese 看法</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="harvest" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 300
+@chinese 收获</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="reflect" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 300
+@chinese 内观于反思</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="selfAssessType" type="edito:SelfAssessType">
+						<xs:annotation>
+							<xs:documentation>@chinese 自评l类型</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="assessState" type="edito:AssessState">
+						<xs:annotation>
+							<xs:documentation>@chinese 是否考核</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="ifUsing" type="xs:boolean">
+						<xs:annotation>
+							<xs:documentation>@chinese 是否可用 </xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="SelfAssessExamine">
+		<xs:annotation>
+			<xs:documentation>@ucid 1100000002011000
+@table SelfAssessExamine
+@chinese 月度自评考核</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:BizData">
+				<xs:sequence>
+					<xs:element name="attendanceMark" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 出勤评分</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="leaveCount" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 请假次数</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="lateCount" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 迟到次数</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="absenceCount" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 旷工次数</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="behaviorMark" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 行为规范评分</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="responsibilityMark" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 工作责任感评分</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="diligenceMark" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 勤奋评分</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="skillMark" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 工作技能评分</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="coordinationMark" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 沟通协调评分</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="planMark" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 策划能力评分</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="executeMark" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 执行能力评分</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="qualityMark" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 工作质量评分</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="efficiencyMark" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 工作效率评分</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="totalScore" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 自评总得分</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="comprehensiveEvaluation" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 300
+@chinese 综合评价</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="assessRes" type="edito:AssessRes">
+						<xs:annotation>
+							<xs:documentation>@chinese 考核结果</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="assessmentPerson" type="edito:Employee">
+						<xs:annotation>
+							<xs:documentation>@chinese 评估人</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="assessmentTime" type="xs:dateTime">
+						<xs:annotation>
+							<xs:documentation>@chinese 考核时间</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="ifUsing" type="xs:boolean">
+						<xs:annotation>
+							<xs:documentation>@chinese 是否可用 </xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="InterviewRecord">
+		<xs:annotation>
+			<xs:documentation>@ucid 1100000002009000
+@table InterviewRecord
+@chinese 面谈记录</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:BizData">
+				<xs:sequence>
+					<xs:element name="interviewer" type="edito:Employee">
+						<xs:annotation>
+							<xs:documentation>@chinese 面谈人</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="interviewee" type="edito:Employee">
+						<xs:annotation>
+							<xs:documentation>@chinese 被面谈人</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="interviewerCampus" type="edito:Campus">
+						<xs:annotation>
+							<xs:documentation>@chinese 面谈人校区</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="intervieweeCampus" type="edito:Campus">
+						<xs:annotation>
+							<xs:documentation>@chinese 被面谈人校区</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="interviewerDepartment" type="edito:Department">
+						<xs:annotation>
+							<xs:documentation>@chinese 面谈人组织机构</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="intervieweeDepartment" type="edito:Department">
+						<xs:annotation>
+							<xs:documentation>@chinese 被面谈人组织机构</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="interviewerJob" type="edito:Job">
+						<xs:annotation>
+							<xs:documentation>@chinese  面谈人职位</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="intervieweeJob" type="edito:Job">
+						<xs:annotation>
+							<xs:documentation>@chinese  被面谈人职位</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="createTime" type="xs:dateTime">
+						<xs:annotation>
+							<xs:documentation>@chinese 创建时间</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="interviewDate" type="xs:dateTime">
+						<xs:annotation>
+							<xs:documentation>@chinese 面谈时间</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="interviewPurpose" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 500
+@chinese 面谈目的</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="interviewContent" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 500
+@chinese 面谈内容</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="interviewSummary" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 500
+@chinese 面谈总结</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="ifUsing" type="xs:boolean">
+						<xs:annotation>
+							<xs:documentation>@chinese 是否可用 </xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="ifShow" type="xs:boolean">
+						<xs:annotation>
+							<xs:documentation>@Chinese 是否显示</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="MaterialType">
+		<xs:annotation>
+			<xs:documentation>@ucid 1100000003001000
+@table MaterialType
+@chinese 物资类别</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:BaseData"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="Supplier">
+		<xs:annotation>
+			<xs:documentation>@ucid 1100000003002000
+@table Supplier
+@chinese 供应方</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:BaseData">
+				<xs:sequence>
+					<xs:element name="contact" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 20
+@chinese 联系人</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="telephone" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 20
+@chinese 联系电话</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="address" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 200
+@chinese 地址</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="summary" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 200
+@chinese 简介</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="recorder" type="edito:Employee">
+						<xs:annotation>
+							<xs:documentation>@chinese 记录人</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="recordTime" type="xs:dateTime">
+						<xs:annotation>
+							<xs:documentation>@chinese 记录时间</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="material" type="edito:MaterialInfo" maxOccurs="unbounded">
+						<xs:annotation>
+							<xs:documentation>@no-make
+@chinese 供应物资</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="OfficeApplication">
+		<xs:annotation>
+			<xs:documentation>@ucid 1100000003004000
+@table OfficeApplication
+@chinese 物资购买申请</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:BizData">
+				<xs:sequence>
+					<xs:element name="apply" type="edito:Apply">
+						<xs:annotation>
+							<xs:documentation>@chinese 申请</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="department" type="edito:Department">
+						<xs:annotation>
+							<xs:documentation>@chinese 需求部门</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="campus" type="edito:Campus">
+						<xs:annotation>
+							<xs:documentation>@chinese 需求校区</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="officeMaterial" type="edito:OfficeApplicationInfo" maxOccurs="unbounded">
+						<xs:annotation>
+							<xs:documentation>@no-make
+@chinese 物资购买申请详细</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="ifUsing" type="xs:boolean">
+						<xs:annotation>
+							<xs:documentation>@chinese 是否可用 </xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="OrderGenerate">
+		<xs:annotation>
+			<xs:documentation>@ucid 1100000003005000
+@table OrderGenerate
+@chinese 采购单</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:BizData">
+				<xs:sequence>
+					<xs:element name="material" type="edito:Material">
+						<xs:annotation>
+							<xs:documentation>@chinese 购买物资信息详细</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="materialAmount" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 物资申请数量</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="supplier" type="edito:Supplier">
+						<xs:annotation>
+							<xs:documentation>@chinese 供应商</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="generator" type="edito:Employee">
+						<xs:annotation>
+							<xs:documentation>@chinese 生成人</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="generateTime" type="xs:dateTime">
+						<xs:annotation>
+							<xs:documentation>@chinese 生成时间</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="acceptState" type="edito:ReceiptState">
+						<xs:annotation>
+							<xs:documentation>@chinese 验收状态</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="ifUsing" type="xs:boolean">
+						<xs:annotation>
+							<xs:documentation>@chinese 是否可用</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="MaterialStorage">
+		<xs:annotation>
+			<xs:documentation>@ucid 1100000003006000
+@table MaterialStorage
+@chinese 物资库存</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:BizData">
+				<xs:sequence>
+					<xs:element name="material" type="edito:Material">
+						<xs:annotation>
+							<xs:documentation>@chinese 物资</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="campus" type="edito:Campus">
+						<xs:annotation>
+							<xs:documentation>@chinese 校区</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="amount" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 数量</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="total" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 总数</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="MaterialImport">
+		<xs:annotation>
+			<xs:documentation>@ucid 1100000003007000
+@table MaterialImport
+@chinese 物资入库</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:BizData">
+				<xs:sequence>
+					<xs:element name="applicationInfo" type="edito:OfficeApplicationInfo">
+						<xs:annotation>
+							<xs:documentation>@chinese 申请单详细</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="material" type="edito:Material">
+						<xs:annotation>
+							<xs:documentation>@chinese 物资</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="supplier" type="edito:Supplier">
+						<xs:annotation>
+							<xs:documentation>@chinese 供应商</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="amount" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 数量</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="unit" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 5
+@chinese 单位</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="price" type="xs:double">
+						<xs:annotation>
+							<xs:documentation>@chinese 单价</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="recorder" type="edito:Employee">
+						<xs:annotation>
+							<xs:documentation>@chinese 签收入库人</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="department" type="edito:Department">
+						<xs:annotation>
+							<xs:documentation>@chinese 部门</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="campus" type="edito:Campus">
+						<xs:annotation>
+							<xs:documentation>@chinese 校区</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="materialStorage" type="edito:MaterialStorage">
+						<xs:annotation>
+							<xs:documentation>@chinese 库存</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="importDate" type="xs:dateTime">
+						<xs:annotation>
+							<xs:documentation>@chinese 入库日期</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="MaterialExport">
+		<xs:annotation>
+			<xs:documentation>@ucid 1100000003008000
+@table MaterialExport
+@chinese 物资使用</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:BizData">
+				<xs:sequence>
+					<xs:element name="material" type="edito:Material">
+						<xs:annotation>
+							<xs:documentation>@chinese 物资</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="amount" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 数量</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="keeper" type="edito:Employee">
+						<xs:annotation>
+							<xs:documentation>@chinese 经办人</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="department" type="edito:Department">
+						<xs:annotation>
+							<xs:documentation>@chinese 接收部门</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="campus" type="edito:Campus">
+						<xs:annotation>
+							<xs:documentation>@chinese 校区</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="materialStorage" type="edito:MaterialStorage">
+						<xs:annotation>
+							<xs:documentation>@chinese 库存</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="exportDate" type="xs:dateTime">
+						<xs:annotation>
+							<xs:documentation>@chinese 出库日期</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="state" type="edito:ReturnState">
+						<xs:annotation>
+							<xs:documentation>@chinese 归还状态</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="returnDate" type="xs:dateTime">
+						<xs:annotation>
+							<xs:documentation>@chinese 归还日期</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="remarks" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 300
+@chinese 备注</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="ifUsing" type="xs:boolean">
+						<xs:annotation>
+							<xs:documentation>@chinese 是否可用 </xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="MaterialScrap">
+		<xs:annotation>
+			<xs:documentation>@ucid 1100000003009000
+@table MaterialScrap
+@chinese 物资报废</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:BizData">
+				<xs:sequence>
+					<xs:element name="material" type="edito:Material">
+						<xs:annotation>
+							<xs:documentation>@chinese 物资</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="amount" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 数量</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="keeper" type="edito:Employee">
+						<xs:annotation>
+							<xs:documentation>@chinese 经办人</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="department" type="edito:Department">
+						<xs:annotation>
+							<xs:documentation>@chinese 责任部门</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="campus" type="edito:Campus">
+						<xs:annotation>
+							<xs:documentation>@chinese 校区</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="materialStorage" type="edito:MaterialStorage">
+						<xs:annotation>
+							<xs:documentation>@chinese 库存</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="recordTime" type="xs:dateTime">
+						<xs:annotation>
+							<xs:documentation>@chinese 记录时间</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="remarks" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 300
+@chinese 备注</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="ifUsing" type="xs:boolean">
+						<xs:annotation>
+							<xs:documentation>@chinese 是否可用 </xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="MaterialAllocate">
+		<xs:annotation>
+			<xs:documentation>@ucid 1100000003010000
+@table MaterialAllocate
+@chinese 物资调配</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:BizData">
+				<xs:sequence>
+					<xs:element name="material" type="edito:Material">
+						<xs:annotation>
+							<xs:documentation>@chinese 物资</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="amount" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 数量</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="keeper" type="edito:Employee">
+						<xs:annotation>
+							<xs:documentation>@chinese 经办人</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="demandSector" type="edito:Department">
+						<xs:annotation>
+							<xs:documentation>@chinese 需求部门</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="demandCampus" type="edito:Campus">
+						<xs:annotation>
+							<xs:documentation>@chinese 需求校区</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="deployedSector" type="edito:Department">
+						<xs:annotation>
+							<xs:documentation>@chinese 被调配部门</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="deployedCampus" type="edito:Campus">
+						<xs:annotation>
+							<xs:documentation>@chinese 被调配校区</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="demandInventory" type="edito:MaterialStorage">
+						<xs:annotation>
+							<xs:documentation>@chinese 需求库存</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="deployedInventory" type="edito:MaterialStorage">
+						<xs:annotation>
+							<xs:documentation>@chinese 被调配库存</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="recordTime" type="xs:dateTime">
+						<xs:annotation>
+							<xs:documentation>@chinese 记录时间</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="remarks" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 300
+@chinese 备注</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="ifUsing" type="xs:boolean">
+						<xs:annotation>
+							<xs:documentation>@chinese 是否可用 </xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="EmployeePerfType">
+		<xs:annotation>
+			<xs:documentation>@ucid 1100000005001000
+@table EmployeePerfType
+@chinese 员工绩效类型</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:BizData">
+				<xs:sequence>
+					<xs:element name="type" type="edito:PerformanceType">
+						<xs:annotation>
+							<xs:documentation>@chinese 绩效类型</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="employee" type="edito:Employee">
+						<xs:annotation>
+							<xs:documentation>@chinese 员工</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="EmployeePerformance">
+		<xs:annotation>
+			<xs:documentation>@ucid 1100000005002000
+@table EmployeePerformance
+@chinese 员工绩效</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:BizData">
+				<xs:sequence>
+					<xs:element name="employee" type="edito:Employee">
+						<xs:annotation>
+							<xs:documentation>@chinese 员工</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="month" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 7
+@chinese 月份</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="PerfAttendance">
+		<xs:annotation>
+			<xs:documentation>@ucid 1100000005003000
+@table PerfAttendance
+@chinese 绩效考勤</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:BizData">
+				<xs:sequence>
+					<xs:element name="performance" type="edito:EmployeePerformance">
+						<xs:annotation>
+							<xs:documentation>@chinese 员工绩效</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="perfAttendanceM0" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 考勤正常上午</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="perfAttendanceA0" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 考勤正常下午</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="perfAttendanceM1" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 考勤公休上午</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="perfAttendanceA1" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 考勤公休下午</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="perfAttendanceM2" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 考勤串休上午</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="perfAttendanceA2" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 考勤串休下午</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="perfAttendanceM3" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 考勤分校上午</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="perfAttendanceA3" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 考勤分校下午</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="perfAttendanceM4" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 考勤外出上午</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="perfAttendanceA4" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 考勤外出下午</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="perfAttendanceM5" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 考勤迟到上午</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="perfAttendanceA5" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 考勤迟到下午</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="perfAttendanceM6" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 考勤早退上午</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="perfAttendanceA6" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 考勤早退下午</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="perfAttendanceM7" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 考勤旷工上午</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="perfAttendanceA7" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 考勤旷工下午</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="perfAttendanceM8" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 考勤事假上午</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="perfAttendanceA8" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 考勤事假下午</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="perfAttendanceM9" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 考勤病假上午</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="perfAttendanceA9" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 考勤病假下午</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="perfAttendanceM10" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 考勤丧假上午</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="perfAttendanceA10" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 考勤丧假下午</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="perfAttendanceM11" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 考勤婚假上午</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="perfAttendanceA11" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 考勤婚假下午</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="perfAttendanceM12" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 考勤出差上午</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="perfAttendanceA12" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 考勤出差下午</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="perfAttendanceM13" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 考勤其他上午</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="perfAttendanceA13" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 考勤其他下午</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="perfAttendanceM14" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 考勤上课上午</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="perfAttendanceA14" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 考勤上课下午</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="perfAttendanceM15" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 考勤值班上午</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="perfAttendanceA15" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 考勤值班下午</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="perfAttendanceE0" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 考勤晚上休息</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="perfAttendanceE1" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 考勤晚上上课</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="perfAttendanceE2" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 考勤晚上值班</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="result" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 500
+@chinese 考核结果</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="checker" type="edito:Employee">
+						<xs:annotation>
+							<xs:documentation>@chinese 考核人</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="checkTime" type="xs:dateTime">
+						<xs:annotation>
+							<xs:documentation>@chinese 考核时间</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="PerfBehaviour">
+		<xs:annotation>
+			<xs:documentation>@ucid 1100000005004000
+@table PerfBehaviour
+@chinese 绩效行为规范</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:BizData">
+				<xs:sequence>
+					<xs:element name="performance" type="edito:EmployeePerformance">
+						<xs:annotation>
+							<xs:documentation>@chinese 员工绩效</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="perfBehaviour0" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 行为规范日志</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="perfBehaviourS0" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 行为规范日志规定数</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="perfBehaviour1" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 行为规范发帖</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="perfBehaviourS1" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 行为规范发帖规定数</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="perfBehaviour2" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 行为规范缺席早会</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="perfBehaviour3" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 行为规范缺席夕会</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="perfBehaviourM4" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 行为规范工装上午</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="perfBehaviourA4" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 行为规范工装下午</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="perfBehaviourE4" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 行为规范工装晚上</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="perfBehaviourM5" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 行为规范工牌上午</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="perfBehaviourA5" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 行为规范工牌下午</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="perfBehaviourE5" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 行为规范工牌晚上</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="perfBehaviourM6" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 行为规范卫生上午</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="perfBehaviourA6" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 行为规范卫生下午</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="perfBehaviourE6" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 行为规范卫生晚上</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="perfBehaviourM7" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 行为规范脱岗上午</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="perfBehaviourA7" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 行为规范脱岗下午</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="perfBehaviourE7" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 行为规范脱岗晚上</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="perfBehaviourM8" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 行为规范吃东西上午</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="perfBehaviourA8" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 行为规范吃东西下午</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="perfBehaviourE8" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 行为规范吃东西晚上</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="perfBehaviourM9" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 行为规范看电影上午</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="perfBehaviourA9" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 行为规范看电影下午</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="perfBehaviourE9" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 行为规范看电影晚上</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="perfBehaviourM10" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 行为规范听歌上午</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="perfBehaviourA10" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 行为规范听歌下午</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="perfBehaviourE10" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 行为规范听歌晚上</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="perfBehaviourM11" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 行为规范睡觉上午</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="perfBehaviourA11" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 行为规范睡觉下午</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="perfBehaviourE11" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 行为规范睡觉晚上</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="perfBehaviourM12" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 行为规范其他娱乐上午</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="perfBehaviourA12" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 行为规范其他娱乐下午</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="perfBehaviourE12" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 行为规范其他娱乐晚上</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="perfBehaviour13" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 行为规范投诉</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="result" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 500
+@chinese 考核结果</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="checker" type="edito:Employee">
+						<xs:annotation>
+							<xs:documentation>@chinese 考核人</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="checkTime" type="xs:dateTime">
+						<xs:annotation>
+							<xs:documentation>@chinese 考核时间</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="PerfReception">
+		<xs:annotation>
+			<xs:documentation>@ucid 1100000005005000
+@table PerfReception
+@chinese 绩效接待管理</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:BizData">
+				<xs:sequence>
+					<xs:element name="performance" type="edito:EmployeePerformance">
+						<xs:annotation>
+							<xs:documentation>@chinese 员工绩效</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="result" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 200
+@chinese 考核结果</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="checker" type="edito:Employee">
+						<xs:annotation>
+							<xs:documentation>@chinese 考核人</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="checkTime" type="xs:dateTime">
+						<xs:annotation>
+							<xs:documentation>@chinese 考核时间</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="PerfFacility">
+		<xs:annotation>
+			<xs:documentation>@ucid 1100000005006000
+@table PerfFacility
+@chinese 绩效设施管理</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:BizData">
+				<xs:sequence>
+					<xs:element name="performance" type="edito:EmployeePerformance">
+						<xs:annotation>
+							<xs:documentation>@chinese 员工绩效</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="result" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 200
+@chinese 考核结果</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="checker" type="edito:Employee">
+						<xs:annotation>
+							<xs:documentation>@chinese 考核人</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="checkTime" type="xs:dateTime">
+						<xs:annotation>
+							<xs:documentation>@chinese 考核时间</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="PerfMaterial">
+		<xs:annotation>
+			<xs:documentation>@ucid 1100000005007000
+@table PerfMaterial
+@chinese 绩效物资管理</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:BizData">
+				<xs:sequence>
+					<xs:element name="performance" type="edito:EmployeePerformance">
+						<xs:annotation>
+							<xs:documentation>@chinese 员工绩效</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="result" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 200
+@chinese 考核结果</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="checker" type="edito:Employee">
+						<xs:annotation>
+							<xs:documentation>@chinese 考核人</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="checkTime" type="xs:dateTime">
+						<xs:annotation>
+							<xs:documentation>@chinese 考核时间</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="PerfFinancial">
+		<xs:annotation>
+			<xs:documentation>@ucid 1100000005008000
+@table PerfFinancial
+@chinese 绩效财务管理</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:BizData">
+				<xs:sequence>
+					<xs:element name="performance" type="edito:EmployeePerformance">
+						<xs:annotation>
+							<xs:documentation>@chinese 员工绩效</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="result" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 200
+@chinese 考核结果</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="checker" type="edito:Employee">
+						<xs:annotation>
+							<xs:documentation>@chinese 考核人</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="checkTime" type="xs:dateTime">
+						<xs:annotation>
+							<xs:documentation>@chinese 考核时间</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="PerfLession">
+		<xs:annotation>
+			<xs:documentation>@ucid 1100000005009000
+@table PerfLession
+@chinese 绩效课时统计</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:BizData">
+				<xs:sequence>
+					<xs:element name="performance" type="edito:EmployeePerformance">
+						<xs:annotation>
+							<xs:documentation>@chinese 员工绩效</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="result" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 200
+@chinese 考核结果</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="checker" type="edito:Employee">
+						<xs:annotation>
+							<xs:documentation>@chinese 考核人</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="checkTime" type="xs:dateTime">
+						<xs:annotation>
+							<xs:documentation>@chinese 考核时间</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="PerfTeaching">
+		<xs:annotation>
+			<xs:documentation>@ucid 1100000005010000
+@table PerfTeaching
+@chinese 绩效教学达成</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:BizData">
+				<xs:sequence>
+					<xs:element name="performance" type="edito:EmployeePerformance">
+						<xs:annotation>
+							<xs:documentation>@chinese 员工绩效</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="result" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 200
+@chinese 考核结果</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="checker" type="edito:Employee">
+						<xs:annotation>
+							<xs:documentation>@chinese 考核人</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="checkTime" type="xs:dateTime">
+						<xs:annotation>
+							<xs:documentation>@chinese 考核时间</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="PerfChildren">
+		<xs:annotation>
+			<xs:documentation>@ucid 1100000005011000
+@table PerfChildren
+@chinese 绩效少儿部门考核</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:BizData">
+				<xs:sequence>
+					<xs:element name="performance" type="edito:EmployeePerformance">
+						<xs:annotation>
+							<xs:documentation>@chinese 员工绩效</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="result" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 200
+@chinese 考核结果</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="checker" type="edito:Employee">
+						<xs:annotation>
+							<xs:documentation>@chinese 考核人</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="checkTime" type="xs:dateTime">
+						<xs:annotation>
+							<xs:documentation>@chinese 考核时间</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="PerfLongTerm">
+		<xs:annotation>
+			<xs:documentation>@ucid 1100000005012000
+@table PerfLongTerm
+@chinese 绩效长期班学员及班级管理</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:BizData">
+				<xs:sequence>
+					<xs:element name="performance" type="edito:EmployeePerformance">
+						<xs:annotation>
+							<xs:documentation>@chinese 员工绩效</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="result" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 200
+@chinese 考核结果</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="checker" type="edito:Employee">
+						<xs:annotation>
+							<xs:documentation>@chinese 考核人</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="checkTime" type="xs:dateTime">
+						<xs:annotation>
+							<xs:documentation>@chinese 考核时间</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="PerfShortTerm">
+		<xs:annotation>
+			<xs:documentation>@ucid 1100000005013000
+@table PerfShortTerm
+@chinese 绩效短期班班主任及教务管理</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:BizData">
+				<xs:sequence>
+					<xs:element name="performance" type="edito:EmployeePerformance">
+						<xs:annotation>
+							<xs:documentation>@chinese 员工绩效</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="result" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 200
+@chinese 考核结果</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="checker" type="edito:Employee">
+						<xs:annotation>
+							<xs:documentation>@chinese 考核人</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="checkTime" type="xs:dateTime">
+						<xs:annotation>
+							<xs:documentation>@chinese 考核时间</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="PerfObtain">
+		<xs:annotation>
+			<xs:documentation>@ucid 1100000005014000
+@table PerfObtain
+@chinese 绩效就业管理</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:BizData">
+				<xs:sequence>
+					<xs:element name="performance" type="edito:EmployeePerformance">
+						<xs:annotation>
+							<xs:documentation>@chinese 员工绩效</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="result" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 200
+@chinese 考核结果</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="checker" type="edito:Employee">
+						<xs:annotation>
+							<xs:documentation>@chinese 考核人</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="checkTime" type="xs:dateTime">
+						<xs:annotation>
+							<xs:documentation>@chinese 考核时间</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="PerfRecruit">
+		<xs:annotation>
+			<xs:documentation>@ucid 1100000005015000
+@table PerfRecruit
+@chinese 绩效招生任务</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:BizData">
+				<xs:sequence>
+					<xs:element name="performance" type="edito:EmployeePerformance">
+						<xs:annotation>
+							<xs:documentation>@chinese 员工绩效</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="result" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 200
+@chinese 考核结果</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="checker" type="edito:Employee">
+						<xs:annotation>
+							<xs:documentation>@chinese 考核人</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="checkTime" type="xs:dateTime">
+						<xs:annotation>
+							<xs:documentation>@chinese 考核时间</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="PerfPropaganda">
+		<xs:annotation>
+			<xs:documentation>@ucid 1100000005016000
+@table PerfPropaganda
+@chinese 绩效市场宣传</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:BizData">
+				<xs:sequence>
+					<xs:element name="performance" type="edito:EmployeePerformance">
+						<xs:annotation>
+							<xs:documentation>@chinese 员工绩效</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="result" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 200
+@chinese 考核结果</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="checker" type="edito:Employee">
+						<xs:annotation>
+							<xs:documentation>@chinese 考核人</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="checkTime" type="xs:dateTime">
+						<xs:annotation>
+							<xs:documentation>@chinese 考核时间</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="PerfAdmin">
+		<xs:annotation>
+			<xs:documentation>@ucid 1100000005017000
+@table PerfAdmin
+@chinese 绩效行政管理</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:BizData">
+				<xs:sequence>
+					<xs:element name="performance" type="edito:EmployeePerformance">
+						<xs:annotation>
+							<xs:documentation>@chinese 员工绩效</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="result" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 200
+@chinese 考核结果</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="checker" type="edito:Employee">
+						<xs:annotation>
+							<xs:documentation>@chinese 考核人</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="checkTime" type="xs:dateTime">
+						<xs:annotation>
+							<xs:documentation>@chinese 考核时间</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="PerfIncharge">
+		<xs:annotation>
+			<xs:documentation>@ucid 1100000005018000
+@table PerfIncharge
+@chinese 绩效分校及部门负责人</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:BizData">
+				<xs:sequence>
+					<xs:element name="performance" type="edito:EmployeePerformance">
+						<xs:annotation>
+							<xs:documentation>@chinese 员工绩效</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="result" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 200
+@chinese 考核结果</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="checker" type="edito:Employee">
+						<xs:annotation>
+							<xs:documentation>@chinese 考核人</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="checkTime" type="xs:dateTime">
+						<xs:annotation>
+							<xs:documentation>@chinese 考核时间</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="PerfDriver">
+		<xs:annotation>
+			<xs:documentation>@ucid 1100000005019000
+@table PerfDriver
+@chinese 绩效司机及总务</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:BizData">
+				<xs:sequence>
+					<xs:element name="performance" type="edito:EmployeePerformance">
+						<xs:annotation>
+							<xs:documentation>@chinese 员工绩效</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="result" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 200
+@chinese 考核结果</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="checker" type="edito:Employee">
+						<xs:annotation>
+							<xs:documentation>@chinese 考核人</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="checkTime" type="xs:dateTime">
+						<xs:annotation>
+							<xs:documentation>@chinese 考核时间</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="PerfSecurityClean">
+		<xs:annotation>
+			<xs:documentation>@ucid 1100000005020000
+@table PerfSecurityClean
+@chinese 绩效保洁保安</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:BizData">
+				<xs:sequence>
+					<xs:element name="performance" type="edito:EmployeePerformance">
+						<xs:annotation>
+							<xs:documentation>@chinese 员工绩效</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="result" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 200
+@chinese 考核结果</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="checker" type="edito:Employee">
+						<xs:annotation>
+							<xs:documentation>@chinese 考核人</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="checkTime" type="xs:dateTime">
+						<xs:annotation>
+							<xs:documentation>@chinese 考核时间</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="PerfOther">
+		<xs:annotation>
+			<xs:documentation>@ucid 1100000005021000
+@table PerfOther
+@chinese 绩效其他</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:BizData">
+				<xs:sequence>
+					<xs:element name="performance" type="edito:EmployeePerformance">
+						<xs:annotation>
+							<xs:documentation>@chinese 员工绩效</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="result" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 200
+@chinese 考核结果</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="checker" type="edito:Employee">
+						<xs:annotation>
+							<xs:documentation>@chinese 考核人</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="checkTime" type="xs:dateTime">
+						<xs:annotation>
+							<xs:documentation>@chinese 考核时间</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="JobPerfType">
+		<xs:annotation>
+			<xs:documentation>@ucid 1100000005022000
+@table JobPerfType
+@chinese 岗位绩效类型</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:BizData">
+				<xs:sequence>
+					<xs:element name="type" type="edito:PerformanceType">
+						<xs:annotation>
+							<xs:documentation>@chinese 绩效类型</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="job" type="edito:Job">
+						<xs:annotation>
+							<xs:documentation>@chinese 岗位</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="Authority">
+		<xs:annotation>
+			<xs:documentation>@ucid 1100000007001000
+@table Authority
+@chinese 系统角色</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:BizData">
+				<xs:sequence>
+					<xs:element name="menu" type="edito:Menu">
+						<xs:annotation>
+							<xs:documentation>@chinese 系统角色类型</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="user" type="edito:User">
+						<xs:annotation>
+							<xs:documentation>@chinese 用户</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ApprovalAuthority">
+		<xs:annotation>
+			<xs:documentation>@ucid 1100000007002000
+@table ApprovalAuthority
+@chinese 审批权限</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:BizData">
+				<xs:sequence>
+					<xs:element name="authority" type="edito:ApprovalAuthorityType">
+						<xs:annotation>
+							<xs:documentation>@chinese 审批权限类型</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="user" type="edito:User">
+						<xs:annotation>
+							<xs:documentation>@chinese 用户</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="Campus">
+		<xs:annotation>
+			<xs:documentation>@ucid 1100000007003000
+@table Campus
+@chinese 校区信息</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:BaseData">
+				<xs:sequence>
+					<xs:element name="address" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 50
+@chinese 地址</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="contact" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 20
+@chinese 联系人</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="telephone" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 20
+@chinese 联系电话</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="instruction" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 500
+@chinese 简介</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="headmaster" type="edito:BizData">
+						<xs:annotation>
+							<xs:documentation>@lazy-load
+@no-fk
+@chinese 分校校长</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="sequence" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 显示顺序</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="JobAuthority">
+		<xs:annotation>
+			<xs:documentation>@ucid 1100000007004000
+@table JobAuthority
+@chinese 岗位系统角色</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:BizData">
+				<xs:sequence>
+					<xs:element name="menu" type="edito:Menu">
+						<xs:annotation>
+							<xs:documentation>@chinese 系统角色类型</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="job" type="edito:Job">
+						<xs:annotation>
+							<xs:documentation>@chinese 岗位</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ServiceConfiguration">
+		<xs:annotation>
+			<xs:documentation>@ucid 1100000008001000
+@table ServiceConfiguration
+@chinese 微信数据</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:BizData">
+				<xs:sequence>
+					<xs:element name="entity" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 50
+@chinese 种类 </xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="attribution" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 50
+@chinese 类型</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="content" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 500
+@chinese 对应数值</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="create_at" type="xs:dateTime">
+						<xs:annotation>
+							<xs:documentation>@chinese 创建时间</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="update_at" type="xs:dateTime">
+						<xs:annotation>
+							<xs:documentation>@chinese 更新时间</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="ifUsing" type="xs:boolean">
+						<xs:annotation>
+							<xs:documentation>@chinese 是否可用</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="ifShow" type="xs:boolean">
+						<xs:annotation>
+							<xs:documentation>@chinese 是否显示</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="WechatNotificiationMessage">
+		<xs:annotation>
+			<xs:documentation>@ucid 1100000009001000
+@table WechatNotificiationMessage
+@chinese 微信通知</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:BizData">
+				<xs:sequence>
+					<xs:element name="subject" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 50
+@chinese  主题 </xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="receiverOpenId" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 50
+@chinese 接受者</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="wechatMsgId" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 50
+@chinese 发送信息编号</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="status" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 50
+@chinese 发送信息状态</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="content" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 500
+@chinese 发送信息内容</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="create_at" type="xs:dateTime">
+						<xs:annotation>
+							<xs:documentation>@chinese 创建时间</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="update_at" type="xs:dateTime">
+						<xs:annotation>
+							<xs:documentation>@chinese 更新时间</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="ifUsing" type="xs:boolean">
+						<xs:annotation>
+							<xs:documentation>@chinese 是否可用</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="ifShow" type="xs:boolean">
+						<xs:annotation>
+							<xs:documentation>@chinese 是否显示</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="Teacher">
+		<xs:annotation>
+			<xs:documentation>@ucid 2100000002001000
+@table Teacher
+@chinese 教师</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:BizData">
+				<xs:sequence>
+					<xs:element name="employee" type="edito:Employee">
+						<xs:annotation>
+							<xs:documentation>@chinese 员工</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="teacherType" type="edito:TeacherType">
+						<xs:annotation>
+							<xs:documentation>@chinese 教师类型</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="graduateInstitution" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 100
+@chinese 毕业院校</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="title" type="edito:Title">
+						<xs:annotation>
+							<xs:documentation>@chinese 职称</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="workUnit" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 100
+@chinese 工作单位</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="duty" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 100
+@chinese 职务</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="homePhone" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 15
+@chinese 住宅电话</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="preTeachingExpInfo" type="edito:PreTeachingExpInfo" maxOccurs="unbounded">
+						<xs:annotation>
+							<xs:documentation>@no-make
+@chinese 过往授课经历</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="curTeachingExpInfo" type="edito:CurTeachingExpInfo" maxOccurs="unbounded">
+						<xs:annotation>
+							<xs:documentation>@no-make
+@chinese 当前授课经历</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="feature" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 200
+@chinese 授课特色</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="notes" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 200
+@chinese 备注</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="teachingCourse" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 720
+@chinese 所授课程</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="serviceState" type="edito:ServiceState">
+						<xs:annotation>
+							<xs:documentation>@chinese 在职状态</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="recordTime" type="xs:dateTime">
+						<xs:annotation>
+							<xs:documentation>@chinese 建档时间</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="recorder" type="edito:Employee">
+						<xs:annotation>
+							<xs:documentation>@chinese 建档人</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="ifUsing" type="xs:boolean">
+						<xs:annotation>
+							<xs:documentation>@chinese 是否在用</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="CourseCategoryType">
+		<xs:annotation>
+			<xs:documentation>@ucid 2100000003001000
+@table CourseCategoryType
+@chinese 课程类别管理</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:BaseData"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ClassManagement">
+		<xs:annotation>
+			<xs:documentation>@ucid 2100000003002000
+@table ClassManagement
+@chinese 班型管理</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:BaseData"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="Course">
+		<xs:annotation>
+			<xs:documentation>@ucid 2100000003003000
+@table Course
+@chinese 课程</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:BizData">
+				<xs:sequence>
+					<xs:element name="courseNo" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 20
+@chinese 课程编号</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="courseName" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 60
+@chinese 课程名</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="courseType" type="edito:CourseCategoryType">
+						<xs:annotation>
+							<xs:documentation>@chinese 课程类别</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="expectedHour" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 10
+@chinese 预计总课时</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="semesterTime" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 10
+@chinese 学期长度</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="expectedCost" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 10
+@chinese 预计总费用</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="fitableStudent" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 100
+@chinese 适合学员</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="courseDescription" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 300
+@chinese 课程简介</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="teachingTarget" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 300
+@chinese 教学目标</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="teachingContent" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 300
+@chinese 授课内容</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="teachingFeature" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 300
+@chinese 授课特色</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="relatedMaterials" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 150
+@chinese 教材说明</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="notes" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 200
+@chinese 其他</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="ifUsing" type="xs:boolean">
+						<xs:annotation>
+							<xs:documentation>@chinese 是否可用 </xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ArrangeClassTime">
+		<xs:annotation>
+			<xs:documentation>@ucid 2100000003004000
+@table ArrangeClassTime
+@chinese 排课时间</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:BizData">
+				<xs:sequence>
+					<xs:element name="attendClsTP" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 6
+@chinese 上课l类型</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="attendClsFreqTP" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 20
+@chinese 上课频率类型</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="attendClsFreqBWK" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 2
+@chinese 上课频率周</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="attendClsFreqBMon" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 2
+@chinese 上课频率月</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="attendClsOnMon" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 2
+@chinese 周一上课</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="attendClsOnTues" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 2
+@chinese 周二上课</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="attendClsOnWeb" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 2
+@chinese 周三上课</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="attendClsOnThurs" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 2
+@chinese 周四上课</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="attendClsOnFri" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 2
+@chinese 周五上课</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="attendClsOnSat" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 2
+@chinese 周六上课</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="attendClsOnSun" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 2
+@chinese 周日上课</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="clsBeginDate" type="xs:dateTime">
+						<xs:annotation>
+							<xs:documentation>@chinese 课程开始日期</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="clsEndDateTP" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 20
+@chinese 课程结束类型</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="clsEndDate" type="xs:dateTime">
+						<xs:annotation>
+							<xs:documentation>@chinese 课程结束日期</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="clsEndTimes" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 5
+@chinese 课程结束时重复次数</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="clsStartTimeH" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 3
+@chinese 课程开始时间时</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="clsStartTimeM" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 3
+@chinese 课程开始时间分</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="clsFinishTimeH" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 3
+@chinese 课程结束时间时</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="clsFinishTimeM" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 3
+@chinese 课程结束时间分</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="description" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 100
+@chinese 时间描述</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="arrangeClassTimeInfo" type="edito:ArrangeClassTimeInfo" maxOccurs="unbounded">
+						<xs:annotation>
+							<xs:documentation>@no-make
+@chinese 时间信息</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="ifUsing" type="xs:boolean">
+						<xs:annotation>
+							<xs:documentation>@chinese 是否可用 </xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ArrangeClass">
+		<xs:annotation>
+			<xs:documentation>@ucid 2100000003005000
+@table ArrangeClass
+@chinese 排课</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:BizData">
+				<xs:sequence>
+					<xs:element name="clsNo" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 20
+@chinese 班级编号</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="course" type="edito:Course">
+						<xs:annotation>
+							<xs:documentation>@chinese 课程</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="clsType" type="edito:ClassManagement">
+						<xs:annotation>
+							<xs:documentation>@chinese 班级类型</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="campus" type="edito:Campus">
+						<xs:annotation>
+							<xs:documentation>@chinese 校区</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="actualHour" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 10
+@chinese 实际总课时</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="actualCost" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 10
+@chinese 实际总费用</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="timePositionTeacherInfo" type="edito:TimePositionTeacherInfo" maxOccurs="unbounded">
+						<xs:annotation>
+							<xs:documentation>@no-make
+@chinese 上课时间及地点</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="courseCheckState" type="edito:ExaminationState">
+						<xs:annotation>
+							<xs:documentation>@chinese 排课审批状态</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="classState" type="edito:ClassState">
+						<xs:annotation>
+							<xs:documentation>@chinese 班级状态</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="maxNoP" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 5
+@chinese 班级人数上限</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="notes" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 200
+@chinese 备注</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="ifUsing" type="xs:boolean">
+						<xs:annotation>
+							<xs:documentation>@chinese 是否可用 </xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="Tuition">
+		<xs:annotation>
+			<xs:documentation>@ucid 2100000003006000
+@table Tuition
+@chinese 费用</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:BizData">
+				<xs:sequence>
+					<xs:element name="preDiscountAmount" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 10
+@chinese 应收费用</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="discount" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 10
+@chinese 折扣</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="discountReason" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 200
+@chinese 原因</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="actualTotalAmount" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 10
+@chinese 实际费用</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="amountPaid" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 10
+@chinese 此次收费</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="amountReturn" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 10
+@chinese 退还费用</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ClassEnrollment">
+		<xs:annotation>
+			<xs:documentation>@ucid 2100000003007000
+@table ClassEnrollment
+@chinese 报名</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:BizData">
+				<xs:sequence>
+					<xs:element name="arrangeClass" type="edito:ArrangeClass">
+						<xs:annotation>
+							<xs:documentation>@chinese 班级</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="student" type="edito:Student">
+						<xs:annotation>
+							<xs:documentation>@chinese 学生</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="tuition" type="edito:Tuition">
+						<xs:annotation>
+							<xs:documentation>@chinese 费用</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="consultant" type="edito:Consultant">
+						<xs:annotation>
+							<xs:documentation>@chinese 咨询师</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="enrollmentTime" type="xs:dateTime">
+						<xs:annotation>
+							<xs:documentation>@chinese 报名时间</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="ifFree" type="xs:boolean">
+						<xs:annotation>
+							<xs:documentation>@chinese 是否免费</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="enrollmentState" type="edito:EnrollmentState">
+						<xs:annotation>
+							<xs:documentation>@chinese 报名状态</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="quitReason" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 200
+@chinese 退出原因</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="remark" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 200
+@chinese 备注</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="Room">
+		<xs:annotation>
+			<xs:documentation>@ucid 2100000006001000
+@table Room
+@chinese 教室资源管理</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:BizData">
+				<xs:sequence>
+					<xs:element name="classroomName" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 50
+@chinese 教室名</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="numberOf" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 容纳人数</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="campus" type="edito:Campus">
+						<xs:annotation>
+							<xs:documentation>@chinese 所属校区</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="remarks" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 300
+@chinese 备注</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="ifUsing" type="xs:boolean">
+						<xs:annotation>
+							<xs:documentation>@chinese 是否可用 </xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="WorkExperienceInfo">
+		<xs:annotation>
+			<xs:documentation>@ucid 1200000001001000
+@table WorkExperienceInfo
+@chinese 工作经历</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:Info">
+				<xs:sequence>
+					<xs:element name="sequence" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 顺序</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="beginDate" type="xs:dateTime">
+						<xs:annotation>
+							<xs:documentation>@chinese 任职开始时间</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="endDate" type="xs:dateTime">
+						<xs:annotation>
+							<xs:documentation>@chinese 任职终止时间</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="name" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 50
+@chinese 工作单位名称</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="position" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 50
+@chinese 职务</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="reference" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 10
+@chinese 联系人</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="referencePhone" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 15
+@chinese 联系电话</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="EducateInfo">
+		<xs:annotation>
+			<xs:documentation>@ucid 1200000001002000
+@table EducateInfo
+@chinese 教育背景</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:Info">
+				<xs:sequence>
+					<xs:element name="sequence" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 顺序</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="beginDate" type="xs:dateTime">
+						<xs:annotation>
+							<xs:documentation>@chinese 开始时间</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="endDate" type="xs:dateTime">
+						<xs:annotation>
+							<xs:documentation>@chinese 终止时间</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="graduateSchool" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 100
+@chinese 毕业院校</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="professional" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 100
+@chinese 所属专业</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="reference" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 10
+@chinese 联系人</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="referencePhone" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 15
+@chinese 联系人电话</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="PosterInfo">
+		<xs:annotation>
+			<xs:documentation>@ucid 1200000001003000
+@table PosterInfo
+@chinese 发帖信息</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:Info">
+				<xs:sequence>
+					<xs:element name="site" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 200
+@chinese 网址</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ReceiverInfo">
+		<xs:annotation>
+			<xs:documentation>@ucid 1200000001004000
+@table ReceiverInfo
+@chinese 接受者信息</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:Info">
+				<xs:sequence>
+					<xs:element name="receiver" type="edito:BizData">
+						<xs:annotation>
+							<xs:documentation>@lazy-load
+@no-fk
+@chinese 接收对象</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ApplyInfo">
+		<xs:annotation>
+			<xs:documentation>@ucid 1200000001005000
+@table ApplyInfo
+@chinese 申请信息</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:Info">
+				<xs:sequence>
+					<xs:element name="applicant" type="edito:Employee">
+						<xs:annotation>
+							<xs:documentation>@chinese 申请人</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="state" type="edito:ExaminationState">
+						<xs:annotation>
+							<xs:documentation>@chinese 通过状态</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="joinState" type="edito:JoinState">
+						<xs:annotation>
+							<xs:documentation>@chinese 参加状态</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="curriculum" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 300
+@chinese 培训课程设置</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="effect" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 300
+@chinese 教学效果</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="situation" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 300
+@chinese 实际情况</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="suggest" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 300
+@chinese 建议</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="PreParticipatorInfo">
+		<xs:annotation>
+			<xs:documentation>@ucid 1200000002001000
+@table PreParticipatorInfo
+@chinese 预参与人员信息</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:Info">
+				<xs:sequence>
+					<xs:element name="employee" type="edito:Employee">
+						<xs:annotation>
+							<xs:documentation>@chinese 员工</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="PropagandaMaterialInfo">
+		<xs:annotation>
+			<xs:documentation>@ucid 1200000002002000
+@table PropagandaMaterialInfo
+@chinese 宣传品信息</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:Info">
+				<xs:sequence>
+					<xs:element name="applicationMaterial" type="edito:ApplicationMaterialType">
+						<xs:annotation>
+							<xs:documentation>@chinese 物料类型</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="materialOther" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 100
+@chinese 物料类型其他</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="applicationNumber" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 申请数量</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="applicationMaterialSize" type="edito:ApplicationMaterialSize">
+						<xs:annotation>
+							<xs:documentation>@chinese 物料尺寸</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="sizeOther" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 100
+@chinese 物料尺寸其他</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="applicationMaterialColor" type="edito:ApplicationMaterialColor">
+						<xs:annotation>
+							<xs:documentation>@chinese 物料色彩</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="applicationMaterialTexture" type="edito:ApplicationMaterialTexture">
+						<xs:annotation>
+							<xs:documentation>@chinese 物料材质</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="textureOther" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 100
+@chinese 物料材质其他</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="productionUnit" type="edito:ProductionUnit">
+						<xs:annotation>
+							<xs:documentation>@chinese 制作单位</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="unitOther" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 100
+@chinese 制作单位其他</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="designer" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 20
+@chinese 设计责任人</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="makeStartTime" type="xs:dateTime">
+						<xs:annotation>
+							<xs:documentation>@chinese 制作开始时间</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="makeEndTime" type="xs:dateTime">
+						<xs:annotation>
+							<xs:documentation>@chinese 制作结束时间</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="makeDays" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 制作周期</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="acceptState" type="edito:ReceiptState">
+						<xs:annotation>
+							<xs:documentation>@chinese 验收状态</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="usedNumber" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 使用数量</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ParticipatorInfo">
+		<xs:annotation>
+			<xs:documentation>@ucid 1200000002003000
+@table ParticipatorInfo
+@chinese 参与人员信息</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:Info">
+				<xs:sequence>
+					<xs:element name="employee" type="edito:Employee">
+						<xs:annotation>
+							<xs:documentation>@chinese 员工</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="MaterialInfo">
+		<xs:annotation>
+			<xs:documentation>@ucid 1200000003001000
+@table MaterialInfo
+@chinese 供方供应物资信息</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:Info">
+				<xs:sequence>
+					<xs:element name="material" type="edito:Material">
+						<xs:annotation>
+							<xs:documentation>@chinese 物资</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="OfficeApplicationInfo">
+		<xs:annotation>
+			<xs:documentation>@ucid 1200000003002000
+@table OfficeApplicationInfo
+@chinese 物资购买申请信息</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:Info">
+				<xs:sequence>
+					<xs:element name="material" type="edito:Material">
+						<xs:annotation>
+							<xs:documentation>@chinese 物资</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="materialAmount" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 物资申请数量</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="approvalAmount" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 物资审批数量</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="state" type="edito:ExaminationState">
+						<xs:annotation>
+							<xs:documentation>@chinese 审核状态</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="notes" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 200
+@chinese 备注</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="orderGenerate" type="edito:OrderGenerate">
+						<xs:annotation>
+							<xs:documentation>@chinese 采购单</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="ifGenerate" type="xs:boolean">
+						<xs:annotation>
+							<xs:documentation>@chinese 是否生成采购单</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="receipState" type="edito:ReceiptState">
+						<xs:annotation>
+							<xs:documentation>@chinese 验收状态</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="PreTeachingExpInfo">
+		<xs:annotation>
+			<xs:documentation>@ucid 2200000002001000
+@table PreTeachingExpInfo
+@chinese 过往授课经历信息</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:Info">
+				<xs:sequence>
+					<xs:element name="sequence" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 顺序</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="unitName" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 50
+@chinese 工作单位名称</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="className" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 50
+@chinese 课程名称</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="reference" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 10
+@chinese 联系人</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="referencePhone" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 15
+@chinese 联系电话</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="beginDate" type="xs:dateTime">
+						<xs:annotation>
+							<xs:documentation>@chinese 授课开始时间</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="endDate" type="xs:dateTime">
+						<xs:annotation>
+							<xs:documentation>@chinese 授课终止时间</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="CurTeachingExpInfo">
+		<xs:annotation>
+			<xs:documentation>@ucid 2200000002002000
+@table CurTeachingExpInfo
+@chinese 当前授课经历信息</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:Info">
+				<xs:sequence>
+					<xs:element name="sequence" type="xs:int">
+						<xs:annotation>
+							<xs:documentation>@chinese 顺序</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="name" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 50
+@chinese 课程名称</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="teachingObject" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 100
+@chinese 授课对象</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="instructTimes" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 5
+@chinese 主讲次数</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="teachingHours" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 5
+@chinese 课程学时</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="beginDate" type="xs:dateTime">
+						<xs:annotation>
+							<xs:documentation>@chinese 授课开始时间</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="endDate" type="xs:dateTime">
+						<xs:annotation>
+							<xs:documentation>@chinese 授课终止时间</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="TimePositionTeacherInfo">
+		<xs:annotation>
+			<xs:documentation>@ucid 2200000003001000
+@table TimePositionTeacherInfo
+@chinese 排课时间地点教师信息</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:Info">
+				<xs:sequence>
+					<xs:element name="arrangeClsTime" type="edito:ArrangeClassTime">
+						<xs:annotation>
+							<xs:documentation>@chinese 上课时间</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="arrangeRm" type="edito:Room">
+						<xs:annotation>
+							<xs:documentation>@chinese 上课教室</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="arrangeClsTeacher" type="edito:Teacher">
+						<xs:annotation>
+							<xs:documentation>@chinese 上课教师</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ArrangeClassTimeInfo">
+		<xs:annotation>
+			<xs:documentation>@ucid 2200000003002000
+@table ArrangeClassTimeInfo
+@chinese 排课时间信息</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:Info">
+				<xs:sequence>
+					<xs:element name="arrangeClsDate" type="xs:dateTime">
+						<xs:annotation>
+							<xs:documentation>@chinese 上课日期</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="DefaultOption">
+		<xs:annotation>
+			<xs:documentation>@ucid 2200000002003000
+@table DefaultOption
+@chinese 默认选项</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:BizData">
+				<xs:sequence>
+					<xs:element name="entity" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 200
+@chinese 类别</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="attribute" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 400
+@chinese 属性</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="description" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 400
+@chinese 选项描述</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="ifUsing" type="xs:boolean">
+						<xs:annotation>
+							<xs:documentation>@chinese 是否可用</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="EducationExpInfo">
+		<xs:annotation>
+			<xs:documentation>@ucid 2200000002004000
+@table EducationExpInfo
+@chinese 过往教育经历信息</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:Info">
+				<xs:sequence>
+					<xs:element name="school" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 50
+@chinese 联系人</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="degree" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 50
+@chinese 联系电话</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="beginDate" type="xs:dateTime">
+						<xs:annotation>
+							<xs:documentation>@chinese 授课开始时间</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="endDate" type="xs:dateTime">
+						<xs:annotation>
+							<xs:documentation>@chinese 授课终止时间</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="Communication">
+		<xs:annotation>
+			<xs:documentation>@ucid 2200000005001000
+@table Communication
+@chinese 客户沟通</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:BizData">
+				<xs:sequence>
+					<xs:element name="customer" type="edito:Person">
+						<xs:annotation>
+							<xs:documentation>@chinese 客户学生</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="employee" type="edito:Employee">
+						<xs:annotation>
+							<xs:documentation>@chinese 员工</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="type" type="edito:DefaultOption">
+						<xs:annotation>
+							<xs:documentation>@chinese 沟通类型</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="followUp" type="edito:CommunicationFollowUp" maxOccurs="unbounded">
+						<xs:annotation>
+							<xs:documentation>@no-make
+@chinese 后续回访</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="status" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 100
+@chinese 状态</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="startAt" type="xs:dateTime">
+						<xs:annotation>
+							<xs:documentation>@chinese 沟通开始时间</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="completeAt" type="xs:dateTime">
+						<xs:annotation>
+							<xs:documentation>@chinese 沟通结束时间</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="form" type="edito:Form">
+						<xs:annotation>
+							<xs:documentation>@no-make
+@chinese 详细信息</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="customerDecision" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 200
+@chinese 用户决定</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="CommunicationFollowUp">
+		<xs:annotation>
+			<xs:documentation>@ucid 2200000005002000
+@table CommunicationFollowUp
+@chinese 客户沟通跟进</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:Info">
+				<xs:sequence>
+					<xs:element name="communication" type="edito:Communication">
+						<xs:annotation>
+							<xs:documentation>@chinese 回访记录</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="scheduledDateTime" type="xs:dateTime">
+						<xs:annotation>
+							<xs:documentation>@chinese 跟进时间</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="owner" type="edito:Employee">
+						<xs:annotation>
+							<xs:documentation>@chinese 跟进负责人</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="type" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 200
+@chinese 跟进类型</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="status" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 100
+@chinese 跟进状态</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="note" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 500
+@chinese 备注</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="Form">
+		<xs:annotation>
+			<xs:documentation>@ucid 2200000005003000
+@table Form
+@chinese 问卷</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:Info">
+				<xs:sequence>
+					<xs:element name="data" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 500
+@chinese 数据</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="Consultant">
+		<xs:annotation>
+			<xs:documentation>@ucid 2200000005004000
+@table Consultant
+@chinese 咨询师</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:BizData">
+				<xs:sequence>
+					<xs:element name="employee" type="edito:Employee">
+						<xs:annotation>
+							<xs:documentation>@chinese 员工</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="ifUsing" type="xs:boolean">
+						<xs:annotation>
+							<xs:documentation>@chinese 是否在职</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+</xs:schema>

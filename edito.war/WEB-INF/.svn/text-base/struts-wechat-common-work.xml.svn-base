@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+<!--日常工作-->
+<struts>
+	<package name="wechat-common-work" extends="struts-default" namespace="/pages/wechat/common/work">
+		<!--工作日志-->
+		<action name="getWechatWorkRecord" class="com.ito.edito.action.get.GetWechatWorkRecordAction">
+			<result name="authority">/pages/wechat/common_work/wechat_query_work_record.jsp</result>
+			<result name="unbind">/pages/wechat/wechat_manage/wechat_verify_user.jsp</result>
+			<result name="error">/pages/wechat/wechat_manage/wechat_error.jsp</result>
+		</action>
+		<action name="createWechatWorkRecord" class="com.ito.edito.action.create.CreateWechatWorkRecordAction">
+		</action>
+		<action name="queryWorkRecord" class="com.ito.edito.action.query.QueryWechatWorkRecordAction">
+		</action>
+		<action name="forwardEditoWorkRecord" class="com.ito.edito.action.get.GetForwardEditoWorkRecordAction">
+			<result>/pages/wechat/common_work/wechat_work_record.jsp</result>
+		</action>
+		<action name="forwardViewWorkRecord" class="com.ito.edito.action.get.GetForwardEditoWorkRecordAction">
+			<result>/pages/wechat/common_work/wechat_view_work_record.jsp</result>
+		</action>
+
+		<!--网络宣传-->
+		<action name="getWechatNetworkPropagandaAction" class="com.ito.edito.action.get.GetWechatNetworkPropagandaAction">
+			<result name="authority">/pages/wechat/common_work/wechat_query_network_propaganda.jsp</result>
+			<result name="noAuthority">/pages/wechat/wechat_manage/wechat_verify_user.jsp</result>
+			<result name="error">/pages/wechat/wechat_manage/wechat_error.jsp</result>			
+		</action>
+		<action name="queryNetworkPropaganda" class="com.ito.edito.action.query.QueryWechatNetworkReviewAction">
+		</action>
+		<action name="createWechatNetworkPropaganda" class="com.ito.edito.action.create.CreateWechatNetworkPropagandaAction">
+		</action>
+		<action name="forwardViewNetWork" class="com.ito.edito.action.get.GetInternetPublicityAction">
+			<result>/pages/wechat/common_work/wechat_view_network_propaganda.jsp</result>
+		</action>
+		<action name="forwardEditNetWork" class="com.ito.edito.action.get.GetInternetPublicityAction">
+			<result>/pages/wechat/common_work/wechat_network_propaganda.jsp</result>
+		</action>
+
+		<!--请假申请-->
+		<action name="getWechatLeaveApply" class="com.ito.edito.action.get.GetWechatLeaveApplyAction">
+			<result name="authority">/pages/wechat/common_work/wechat_leave_apply.jsp</result>
+			<result name="unbind">/pages/wechat/wechat_manage/wechat_verify_user.jsp</result>
+			<result name="error">/pages/wechat/wechat_manage/wechat_error.jsp</result>
+		</action>
+		<action name="createWechatLeaveApply" class="com.ito.edito.action.create.CreateWechatLeaveApplyAction">
+		</action>
+		<action name="getLeaveNotes" class="com.ito.edito.action.get.GetLeaveNotesAction">
+		</action>
+		<action name="queryLeaveApply" class="com.ito.edito.action.query.QueryWechatLeaveApprovalAction">
+		</action>
+		<action name="forwardViewLeaveApply" class="com.ito.edito.action.get.GetWechatLeaveApplyAction">
+			<result>/pages/wechat/common_work/wechat_view_leave_apply.jsp</result>
+		</action>
+	</package>
+</struts>

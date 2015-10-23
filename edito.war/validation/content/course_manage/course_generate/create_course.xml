@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE validation-config SYSTEM "../validation-config.dtd">
+<validation-config>
+	<range id="formA" show-error="alert" show-type="all">
+		<field name="instance(Course).courseNo" display-name="课程编号">
+			<depend name="required" />
+		</field>
+		<field name="instance(Course).courseName" display-name="课程名">
+			<depend name="required" />
+		</field>
+		<field name="instance(Course).courseTypeUuid" display-name="课程类别">
+			<depend name="required" />
+		</field>
+		<field name="instance(Course).expectedCost" display-name="预计总费用">
+			<depend name="required" />
+		</field>
+	</range>
+</validation-config>

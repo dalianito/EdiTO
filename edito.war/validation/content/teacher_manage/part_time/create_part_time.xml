@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE validation-config SYSTEM "../validation-config.dtd">
+<validation-config>
+	<range id="formA" show-error="alert" show-type="all">
+		<field name="instance(Person).name" display-name="姓名">
+			<depend name="required" />
+		</field>
+		<field name="instance(Person).genderUuid" display-name="性别">
+			<depend name="required" />
+		</field>
+		<field name="instance(Person).personNo" display-name="员工号">
+			<depend name="required" />
+		</field>
+		<field name="instance(Person).birthDate" display-name="出生日期">
+			<depend name="required" />
+		</field>
+		<field name="instance(Person).educationUuid" display-name="学历">
+			<depend name="required" />
+		</field>
+		<field name="instance(Person).politicalUuid" display-name="政治面貌">
+			<depend name="required" />
+		</field>
+		<field name="instance(Person).cellPhone" display-name="手机">
+			<depend name="required" />
+		</field>
+		<field name="instance(Employee).workPhone" display-name="工作电话">
+			<depend name="required" />
+		</field>
+		<field name="instance(Teacher).homePhone" display-name="住宅电话">
+			<depend name="required" />
+		</field>
+		<field name="instance(Employee).campusUuid" display-name="校区">
+			<depend name="required" />
+		</field>
+		<field name="instance(Employee).departmentUuid" display-name="组织机构">
+			<depend name="required" />
+		</field>
+		<field name="instance(Employee).fromDate" display-name="入职时间">
+			<depend name="required" />
+		</field>
+		<field name="instance(PreTeachingExpInfo).sequence" display-name="过往授课经历 序号">
+			<depend name="required" />
+		</field>
+	</range>
+</validation-config>

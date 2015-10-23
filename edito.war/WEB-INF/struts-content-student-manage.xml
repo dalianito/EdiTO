@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+<!--学生管理-->
+<struts>
+	<package name="content-student-manage" extends="struts-default" namespace="/pages/content/student/manage">
+		<!-- 学生信息 -->
+		<!-- 在校生信息 -->
+		<action name="createStudent" class="com.ito.edito.action.create.CreateStudentAction">
+		</action>
+		<action name="queryStudent" class="com.ito.edito.action.query.QueryStudentAction">
+		</action>
+		<action name="forwardEditStudent" class="com.ito.edito.action.get.GetStudentAction">
+			<result>/pages/content/student_manage/student_info/edit_student_info.jsp</result>
+		</action>
+		<action name="forwardViewStudent" class="com.ito.edito.action.get.GetStudentAction">
+			<result>/pages/content/student_manage/student_info/view_student_info.jsp</result>
+		</action>
+		<action name="removeStudent" class="com.ito.edito.action.delete.DeleteStudentAction">
+		</action>
+		<!--报名-->
+		<action name="queryStudentInfo" class="com.ito.edito.action.query.QueryStudentInfoAction">
+		</action>
+		<action name="queryClassInfos" class="com.ito.edito.action.query.QueryClassInfosAction">
+		</action>
+		<action name="queryFindStudent" class="com.ito.edito.action.query.QueryFindStudentAction">
+		</action>
+		<action name="queryFindClass" class="com.ito.edito.action.query.QueryFindClassAction">
+		</action>
+		<action name="createEnrollment" class="com.ito.edito.action.create.CreateEnrollmentAction">
+		</action>
+	
+		<action name="queryStudentStatus" class="com.ito.edito.action.query.QueryStudentStatusAction">
+		</action>
+		<action name="forwardViewStudentStatus" class="com.ito.edito.action.get.GetForwardViewStudentStatus">
+			<result>/pages/content/student_manage/student_enrollment/view_studentstatus.jsp</result>
+		</action>
+		<action name="forwardViewStudentInfo" class="com.ito.edito.action.get.GetStudentInfoAction">
+			<result>/pages/content/student_manage/student_info/view_student.jsp</result>
+		</action>
+		<!--退班-->
+		<action name="queryFindTuition" class="com.ito.edito.action.query.QueryFindTuitionAction">
+		</action>
+		<action name="createQuit" class="com.ito.edito.action.create.CreateQuitAction">
+		</action>
+		<action name="forwardViewStudentQuit" class="com.ito.edito.action.get.GetForwardViewStudentStatus">
+			<result>/pages/content/student_manage/student_quit/view_studentquit.jsp</result>
+		</action>
+	</package>
+</struts>

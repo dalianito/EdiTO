@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE urlrewrite PUBLIC "-//tuckey.org//DTD UrlRewrite 2.6//EN" "http://tuckey.org/res/dtds/urlrewrite2.6.dtd">
+<!--教学资源管理-->
+<urlrewrite>
+	<!--教室资源管理-->
+	<rule>
+		<from>^/pages/content/resources/manage/class/manage/query_class_manage.html$</from>
+		<to>/pages/content/resources_manage/class_manage/query_class_manage.jsp</to>
+	</rule>
+	<rule>
+		<from>^/https/content/resources/manage/class/manage/create_class_manage.html$</from>
+		<to>/pages/content/resources_manage/class_manage/create_class_manage.jsp</to>
+	</rule>	
+	<rule>
+		<from>^/ajaxs/content/resources/manage/class/manage/create_class_manage.html$</from>
+		<to>/pages/content/resources/manage/class/manage/createClassroom.action</to>
+	</rule>
+	<rule>
+		<from>^/ajaxs/content/resources/manage/class/manage/query_classroom_manage.html$</from>
+		<to>/pages/content/resources/manage/class/manage/queryClassroomManage.action</to>
+	</rule>
+	<rule>
+		<from>^/views/content/resources/manage/class/manage/forward_classroom_manage.html$</from>
+		<to>/pages/content/resources/manage/class/manage/forwardClassroomManage.action</to>
+	</rule>
+	<rule>
+		<from>^/https/content/resources/manage/class/manage/forward_edit_classroom.html$</from>
+		<to>/pages/content/resources/manage/class/manage/forwardEditClassroom.action</to>
+	</rule>
+	<rule>
+		<from>^/ajaxs/content/resources/manage/class/manage/remove_classroom.html$</from>
+		<to>/pages/content/resources/manage/class/manage/removeClassroom.action</to>
+	</rule>
+	
+	<!--教材资源管理-->
+	<rule>
+		<from>^/pages/content/resources/manage/book/manage/query_book_manage.html$</from>
+		<to>/pages/content/resources_manage/book_manage/query_book_manage.jsp</to>
+	</rule>
+
+</urlrewrite>

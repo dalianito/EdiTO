@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE urlrewrite PUBLIC "-//tuckey.org//DTD UrlRewrite 2.6//EN" "http://tuckey.org/res/dtds/urlrewrite2.6.dtd">
+<!--审批管理-->
+<urlrewrite>
+	<rule>
+		<from>^/pages/resource/approval/manage/query_approval_manage.html$</from>
+		<to>/pages/resource/approval_manage/query_approval_manage.jsp</to>
+	</rule>
+	<rule>
+		<from>^/ajaxs/resource/approval/manage/query_approval_manage.html$</from>
+		<to>/pages/resource/approval/manage/queryApprovalManage.action</to>
+	</rule>
+	<rule>
+		<from>^/ajaxs/resource/approval/manage/query_apply_info.html$</from>
+		<to>/pages/resource/approval/manage/queryApplyInfo.action</to>
+	</rule>
+	<rule>
+		<from>^/ajaxs/resource/approval/manage/create_approval.html$</from>
+		<to>/pages/resource/approval/manage/createApproval.action</to>
+	</rule>
+	<rule>
+		<from>^/https/resource/approval/manage/query_approval_recruitment.html$</from>
+		<to>/pages/resource/approval_manage/query_approval_recruitment.jsp</to>
+	</rule>
+	<rule>
+		<from>^/https/resource/approval/manage/query_approval_relationship.html$</from>
+		<to>/pages/resource/approval_manage/query_approval_relationship.jsp</to>
+	</rule>
+	<rule>
+		<from>^/https/resource/approval/manage/query_approval_quit.html$</from>
+		<to>/pages/resource/approval_manage/query_approval_quit.jsp</to>
+	</rule>
+	<rule>
+		<from>^/https/resource/approval/manage/query_approval_leave.html$</from>
+		<to>/pages/resource/approval_manage/query_approval_leave.jsp</to>
+	</rule>
+	<rule>
+		<from>^/https/resource/approval/manage/query_approval_publicity.html$</from>
+		<to>/pages/resource/approval_manage/query_approval_publicity.jsp</to>
+	</rule>
+	<rule>
+		<from>^/https/resource/approval/manage/query_approval_material.html$</from>
+		<to>/pages/resource/approval_manage/query_approval_material.jsp</to>
+	</rule>
+	<rule>
+		<from>^/ajaxs/resource/approval/manage/query_approval_detail.html$</from>
+		<to>/pages/resource/approval/manage/queryApprovalDetail.action</to>
+	</rule>
+	<rule>
+		<from>^/https/resource/approval/manage/query_approval_regular.html$</from>
+		<to>/pages/resource/approval_manage/query_approval_regular.jsp</to>
+	</rule>
+</urlrewrite>

@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project default="default" basedir="." name="Health Service Record2.0">
+	<description>
+		EDITO 编译文件
+		编译后生成：
+		schema.jar
+		mapping.xml
+		class.xml
+		create.sql
+		ejb.jar
+		ejb-doc.zip
+		edito.ear
+		edito.war.ear
+	</description>
+
+	<!--设置生成文件META-INFO公用信息 -->
+	<property environment="env" />
+	<property name="project.name" value="EDITO" />
+	<property name="user.name" value="${env}.username" />
+	<property name="company" value="iTO" />
+	<property name="version" value="1.0.0" />
+	<property name="build.number" value="01" />
+
+	<!--设置生成文件META-INFO中的Description信息 -->
+	<property name="description.schema" value="EDITO Schema" />
+	<property name="description.ejb" value="EDITO EJB" />
+	<property name="description.edito.war" value="EDITO edito.war" />
+	<property name="description.init.war" value="EDITO init.war" />
+
+	<!--设置EJB Doc相关参数-->
+	<property name="ejb.packages" value="com.ito.**.ejb.*" />
+	<property name="docs_api" value="../ejb/docs_temp" />
+
+	<!--设置项目文件路径 -->
+	<property name="lib" value="../lib" />
+	<property name="schema" value="../schema" />
+	<property name="ddl" value="../sql/ddl" />
+	<property name="ejb" value="../ejb" />
+	<property name="init.war" value="../init.war" />
+	<property name="edito.war" value="../edito.war" />
+	<property name="META-INF" value="../META-INF" />
+
+	<!-- 设置ear包的路径 -->
+	<property name="release" value="../release/edito.ear" />
+	<property name="release.war.ear" value="../release/edito.war.ear" />
+
+	<!-- classpath -->
+	<property name="compile.lib" value="
+		${lib}/castor-1.3.1-jdo.jar;
+		${lib}/fai.jar;" />
+
+	<property name="doclet.lib" value="
+		${lib}/compile/commons-logging-1.1.jar;
+		${lib}/compile/castor-doclet-0.4.2.jar;
+		${lib}/compile/xerces.jar;
+		${lib}/castor-1.3.1-xml-schema.jar;
+		${lib}/castor-1.3.1-core.jar;
+		${lib}/castor-1.3.1-xml.jar;
+		${lib}/castor-1.3.1-jdo.jar;
+		${lib}/fai.jar;
+		${lib}/jdom.jar;" />
+
+	<path id="castor.class.path">
+		<pathelement location="${lib}/compile/castor-1.3.1-codegen.jar" />
+		<pathelement location="${lib}/compile/castor-1.3.1-anttasks.jar" />
+		<pathelement location="${lib}/compile/commons-logging-1.1.jar" />
+		<pathelement location="${lib}/castor-1.3.1-core.jar" />
+		<pathelement location="${lib}/castor-1.3.1-xml.jar" />
+		<pathelement location="${lib}/castor-1.3.1-xml-schema.jar" />
+	</path>
+
+	<property name="ejb.lib" value="
+		${lib}/castor-1.3.1-xml-schema.jar;
+		${lib}/castor-1.3.1-core.jar;
+		${lib}/castor-1.3.1-xml.jar;
+		${lib}/castor-1.3.1-jdo.jar;
+		${lib}/fai.jar;
+		${lib}/REngine.jar;
+		${lib}/RserveEngine.jar;
+		${lib}/schema.jar;
+		${lib}/compile/jbossts-common.jar;
+		${lib}/compile/jbossjts.jar;
+		${lib}/compile/jbossjts-jacorb.jar;
+		${lib}/compile/jboss-ejb3.jar;
+		${lib}/compile/jboss-ejb3x.jar;
+		${lib}/compile/jbossall-client.jar;
+		${lib}/compile/jboss-annotations-ejb3.jar;" />
+
+	<property name="edito.lib" value="
+		${edito.war}/WEB-INF/lib/commons-beanutils.jar;
+		${edito.war}/WEB-INF/lib/freemarker-2.3.8.jar;
+		${edito.war}/WEB-INF/lib/jackson-core-lgpl-1.6.2.jar;
+		${edito.war}/WEB-INF/lib/jackson-mapper-lgpl-1.6.2.jar;
+		${edito.war}/WEB-INF/lib/jcommon-1.0.16.jar;
+		${edito.war}/WEB-INF/lib/jfreechart-1.0.13.jar;
+		${edito.war}/WEB-INF/lib/ognl-2.6.11.jar;
+		${edito.war}/WEB-INF/lib/pinyin4j-2.5.0.jar;
+		${edito.war}/WEB-INF/lib/sitemesh-2.2.1.jar;
+		${edito.war}/WEB-INF/lib/struts2-core-2.0.14.jar;
+		${edito.war}/WEB-INF/lib/struts2-sitemesh-plugin-2.0.14.jar;
+		${edito.war}/WEB-INF/lib/urlrewrite-2.6.0.jar;
+		${edito.war}/WEB-INF/lib/xwork-2.0.7.jar;
+		${lib}/castor-1.3.1-jdo.jar;
+		${lib}/ejb.jar;
+		${lib}/fai.jar;
+		${lib}/jdom.jar;
+		${lib}/jxl.jar;
+		${lib}/REngine.jar;
+		${lib}/schema.jar;
+		${lib}/compile/jbossall-client.jar;
+		${lib}/compile/jbossjts.jar;
+		${lib}/compile/jbossjts-jacorb.jar;
+		${lib}/compile/servlet-api.jar;" />
+
+	<property name="init.lib" value="
+		${lib}/fai.jar;
+		${lib}/compile/servlet-api.jar;" />
+
+	<!-- 默认task -->
+	<target name="default" depends="init,build:schema,build:ejb,build:ear,clean" />
+
+	<!-- 编译schema -->
+	<target name="build:schema" depends="init,schema:generator,schema:compile,schema:jar,doclet:mapping,doclet:class,doclet:ddl" />
+
+	<!-- 编译ejb包 -->
+	<target name="build:ejb" depends="init,build:schema,ejb:jar,ejb:doc" />
+
+	<!-- 编译edito软件包 -->
+	<target name="build:project" depends="init,build:ear,clean" />
+
+	<!-- 初始化 -->
+	<target name="init" >
+		<tstamp>
+			<format property="BUILD_TIME" pattern="yyyy-MM-dd HH:mm:ss" />
+		</tstamp>
+	</target>
+
+	<!-- 读取xsd文件，生成java文件 -->
+	<target name="schema:generator" description="Generate Java source files from XSD.">
+		<taskdef name="castor-srcgen" classname="org.castor.anttask.CastorCodeGenTask" classpathref="castor.class.path" />
+		<delete dir="${schema}/generated" />
+		<mkdir dir="${schema}/generated" />
+		<castor-srcgen file="../schema/edito.xsd" package="com.ito.edito.schema" todir="${schema}/generated" types="j2" nodesc="true" nomarshal="true" generateImportedSchemas="false" properties="binding.generation.properties" generateJdoDescriptors="false" />
+	</target>
+
+	<!-- 将生成的java文件编译成class文件 -->
+	<target name="schema:compile" depends="schema:generator" description="Compile mappings from Java source files.">
+		<delete dir="${schema}/classes" />
+		<mkdir dir="${schema}/classes" />	 
+		<javac srcdir="${schema}/generated" destdir="${schema}/classes" classpath="${compile.lib}" includes="com/ito/**/schema/**/*.java" debug="on" />
+	</target>
+
+	<!-- 压缩生成schema.jar -->
+	<target name="schema:jar" depends="schema:compile">
+		<copy todir="${schema}/classes" flatten="no">
+			<fileset dir="${schema}/generated">
+				<include name="com/ito/edito/schema/*.cdr" />
+			</fileset>
+		</copy>
+		<jar jarfile="${lib}/schema.jar" basedir="${schema}/classes" includes="com/ito/edito/schema/**/*" compress="false">
+			<manifest>
+				<attribute name="Built-By" value="${user.name}" />
+				<attribute name="Build-Time" value="${BUILD_TIME}" />
+				<section name="Schema">
+					<attribute name="Description" value="${description.schema}" />
+					<attribute name="Company" value="${company}" />
+					<attribute name="Version" value="${version}" />
+					<attribute name="Build-Number" value="${build.number}" />
+				</section>
+			</manifest>
+		</jar>
+	</target>
+
+	<!-- 根据java文件生成mapping.xml -->
+	<target name="doclet:mapping" depends="schema:generator">
+		<javadoc sourcepath="${schema}/generated" classpath="${doclet.lib}" packagenames="com.ito.edito.schema.*" private="true" encoding="UTF-8">
+			<doclet name="org.castor.doclet.jdo.JDO" path="${doclet.lib}" >
+				<param name="-J-Duser.language=en" />
+				<param name="-J-Duser.country=US" />
+				<param name="-J-Dfile.encoding=UTF-8" />
+				<param name="-J-DLOG=1" />
+				<param name="-J-DFILE=${init.war}/WEB-INF/mapping.xml" />
+			</doclet>
+		</javadoc>
+	</target>
+
+	<!-- 根据java文件生成class.xml -->
+	<target name="doclet:class" depends="schema:generator">
+		<javadoc sourcepath="${schema}/generated" classpath="${doclet.lib}" packagenames="com.ito.edito.schema.*" private="true" encoding="UTF-8">
+			<doclet name="com.ito.fai.doclet.xml.XML" path="${doclet.lib}" >
+				<param name="-J-Duser.language=en" />
+				<param name="-J-Duser.country=US" />
+				<param name="-J-Dfile.encoding=UTF-8" />
+				<param name="-J-DLOG=1" />
+				<param name="-J-DFILE=${init.war}/WEB-INF/class.xml" />
+				<param name="-J-DROOT=com.ito.edito.schema.Base" />
+				<param name="-J-DCLS=com.ito.fai.idp.core.Cls" />
+				<param name="-J-DFLD=com.ito.fai.idp.core.Fld" />
+				<param name="-J-DXSD=/com/ito/fai/idp/core/cls.xml" />
+			</doclet>
+		</javadoc>
+	</target>
+
+	<!-- 根据java文件生成create.sql -->
+	<target name="doclet:ddl" depends="schema:generator">
+		<javadoc sourcepath="${schema}/generated" classpath="${doclet.lib}" packagenames="com.ito.edito.schema.*" private="true" encoding="UTF-8">
+			<doclet name="org.castor.doclet.ddl.DDL" path="${doclet.lib}" >
+				<param name="-J-Duser.language=en" />
+				<param name="-J-Duser.country=US" />
+				<param name="-J-Dfile.encoding=UTF-8" />
+				<param name="-J-DLOG=1" />
+				<param name="-J-DDB_TYPE=mysql" />
+				<param name="-J-DFILE=${ddl}/create.sql" />
+			</doclet>
+		</javadoc>
+	</target>
+
+	<!-- 编译生成ejb.jar -->
+	<target name="ejb:jar" depends="init">
+		<delete dir="${ejb}/classes" />
+		<mkdir dir="${ejb}/classes" />	 
+
+		<javac srcdir="${ejb}/src/java" destdir="${ejb}/classes" classpath="${ejb.lib}" includes="com/ito/**/ejb/**/*.java" encoding="utf-8" debug="on" />
+		<jar jarfile="${lib}/ejb.jar" basedir="${ejb}/classes" compress="false">
+			<manifest>
+				<attribute name="Built-By" value="${user.name}" />
+				<attribute name="Build-Time" value="${BUILD_TIME}" />
+				<section name="ejb">
+					<attribute name="Description" value="${description.ejb}" />
+					<attribute name="Company" value="${company}" />
+					<attribute name="Version" value="${version}" />
+					<attribute name="Build-Number" value="${build.number}" />
+				</section>
+			</manifest>
+		</jar>
+	</target>
+
+	<!-- 编译生成ejb_doc文件 -->
+	<target name="ejb:doc">
+		<javadoc packagenames="${ejb.packages}" sourcepath="${ejb}/src/java" defaultexcludes="yes" classpath="${ejb.lib}" destdir="${docs_api}" author="true" version="true" use="true" encoding="utf-8" charset="UTF-8" windowtitle="EJB API">
+			<doctitle>
+				<![CDATA[<h1>API Documents</h1>]]>
+			</doctitle>
+			<bottom>
+				<![CDATA[<i>Copyright &#169; 2004 iTO Corp. All Rights Reserved.</i>]]>
+			</bottom>
+		</javadoc>
+		<zip destfile="${lib}/ejb-doc.zip" basedir="${docs_api}" includes="resources/*.gif,com/**/*.html,*.html,*.css" />
+	</target>
+
+	<!-- 编译生成edito.ear文件夹、edito.war.ear文件夹 -->
+	<target name="build:ear">
+		<!-- 编译生成edito.ear文件夹 -->
+		<!-- 编译生成edito.war包 -->
+		<javac srcdir="${edito.war}/src/java" destdir="${edito.war}/WEB-INF/classes" classpath="${edito.lib}" includes="com/ito/**/**/*.java" encoding="utf-8" debug="on" />
+
+		<copy todir="${edito.war}/WEB-INF/classes" file="${edito.war}/src/java/struts.properties" />
+
+		<copy todir="${release}/edito" flatten="no">
+			<fileset dir="${edito.war}">
+				<exclude name="src/" />
+				<exclude name=".*/" />
+				<exclude name=".*" />
+			</fileset>
+		</copy>
+
+		<jar jarfile="${release}/edito.war" basedir="${release}/edito" compress="false">
+			<manifest>
+				<attribute name="Built-By" value="${user.name}" />
+				<attribute name="Build-Time" value="${BUILD_TIME}" />
+				<section name="edito_web">
+					<attribute name="Description" value="${description.edito.war}" />
+					<attribute name="Company" value="${company}" />
+					<attribute name="Version" value="${version}" />
+					<attribute name="Build-Number" value="${build.number}" />
+				</section>
+			</manifest>
+		</jar>
+
+		<!-- 编译生成init.war包 -->
+		<javac srcdir="${init.war}/src/java" destdir="${init.war}/WEB-INF/classes" classpath="${init.lib}" includes="com/ito/edito/**/*.java" encoding="utf-8" debug="on" />
+
+		<copy todir="${release}/init" flatten="no">
+			<fileset dir="${init.war}">
+				<exclude name="src/" />
+				<exclude name=".*/" />
+				<exclude name=".*" />
+			</fileset>
+		</copy>
+
+		<jar jarfile="${release}/init.war" basedir="${release}/init" compress="false" >
+			<manifest>
+				<attribute name="Built-By" value="${user.name}" />
+				<attribute name="Build-Time" value="${BUILD_TIME}" />
+				<section name="edito_web">
+					<attribute name="Description" value="${description.init.war}" />
+					<attribute name="Company" value="${company}" />
+					<attribute name="Version" value="${version}" />
+					<attribute name="Build-Number" value="${build.number}" />
+				</section>
+			</manifest>
+		</jar>
+
+		<!-- 拷贝lib包 -->
+		<copy todir="${release}/lib" flatten="no">
+			<fileset dir="${lib}" />
+		</copy>
+
+		<!-- 拷贝META-INF文件夹 -->
+		<copy todir="${release}/META-INF" flatten="no">
+			<fileset dir="${META-INF}">
+				<include name="*.xml" />
+			</fileset>
+		</copy>
+
+		<!-- 拷贝数据库连接文件 -->
+		<copy todir="${release}" file="../mysql-xa-ds.xml" />
+
+		<!-- 生成edito.war.ear文件夹 -->
+		<copy todir="${release.war.ear}/META-INF" file="${META-INF}/jboss-app.xml" />
+		<copy tofile="${release.war.ear}/META-INF/application.xml" file="${META-INF}/application.xml.ear" />
+	</target>
+
+	<!-- 清除临时文件以及文件夹 -->
+	<target name="clean">
+		<delete dir="${schema}/generated" />
+		<delete dir="${schema}/classes" />
+		<delete dir="${ejb}/classes" />
+		<delete dir="${docs_api}" />
+		<delete dir="${release}/edito" />
+		<delete dir="${release}/init" />
+	</target>
+</project>

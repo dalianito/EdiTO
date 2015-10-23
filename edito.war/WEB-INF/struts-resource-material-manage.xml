@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+<!--物资管理-->
+<struts>
+	<package name="resource-material-manage" extends="struts-default" namespace="/pages/resource/material/manage">
+		<!--物资类别管理-->
+		<action name="queryMaterialType" class="com.ito.edito.action.query.QueryMaterialTypeAction">
+		</action>
+		<action name="createMaterialType" class="com.ito.edito.action.create.CreateMaterialTypeAction">
+		</action>
+		<action name="getMaterialType" class="com.ito.edito.action.get.GetMaterialTypeAction">
+		</action>
+		<action name="deleteMaterialType" class="com.ito.edito.action.delete.DeleteMaterialTypeAction">
+		</action>
+
+		<!--供方名录管理-->
+		<action name="queryListManage" class="com.ito.edito.action.query.QueryListAction">
+		</action>
+		<action name="createList" class="com.ito.edito.action.create.CreateListAction">
+		</action>
+		<action name="forwardViewList" class="com.ito.edito.action.get.GetListAction">
+			<result>/pages/resource/material_manage/list_manage/view_list.jsp</result>
+		</action>
+		<action name="forwardEditList" class="com.ito.edito.action.get.GetListAction">
+			<result>/pages/resource/material_manage/list_manage/edit_list.jsp</result>
+		</action>
+		<action name="removeList" class="com.ito.edito.action.delete.DeleteListAction">
+		</action>
+
+		<!--物资信息管理-->
+		<action name="queryMaterialGenerate" class="com.ito.edito.action.query.QueryMaterialAction">
+		</action>
+		<action name="createMaterial" class="com.ito.edito.action.create.CreateMaterialAction">
+		</action>
+		<action name="forwardEditMaterial" class="com.ito.edito.action.get.GetMaterialAction">
+			<result>/pages/resource/material_manage/material_generate/edit_material.jsp</result>
+		</action>
+		<action name="removeMaterial" class="com.ito.edito.action.delete.DeleteMaterialAction">
+		</action>
+		
+		<!--申请管理-->
+		<!--购买申请-->
+		<action name="createOfficeApply" class="com.ito.edito.action.create.CreateOfficeApplyAction">
+		</action>
+		<action name="queryOfficeApply" class="com.ito.edito.action.query.QueryOfficeApplyAction">
+		</action>
+		<action name="queryInquiry" class="com.ito.edito.action.query.QueryInquiryAction">
+		</action>
+		<action name="forwardViewApply" class="com.ito.edito.action.get.GetOfficeApplyAction">
+			<result>/pages/resource/material_manage/apply_manage/material_apply/view_material_apply.jsp</result>
+		</action>
+		<action name="forwardEditApply" class="com.ito.edito.action.get.GetOfficeApplyAction">
+			<result>/pages/resource/material_manage/apply_manage/material_apply/edit_material_apply.jsp</result>
+		</action>
+		<action name="removeApply" class="com.ito.edito.action.update.UpdateOfficeApplyAction">
+		</action>
+		
+		<!-- 物资验收管理 -->
+		<action name="queryOrderGenerate" class="com.ito.edito.action.query.QueryOrderGenerateAction">
+		</action>
+		
+		<!-- 采购单生成 -->
+		<action name="getOrderGenerate" class="com.ito.edito.action.get.GetOfficeApplyInfoAction">
+		</action>
+		<action name="CreateOrderGenerate" class="com.ito.edito.action.create.CreateOrderGenerateAction">
+		</action>
+		
+		<!-- 采购单管理 -->
+		<action name="queryOrderManage" class="com.ito.edito.action.query.QueryOrderAction">
+		</action>
+		<action name="removeOrderGenerate" class="com.ito.edito.action.delete.DeleteOrderGenerateAction">
+		</action>
+		<action name="cancelOrderGenerate" class="com.ito.edito.action.query.QueryOrderCancelAction">
+		</action>
+		<action name="forwardViewOrder" class="com.ito.edito.action.get.GetOrderAction">
+			<result>/pages/resource/material_manage/material_accept/order_manage/view_order.jsp</result>
+		</action>
+		
+		<!-- 物资验收 -->
+		<action name="forwardEditAccept" class="com.ito.edito.action.get.GetOfficeApplyAction">
+			<result>/pages/resource/material_manage/material_accept/material_import/edit_material_accept.jsp</result>
+		</action>
+		<action name="forwardMaterialReceipt" class="com.ito.edito.action.update.UpdateReceiptStateAction">
+			<result>/pages/resource/material_manage/material_accept/material_import/edit_material_accept.jsp</result>
+		</action>
+		<action name="removeOfficeApplication" class="com.ito.edito.action.update.UpdateOfficeApplyAction">
+		</action>
+		
+		<!--物资试用 -->
+		<action name="queryMaterialUsage" class="com.ito.edito.action.query.QueryMaterialUsageAction">
+		</action>
+		<action name="createMaterialUsage" class="com.ito.edito.action.create.CreateMaterialUsageAction">
+		</action>
+		<action name="forwardViewUsage" class="com.ito.edito.action.get.GetUsageAction">
+			<result>/pages/resource/material_manage/material_usage/view_material_usage.jsp</result>
+		</action>
+		<action name="returnMaterialUsage" class="com.ito.edito.action.update.UpdateMaterialUsageAction">
+		</action>
+		
+		<!--物资报废 -->
+		<action name="createMaterialDamage" class="com.ito.edito.action.create.CreateMaterialDamageAction">
+		</action>
+		<action name="queryMaterialDamage" class="com.ito.edito.action.query.QueryMaterialDamageAction">
+		</action>
+		<action name="forwardViewDamage" class="com.ito.edito.action.get.GetDamageAction">
+			<result>/pages/resource/material_manage/material_damage/view_material_damage.jsp</result>
+		</action>
+		
+		<!--物资调配 -->
+		<action name="createMaterialAllocate" class="com.ito.edito.action.create.CreateMaterialAllocateAction">
+		</action>
+		<action name="queryMaterialAllocate" class="com.ito.edito.action.query.QueryMaterialAllocateAction">
+		</action>
+		<action name="forwardViewAllocate" class="com.ito.edito.action.get.GetAllocateAction">
+			<result>/pages/resource/material_manage/material_allocate/view_material_allocate.jsp</result>
+		</action>
+		
+		<!--物资清单 -->
+		<action name="queryMaterialImport" class="com.ito.edito.action.query.QueryMaterialImportAction">
+		</action>
+		
+		<!--物资库存 -->
+		<action name="queryMaterialStorage" class="com.ito.edito.action.query.QueryMaterialStorageAction">
+		</action>
+		
+		<!--查看物资入库 -->
+		<action name="forwardViewImport" class="com.ito.edito.action.get.GetImportAction">
+			<result>/pages/resource/material_manage/material_list/view_material_import.jsp</result>
+		</action>
+		
+		<!--查看物资库存 -->
+		<action name="forwardViewStorage" class="com.ito.edito.action.get.GetStorageAction">
+			<result>/pages/resource/material_manage/material_list/view_material_storage.jsp</result>
+		</action>
+		
+	</package>
+</struts>

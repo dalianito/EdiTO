@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE validation-config SYSTEM "../validation-config.dtd">
+<validation-config>
+	<range id="formA" show-error="alert" show-type="all">
+		<field name="instance(Student).studentID" display-name="学生编号">
+			<depend name="required" />
+		</field>
+		<field name="instance(Person).name" display-name="学生姓名">
+			<depend name="required" />
+		</field>
+		<field name="instance(Person).genderUuid" display-name="性别">
+			<depend name="required" />
+		</field>
+		<field name="instance(Person).birthDate" display-name="出生日期">
+			<depend name="required" />
+		</field>
+		<field name="instance(Person).educationUuid" display-name="最高学历">
+			<depend name="required" />
+		</field>
+		<field name="instance(Person).idNo" display-name="身份证号">
+			<depend name="required" />
+		</field>
+		<field name="instance(Person).cellPhone" display-name="电话">
+			<depend name="required" />
+		</field>
+		<field name="instance(EducationExpInfo).school" display-name="学校">
+			<depend name="required" />
+		</field>
+		<field name="instance(EducationExpInfo).degree" display-name="等级 ">
+			<depend name="required" />
+		</field>
+		<field name="instance(EducationExpInfo).beginDate" display-name="开始时间 ">
+			<depend name="required" />
+		</field>
+		<field name="instance(EducationExpInfo).endDate" display-name="结束时间">
+			<depend name="required" />
+		</field>
+	</range>
+</validation-config>

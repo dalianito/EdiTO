@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE urlrewrite PUBLIC "-//tuckey.org//DTD UrlRewrite 2.6//EN" "http://tuckey.org/res/dtds/urlrewrite2.6.dtd">
+<!--框架文件-->
+<urlrewrite>
+	<include file="/WEB-INF/urlrewrite-tree.xml" />
+	<include file="/WEB-INF/urlrewrite-drop-menu.xml" />
+
+	<!--内部资源管理平台-->
+	<include file="/WEB-INF/urlrewrite-resource-human-manage.xml" />
+	<include file="/WEB-INF/urlrewrite-resource-campus-manage.xml" />
+	<include file="/WEB-INF/urlrewrite-resource-material-manage.xml" />
+	<include file="/WEB-INF/urlrewrite-resource-approval-manage.xml" />
+	<include file="/WEB-INF/urlrewrite-resource-performance-manage.xml" />
+	<include file="/WEB-INF/urlrewrite-resource-system-manage.xml" />
+
+	<!--教学内容配置平台-->
+	<include file="/WEB-INF/urlrewrite-content-my-teaching.xml" />
+	<include file="/WEB-INF/urlrewrite-content-teacher-manage.xml" />
+	<include file="/WEB-INF/urlrewrite-content-course-manage.xml" />
+	<include file="/WEB-INF/urlrewrite-content-exam-manage.xml" />
+	<include file="/WEB-INF/urlrewrite-content-score-manage.xml" />
+	<include file="/WEB-INF/urlrewrite-content-resources-manage.xml" />
+	<include file="/WEB-INF/urlrewrite-content-student-manage.xml" />
+	<include file="/WEB-INF/urlrewrite-content-consult-manage.xml" />
+	<include file="/WEB-INF/urlrewrite-content-class-manage.xml" />
+
+	<!--微信平台-->
+	<include file="/WEB-INF/urlrewrite-wechat-wechat-manage.xml" />
+	<include file="/WEB-INF/urlrewrite-wechat-common-work.xml" />
+	<include file="/WEB-INF/urlrewrite-wechat-approval-work.xml" />
+	
+	<rule>
+		<from>^/?$</from>
+		<to>/pages/homePage.jsp</to>
+	</rule>
+	<rule>
+		<from>^/homes/edito/index.html$</from>
+		<to>/pages/homePage.jsp</to>
+	</rule>
+	<rule>
+		<from>^/edito$</from>
+		<to>/pages/homePage.jsp</to>
+	</rule>
+	<rule>
+		<from>^/resource$</from>
+		<to>/pages/index.jsp</to>
+	</rule>
+	<rule>
+		<from>^/content$</from>
+		<to>/pages/index.jsp</to>
+	</rule>
+	<rule>
+		<from>^/pages/edito/index.html$</from>
+		<to>/pages/index.jsp</to>
+	</rule>
+	<rule>
+		<from>^/pages/resource/index.html$</from>
+		<to>/pages/index.jsp</to>
+	</rule>
+	<rule>
+		<from>^/pages/content/index.html$</from>
+		<to>/pages/index.jsp</to>
+	</rule>
+	<rule>
+		<from>^/pages/edito/util/none.html$</from>
+		<to>/pages/util/none.jsp</to>
+	</rule>
+	<rule>
+		<from>^/pages/resource/util/none.html$</from>
+		<to>/pages/util/none.jsp</to>
+	</rule>
+	<rule>
+		<from>^/pages/content/util/none.html$</from>
+		<to>/pages/util/none.jsp</to>
+	</rule>
+	<rule>
+		<from>^/pages/edito/util/reject.html$</from>
+		<to>/pages/util/reject.jsp</to>
+	</rule>
+	<rule>
+		<from>^/pages/resource/util/reject.html$</from>
+		<to>/pages/util/reject.jsp</to>
+	</rule>
+	<rule>
+		<from>^/pages/content/util/reject.html$</from>
+		<to>/pages/util/reject.jsp</to>
+	</rule>
+	<rule>
+		<from>^/pages/edito/util/invalid.html$</from>
+		<to>/pages/util/invalid.jsp</to>
+	</rule>
+	<rule>
+		<from>^/pages/resource/util/invalid.html$</from>
+		<to>/pages/util/invalid.jsp</to>
+	</rule>
+	<rule>
+		<from>^/pages/content/util/invalid.html$</from>
+		<to>/pages/util/invalid.jsp</to>
+	</rule>
+	<rule>
+		<from>^/edito/logout.html$</from>
+		<to>/pages/logout.jsp</to>
+	</rule>
+	<rule>
+		<from>^/ajaxs/get_menu_ifOpened.html$</from>
+		<to>/pages/getMenuIfOpened.action</to>
+	</rule>
+
+	<outbound-rule>
+		<note>
+			The outbound-rule specifies that when response.encodeURL is called (if you are using JSTL c:url)
+			the url /rewrite-status will be rewritten to /test/status/.
+
+			The above rule and this outbound-rule means that end users should never see the
+			url /rewrite-status only /test/status/ both in thier location bar and in hyperlinks
+			in your pages.
+		</note>
+		<from>/rewrite-status</from>
+		<to>/test/status/</to>
+	</outbound-rule>
+</urlrewrite>

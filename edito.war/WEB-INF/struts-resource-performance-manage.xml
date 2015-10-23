@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+<!--绩效管理-->
+<struts>
+	<package name="resource-performance-manage" extends="struts-default" namespace="/pages/resource/performance/manage">
+		<!--岗位绩效设置-->
+		<action name="manageJobType" class="com.ito.edito.action.get.GetJobAction">
+			<result>/pages/resource/performance_manage/job_performance/manage_job_type.jsp</result>
+		</action>
+		<action name="getSystemType" class="com.ito.edito.action.get.GetSystemTypeAction">
+		</action>
+		<action name="getJobType" class="com.ito.edito.action.get.GetJobTypeAction">
+		</action>
+		<action name="createJobType" class="com.ito.edito.action.create.CreateJobTypeAction">
+		</action>
+		<action name="deleteJobType" class="com.ito.edito.action.delete.DeleteJobTypeAction">
+		</action>
+
+		<!--员工绩效考核-->
+		<action name="getEmployeePerformanceEdit" class="com.ito.edito.action.get.GetEmployeePerformanceEditAction">
+		</action>
+		<action name="createtEmployeePerformance" class="com.ito.edito.action.create.CreateEmployeePerformanceAction">
+		</action>
+
+		<!--员工绩效查询-->
+		<action name="queryPerformanceInquiry" class="com.ito.edito.action.query.QueryPerformanceInquiryAction">
+		</action>
+		<action name="forwardViewPerformance" class="com.ito.edito.action.get.GetEmployeePerformanceAction">
+			<result>/pages/resource/performance_manage/performance_inquiry/view_employee_performance.jsp</result>
+		</action>
+	</package>
+</struts>

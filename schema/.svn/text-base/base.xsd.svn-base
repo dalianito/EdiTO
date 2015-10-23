@@ -1,0 +1,543 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2011 rel. 2 sp1 (http://www.altova.com) by navi_wang (iTO) -->
+<!-- edited with XMLSPY v2004 rel. 4 U (http://www.xmlspy.com) by zyf (ORiON) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:edito="http://www.ito.com.cn/edito" targetNamespace="http://www.ito.com.cn/edito" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:notation name="Version1.0" public="change">
+		<xs:annotation>
+			<xs:documentation>for HSR_beta_1.10.0_b02</xs:documentation>
+		</xs:annotation>
+	</xs:notation>
+	<xs:complexType name="Base">
+		<xs:annotation>
+			<xs:documentation>@ucid 9900000001000000
+@source-name default
+@chinese 基表</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="uuid" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>@primary-key   
+@sql-size 32
+@chinese 主键</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="timeStamp" type="xs:long" default="1">
+				<xs:annotation>
+					<xs:documentation>@not-null
+@sql-default 1
+@chinese 时间戳</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="BaseData">
+		<xs:annotation>
+			<xs:documentation>@ucid 9900000001000001
+@chinese 基表数据</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:Base">
+				<xs:sequence>
+					<xs:element name="ifHasChild" type="xs:boolean">
+						<xs:annotation>
+							<xs:documentation>@chinese 子结点</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="description" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 50
+@chinese 描述</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="parent" type="edito:BaseData">
+						<xs:annotation>
+							<xs:documentation>@no-fk
+@chinese 父结点</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="ifUsing" type="xs:boolean">
+						<xs:annotation>
+							<xs:documentation>@chinese 是否可用</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="RecordStatus">
+		<xs:annotation>
+			<xs:documentation>@ucid 1000000001001000
+@table RecordStatus
+@chinese 事件状态</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:BaseData"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="Gender">
+		<xs:annotation>
+			<xs:documentation>@ucid 1000000001002000
+@table Gender
+@chinese 性别</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:BaseData"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="Nationality">
+		<xs:annotation>
+			<xs:documentation>@ucid 1000000001003000
+@table Nationality
+@chinese 民族</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:BaseData"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="Country">
+		<xs:annotation>
+			<xs:documentation>@ucid 1000000001004000
+@table Country
+@chinese 国籍</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:BaseData"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="Education">
+		<xs:annotation>
+			<xs:documentation>@ucid 1000000001005000
+@table Education
+@chinese 学历</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:BaseData"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="Political">
+		<xs:annotation>
+			<xs:documentation>@ucid 1000000001006000
+@table Political
+@chinese 政治面貌</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:BaseData"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ExaminationState">
+		<xs:annotation>
+			<xs:documentation>@ucid 1000000001007000
+@table ExaminationState
+@chinese 审核状态</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:BaseData"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ApplicationType">
+		<xs:annotation>
+			<xs:documentation>@ucid 1000000001008000
+@table ApplicationType
+@chinese 申请类型</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:BaseData"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="LevelType">
+		<xs:annotation>
+			<xs:documentation>@ucid 1000000001009000
+@table LevelType
+@chinese 级别</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:BaseData"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="OtherType">
+		<xs:annotation>
+			<xs:documentation>@ucid 1000000001010000
+@table OtherType
+@chinese 其他类型</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:BaseData"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="LeaveType">
+		<xs:annotation>
+			<xs:documentation>@ucid 1000000001011000
+@table LeaveType
+@chinese 请假类型</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:BaseData">
+				<xs:sequence>
+					<xs:element name="notes" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 500
+@chinese 备注</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="DepartureType">
+		<xs:annotation>
+			<xs:documentation>@ucid 1000000001012000
+@table DepartureType
+@chinese 离职类型</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:BaseData"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="FileType">
+		<xs:annotation>
+			<xs:documentation>@ucid 1000000001013000
+@table FileType
+@chinese 文件类型</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:BaseData"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="WorkingStateType">
+		<xs:annotation>
+			<xs:documentation>@ucid 1000000001014000
+@table WorkingStateType
+@chinese 在职类型</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:BaseData"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ResultType">
+		<xs:annotation>
+			<xs:documentation>@ucid 1000000001015000
+@table ResultType
+@chinese 考核结果类型</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:BaseData"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="TrainingType">
+		<xs:annotation>
+			<xs:documentation>@ucid 1000000001016000
+@table TrainingType
+@chinese 培训类型</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:BaseData"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="JoinState">
+		<xs:annotation>
+			<xs:documentation>@ucid 1000000001017000
+@table JoinState
+@chinese 参加状态</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:BaseData"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="RecruitState">
+		<xs:annotation>
+			<xs:documentation>@ucid 1000000001018000
+@table RecruitState
+@chinese 应聘状态</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:BaseData"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="MarriageState">
+		<xs:annotation>
+			<xs:documentation>@ucid 1000000001019000
+@table MarriageState
+@chinese 婚姻状态</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:BaseData"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="AttendanceType">
+		<xs:annotation>
+			<xs:documentation>@ucid 1000000002001000
+@table AttendanceType
+@chinese 考勤类型</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:BaseData"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="BehaviourStandardType">
+		<xs:annotation>
+			<xs:documentation>@ucid 1000000002002000
+@table BehaviourStandardType
+@chinese 行为规范类型</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:BaseData"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ApplicationMaterialType">
+		<xs:annotation>
+			<xs:documentation>@ucid 1000000002003000
+@table ApplicationMaterialType
+@chinese 申请物料类型</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:BaseData"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ApplicationNo">
+		<xs:annotation>
+			<xs:documentation>@ucid 1000000002004000
+@table ApplicationNo
+@chinese 申请数量</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:BaseData"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ApplicationMaterialSize">
+		<xs:annotation>
+			<xs:documentation>@ucid 1000000002005000
+@table ApplicationMaterialSize
+@chinese 申请物料尺寸</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:BaseData"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ApplicationMaterialColor">
+		<xs:annotation>
+			<xs:documentation>@ucid 1000000002006000
+@table ApplicationMaterialColor
+@chinese 申请物料颜色</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:BaseData"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ApplicationMaterialTexture">
+		<xs:annotation>
+			<xs:documentation>@ucid 1000000002007000
+@table ApplicationMaterialTexture
+@chinese 申请物料材质</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:BaseData"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ProductionUnit">
+		<xs:annotation>
+			<xs:documentation>@ucid 1000000002008000
+@table ProductionUnit
+@chinese 申请物料制作单位</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:BaseData"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ReceiptState">
+		<xs:annotation>
+			<xs:documentation>@ucid 1000000002009000
+@table ReceiptState
+@chinese 验收状态</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:BaseData"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ClassroomType">
+		<xs:annotation>
+			<xs:documentation>@ucid 1000000002010000
+@table ClassroomType
+@chinese 教室类型</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:BaseData"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ReviewState">
+		<xs:annotation>
+			<xs:documentation>@ucid 1000000002011000
+@table ReviewState
+@chinese 审阅状态</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:BaseData"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ApprovalState">
+		<xs:annotation>
+			<xs:documentation>@ucid 1000000002012000
+@table ApprovalState
+@chinese 审批状态</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:BaseData"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="SelfAssessType">
+		<xs:annotation>
+			<xs:documentation>@ucid 1000000002013000
+@table SelfAssessType
+@chinese 自评类型</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:BaseData"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="AssessState">
+		<xs:annotation>
+			<xs:documentation>@ucid 1000000002014000
+@table AssessState
+@chinese 是否考核</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:BaseData"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="AssessRes">
+		<xs:annotation>
+			<xs:documentation>@ucid 1000000002015000
+@table AssessRes
+@chinese 考核结果</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:BaseData"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ReturnState">
+		<xs:annotation>
+			<xs:documentation>@ucid 1000000003001000
+@table ReturnState
+@chinese 归还状态</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:BaseData"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ApprovalAuthorityType">
+		<xs:annotation>
+			<xs:documentation>@ucid 1000000004001000
+@table ApprovalAuthorityType
+@chinese 审批权限类型</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:BaseData">
+				<xs:sequence>
+					<xs:element name="sequence" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 2
+@chinese 次序</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="fullSequence" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 5
+@chinese 完整次序</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="PerformanceType">
+		<xs:annotation>
+			<xs:documentation>@ucid 1000000005001000
+@table PerformanceType
+@chinese 绩效类型</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:BaseData">
+				<xs:sequence>
+					<xs:element name="sequence" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@sql-size 2
+@chinese 次序</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="children" type="edito:PerformanceType" maxOccurs="unbounded">
+						<xs:annotation>
+							<xs:documentation>@no-make
+@chinese 子类型</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="child" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>@no-make
+@sql-size 2
+@chinese 子类型个数</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="TeacherType">
+		<xs:annotation>
+			<xs:documentation>@ucid 2000000002001000
+@table TeacherType
+@chinese 教师类型</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:BaseData"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="Title">
+		<xs:annotation>
+			<xs:documentation>@ucid 2000000002002000
+@table Title
+@chinese 职称</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:BaseData"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ServiceState">
+		<xs:annotation>
+			<xs:documentation>@ucid 2000000002003000
+@table ServiceState
+@chinese 在职状态</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:BaseData"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ClassState">
+		<xs:annotation>
+			<xs:documentation>@ucid 2000000009001000
+@table ClassState
+@chinese 班级状态</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:BaseData"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="EnrollmentState">
+		<xs:annotation>
+			<xs:documentation>@ucid 2000000009002000
+@table EnrollmentState
+@chinese 报名状态</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:BaseData"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="EmploymentStatus">
+		<xs:annotation>
+			<xs:documentation>@ucid 2000000002004000
+@table EmploymentStatus
+@chinese 职业状态</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="edito:BaseData"/>
+		</xs:complexContent>
+	</xs:complexType>
+</xs:schema>

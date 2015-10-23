@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE validation-config SYSTEM "../validation-config.dtd">
+<validation-config>
+	<range id="formA" show-error="alert" show-type="all">
+		<field name="instance(Mistake).title" display-name="标题">
+			<depend name="required" />
+		</field>
+		<field name="instance(Mistake).content" display-name="内容">
+			<depend name="required" />
+		</field>
+	</range>
+</validation-config>

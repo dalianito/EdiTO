@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE validation-config SYSTEM "../validation-config.dtd">
+<validation-config>
+	<range id="formA" show-error="alert" show-type="all">
+		<field name="instance(MaterialExport).materialUuid" display-name="物资">
+			<depend name="required" />
+		</field>
+		<field name="instance(MaterialExport).amount" display-name="数量">
+			<depend name="required" />
+		</field>
+		<field name="instance(Material).unit" display-name="单位">
+			<depend name="required" />
+		</field>
+		<field name="instance(MaterialExport).departmentUuid" display-name="组织机构">
+			<depend name="required" />
+		</field>
+		<field name="instance(MaterialExport).remarks" display-name="备注">
+			<depend name="required" />
+		</field>
+	</range>
+</validation-config>

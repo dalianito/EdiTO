@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+<!--校区管理-->
+<struts>
+	<package name="resource-campus-manage" extends="struts-default" namespace="/pages/resource/campus/manage">
+		<!--校区资源-->
+		<!--教室管理-->
+		<action name="createClassroom" class="com.ito.edito.action.create.CreateClassroomAction">
+		</action>
+		<action name="queryClassroomManage" class="com.ito.edito.action.query.QueryClassroomManageAction">
+		</action>
+		<action name="forwardClassroomManage" class="com.ito.edito.action.get.GetClassroomManageAction">
+			<result>/pages/resource/campus_manage/campus_resource/classroom_manage/view_classroom.jsp</result>
+		</action>
+		<action name="forwardEditClassroom" class="com.ito.edito.action.get.GetClassroomManageAction">
+			<result>/pages/resource/campus_manage/campus_resource/classroom_manage/edit_classroom.jsp</result>
+		</action>
+		<action name="removeClassroom" class="com.ito.edito.action.delete.DeleteClassroomAction">
+		</action>
+
+		<!--校区人力-->
+		<!--考勤记录-->
+		<action name="queryAttendance" class="com.ito.edito.action.query.QueryAttendanceAction">
+		</action>
+		<action name="createAttendance" class="com.ito.edito.action.create.CreateAttendanceAction">
+		</action>
+
+		<!--行为规范-->
+		<action name="queryBehaviorRecord" class="com.ito.edito.action.query.QueryBehaviorRecordAction">
+		</action>
+		<action name="createBehaviorRecord" class="com.ito.edito.action.create.CreateBehaviorRecordAction">
+		</action>
+
+		<!--工作日志审阅-->
+		<action name="createWorkRecordReview" class="com.ito.edito.action.create.CreateWorkRecordReviewAction">
+		</action>
+		<action name="queryWorkRecordInfo" class="com.ito.edito.action.query.QueryWorkRecordInfo">
+		</action>
+		<action name="queryAllWorkRecord" class="com.ito.edito.action.query.QueryAllWorkRecordAction">
+		</action>
+
+		<!--网络宣传审阅-->
+		<action name="queryNetworkPropagandaInfo" class="com.ito.edito.action.query.QueryAllNetworkPropagandaInfoAction">
+		</action>
+		<action name="createNetworkReview" class="com.ito.edito.action.create.CreateNetworkReviewAction">
+		</action>
+
+		<!--工作日志总览-->
+		<action name="queryAllWorkRecordN" class="com.ito.edito.action.query.QueryAllWorkRecordNAction">
+		</action>
+		<action name="queryAllCampus" class="com.ito.edito.action.query.QueryAllCampusAction">
+		</action>
+		<action name="queryAttenWorkNCampus" class="com.ito.edito.action.query.QueryAttenWorkCampusAction">
+		</action>
+
+		<!--网络宣传总览-->
+		<action name="queryAllNetworkPropaganda" class="com.ito.edito.action.query.QueryAllNetworkPropagandaAction">
+		</action>
+		<action name="queryAllNetworkPropagandaN" class="com.ito.edito.action.query.QueryAllNetworkPropagandaNAction">
+		</action>
+
+		<!--考勤记录总览-->
+		<action name="QueryAttendanceSee" class="com.ito.edito.action.query.QueryAttendanceSeeAction">
+		</action>
+
+		<!--行为规范总览 -->
+		<action name="QueryBehaviorSee" class="com.ito.edito.action.query.QueryBehaviorSeeAction">
+		</action>
+
+		<!--校区市场活动-->
+		<!--活动申请-->
+		<action name="createPublicityApply" class="com.ito.edito.action.create.CreatePublicityApplyAction">
+		</action>
+		<action name="uploadFile" class="com.ito.edito.action.create.CreateUploadFileAction">
+		</action>
+		<action name="deleteFile" class="com.ito.edito.action.delete.DeleteUploadFileAction">
+		</action>
+		<action name="queryPublicityApply" class="com.ito.edito.action.query.QueryPublicityApplyAction">
+		</action>
+		<action name="forwardViewPublicityApply" class="com.ito.edito.action.get.GetPublicityApplyAction">
+			<result>/pages/resource/campus_manage/campus_publicity/publicity_apply/view_apply.jsp</result>
+		</action>
+		<action name="forwardEditPublicityApply" class="com.ito.edito.action.get.GetPublicityApplyAction">
+			<result>/pages/resource/campus_manage/campus_publicity/publicity_apply/edit_apply.jsp</result>
+		</action>
+		<action name="removePublicityApply" class="com.ito.edito.action.delete.DeleteApplyAction">
+		</action>
+		<action name="forwardResource" class="com.ito.edito.action.get.GetResourceAction">
+			<result>/pages/resource/campus_manage/campus_publicity/publicity_apply/download_page.jsp</result>
+		</action>
+
+		<!--活动评估 -->	
+		<action name="forwardEditPublicityAssess" class="com.ito.edito.action.get.GetPublicityApplyAction">
+			<result>/pages/resource/campus_manage/campus_publicity/publicity_assess/edit_publicity_assess.jsp</result>
+		</action>
+		<action name="createPublicityAssess" class="com.ito.edito.action.create.CreatePublicityAssessAction">
+		</action>
+
+		<!--我的校区-->
+		<!--工作日志-->
+		<action name="forwardWorkRecord" class="com.ito.edito.action.get.GetWorkRecordAction">
+			<result>/pages/resource/campus_manage/my_campus/work_record/query_work_record.jsp</result>
+		</action>
+		<action name="createWorkRecord" class="com.ito.edito.action.create.CreateWorkRecordAction">
+		</action>
+		<action name="uploadRecordFile" class="com.ito.edito.action.create.CreateUploadRecordFileAction">
+		</action>
+		<action name="forwardFile" class="com.ito.edito.action.get.GetResourceAction">
+			<result>/pages/resource/campus_manage/my_campus/work_record/download_page.jsp</result>
+		</action>
+		<action name="deleteRecordFile" class="com.ito.edito.action.delete.DeleteRecordFileAction">
+		</action>
+		<action name="queryWorkRecord" class="com.ito.edito.action.query.QueryWorkRecordAction">
+		</action>
+		<action name="forwardViewRecord" class="com.ito.edito.action.get.GetViewWorkRecordAction">
+			<result>/pages/resource/campus_manage/my_campus/work_record/view_work_record.jsp</result>
+		</action>
+
+		<!--网络宣传-->
+		<action name="forwardNetworkPropaganda" class="com.ito.edito.action.get.GetInternetPublicityAction">
+			<result>/pages/resource/campus_manage/my_campus/network_propaganda/query_network_propaganda.jsp</result>
+		</action>
+		<action name="createNetworkPropaganda" class="com.ito.edito.action.create.CreateNetworkPropagandaAction">
+		</action>
+		<action name="queryNetworkPropaganda" class="com.ito.edito.action.query.QueryNetworkPropagandaAction">
+		</action>
+		<action name="forwardViewPropaganda" class="com.ito.edito.action.get.GetViewWorkPropagandaAction">
+			<result>/pages/resource/campus_manage/my_campus/network_propaganda/view_network_propaganda.jsp</result>
+		</action>
+
+		<!--请假申请-->
+		<action name="createApply" class="com.ito.edito.action.create.CreateApplyAction">
+		</action>
+		<action name="getLeaveNotes" class="com.ito.edito.action.get.GetLeaveNotesAction">
+		</action>
+		<action name="queryApply" class="com.ito.edito.action.query.QueryApplyAction">
+		</action>
+		<action name="forwardViewLeaveApply" class="com.ito.edito.action.get.GetApplyAction">
+			<result name="leaveApplication">/pages/resource/campus_manage/my_campus/leave_apply/view_leave_apply.jsp</result>
+		</action>
+		<action name="forwardEditLeaveApply" class="com.ito.edito.action.get.GetApplyAction">
+			<result name="leaveApplication">/pages/resource/campus_manage/my_campus/leave_apply/edit_leave_apply.jsp</result>
+		</action>
+		<action name="removeLeaveApply" class="com.ito.edito.action.delete.DeleteApplyAction">
+		</action>
+
+		<!--调动申请 -->
+		<action name="queryRelationshipsApply" class="com.ito.edito.action.query.QueryRelationshipsApplyAction">
+		</action>
+		<action name="createApply" class="com.ito.edito.action.create.CreateApplyAction">
+		</action>
+
+		<!--离职申请 -->
+		<action name="queryQuitsApply" class="com.ito.edito.action.query.QueryQuitsApplyAction">
+		</action>
+		<action name="createApply" class="com.ito.edito.action.create.CreateApplyAction">
+		</action>
+
+		<!--月度自评-->
+		<action name="createEmployeeAssess" class="com.ito.edito.action.create.CreateSelfAssessAction">
+		</action>
+		<action name="queryEmployeeAssess" class="com.ito.edito.action.query.QueryEmployeeAssessAction">
+		</action>
+		<action name="forwardEditEmployeeAssess" class="com.ito.edito.action.get.GetEmployeeAssessAction">
+			<result>/pages/resource/campus_manage/my_campus/self_assess/edit_employee_assess.jsp</result>
+		</action>
+		<action name="forwardViewEmployeeAssess" class="com.ito.edito.action.get.GetEmployeeAssessAction">
+			<result>/pages/resource/campus_manage/my_campus/self_assess/view_employee_assess.jsp</result>
+		</action>
+		<action name="forwardViewProbationAssess" class="com.ito.edito.action.get.GetEmployeeAssessAction">
+			<result>/pages/resource/campus_manage/my_campus/self_assess/view_probation_assess.jsp</result>
+		</action>
+		<action name="removeSelfAssess" class="com.ito.edito.action.update.UpdateSelfAssessAction">
+		</action>
+
+		<!--绩效查询-->
+		<action name="queryPerformance" class="com.ito.edito.action.query.QueryPerformanceAction">
+		</action>
+
+		<!--培训规划-->
+		<action name="queryTrainingProgram" class="com.ito.edito.action.query.QueryTrainingProgramAction">
+		</action>
+		<action name="createTrainingProgram" class="com.ito.edito.action.create.CreateTrainingProgramAction">
+		</action>
+		<action name="queryTrainingSummary" class="com.ito.edito.action.query.QueryTrainingSummaryAction">
+		</action>
+		<action name="forwardTrainingSummary" class="com.ito.edito.action.get.GetTrainingPlanAction">
+			<result>/pages/resource/campus_manage/my_campus/training_program/edit_training_program.jsp</result>
+		</action>
+		<action name="createTrainingSummary" class="com.ito.edito.action.create.CreateEmployeeSummaryAction">
+		</action>
+		<action name="forwardViewTrainingSummary" class="com.ito.edito.action.get.GetTrainingPlanAction">
+			<result>/pages/resource/campus_manage/my_campus/training_program/view_training_program.jsp</result>
+		</action>
+		<action name="queryTrainingAllProgram" class="com.ito.edito.action.query.QueryTrainingAllProgramAction">
+		</action>
+
+		<!-- 面谈记录 -->
+		<action name="interviewManage" class="com.ito.edito.action.query.QueryInterviewAction">
+		</action>
+		<action name="createInterviewee" class="com.ito.edito.action.create.CreateInterviewRecordAction">
+		</action>
+		<action name="forwardViewInterviewRecord" class="com.ito.edito.action.get.GetInterviewRecordAction">
+			<result>/pages/resource/campus_manage/my_campus/interview_record/view_interview_record.jsp</result>
+		</action>
+		<action name="forwardEditInterviewRecord" class="com.ito.edito.action.get.GetInterviewRecordAction">
+			<result>/pages/resource/campus_manage/my_campus/interview_record/edit_interview_record.jsp</result>
+		</action>
+
+		<!--转正申请-->
+		<action name="queryRegularApply" class="com.ito.edito.action.query.QueryRegularApplyAction">
+		</action>
+		<action name="forwardViewRegularApply" class="com.ito.edito.action.get.GetApplyAction">
+			<result  name="regularApplication">/pages/resource/campus_manage/my_campus/regular_apply/view_regular_apply.jsp</result>
+		</action>
+		<action name="forwardEditRegularApply" class="com.ito.edito.action.get.GetApplyAction">
+			<result  name="regularApplication">/pages/resource/campus_manage/my_campus/regular_apply/edit_regular_apply.jsp</result>
+		</action>
+
+		<!-- 月度考核 -->
+		<action name="forwardEditMonthAssess" class="com.ito.edito.action.get.GetEmployeeAssessAction">
+			<result>/pages/resource/campus_manage/my_campus/month_assess/edit_month_assess.jsp</result>
+		</action>
+		<action name="createMonthAssess" class="com.ito.edito.action.create.CreateSelfAssessExamineAction">
+		</action>
+		<action name="forwardViewMonthAssess" class="com.ito.edito.action.get.GetEmployeeAssessAction">
+			<result>/pages/resource/campus_manage/my_campus/month_assess/view_month_assess.jsp</result>
+		</action>
+	</package>
+</struts>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE urlrewrite PUBLIC "-//tuckey.org//DTD UrlRewrite 2.6//EN" "http://tuckey.org/res/dtds/urlrewrite2.6.dtd">
+<!--绩效管理-->
+<urlrewrite>
+	<!--岗位绩效设置-->
+	<rule>
+		<from>^/pages/resource/performance/manage/job/performance/query_job_performance.html$</from>
+		<to>/pages/resource/performance_manage/job_performance/query_job_performance.jsp</to>
+	</rule>
+	<rule>
+		<from>^/https/resource/performance/manage/job/performance/manage_job_type.html$</from>
+		<to>/pages/resource/performance/manage/job/performance/manageJobType.action</to>
+	</rule>
+	<rule>
+		<from>^/ajaxs/resource/performance/manage/job/performance/get_system_type.html$</from>
+		<to>/pages/resource/performance/manage/job/performance/getSystemType.action</to>
+	</rule>
+	<rule>
+		<from>^/ajaxs/resource/performance/manage/job/performance/get_job_type.html$</from>
+		<to>/pages/resource/performance/manage/job/performance/getJobType.action</to>
+	</rule>
+	<rule>
+		<from>^/ajaxs/resource/performance/manage/job/performance/create_job_type.html$</from>
+		<to>/pages/resource/performance/manage/job/performance/createJobType.action</to>
+	</rule>
+	<rule>
+		<from>^/ajaxs/resource/performance/manage/job/performance/delete_job_type.html$</from>
+		<to>/pages/resource/performance/manage/job/performance/deleteJobType.action</to>
+	</rule>
+
+	<!--员工绩效考核-->
+	<rule>
+		<from>^/pages/resource/performance/manage/performance/calculate/query_performance_calculate.html$</from>
+		<to>/pages/resource/performance_manage/performance_calculate/query_performance_calculate.jsp</to>
+	</rule>
+	<rule>
+		<from>^/ajaxs/resource/performance/manage/performance/calculate/get_employee_performance_edit.html$</from>
+		<to>/pages/resource/performance/manage/performance/calculate/getEmployeePerformanceEdit.action</to>
+	</rule>
+	<rule>
+		<from>^/ajaxs/resource/performance/manage/performance/calculate/create_employee_performance.html$</from>
+		<to>/pages/resource/performance/manage/performance/calculate/createtEmployeePerformance.action</to>
+	</rule>
+
+	<!--员工绩效查询-->
+	<rule>
+		<from>^/pages/resource/performance/manage/performance/inquiry/query_performance_inquiry.html$</from>
+		<to>/pages/resource/performance_manage/performance_inquiry/query_performance_inquiry.jsp</to>
+	</rule>
+	<rule>
+		<from>^/ajaxs/resource/performance/manage/performance/inquiry/query_performance_inquiry.html$</from>
+		<to>/pages/resource/performance/manage/performance/inquiry/queryPerformanceInquiry.action</to>
+	</rule>
+	<rule>
+		<from>^/views/resource/performance/manage/performance/inquiry/forward_view_performance.html$</from>
+		<to>/pages/resource/performance/manage/performance/inquiry/forwardViewPerformance.action</to>
+	</rule>
+</urlrewrite>

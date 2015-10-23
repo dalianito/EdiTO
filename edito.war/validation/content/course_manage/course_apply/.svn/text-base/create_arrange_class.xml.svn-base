@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE validation-config SYSTEM "../validation-config.dtd">
+<validation-config>
+	<range id="firstStep" show-error="alert" show-type="all">
+		<field name="instance(ArrangeClass).clsNo" display-name="班级编号">
+			<depend name="required" />
+		</field>
+		<field name="instance(ArrangeClass).clsTypeUuid" display-name="班级类型">
+			<depend name="required" />
+		</field>
+		<field name="instance(ArrangeClass).campusUuid" display-name="班级所在校区">
+			<depend name="required" />
+		</field>
+	</range>
+	<range id="secondStep" show-error="alert" show-type="all">
+		<field name="instance(ArrangeClass).actualHour" display-name="安排课程的实际总课时">
+			<depend name="required" />
+		</field>
+		<field name="instance(ArrangeClass).actualCost" display-name="安排课程的实际总费用">
+			<depend name="required" />
+		</field>
+		<field name="instance(ArrangeClass).maxNoP" display-name="班级的最大人数上限">
+			<depend name="required" />
+		</field>
+	</range>
+</validation-config>

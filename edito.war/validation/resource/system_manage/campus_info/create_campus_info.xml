@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE validation-config SYSTEM "../validation-config.dtd">
+<validation-config>
+	<range id="formA" show-error="alert" show-type="all">
+		<field name="instance(Campus).description" display-name="名称">
+			<depend name="required" />
+		</field>
+		<field name="instance(Campus).address" display-name="地址">
+			<depend name="required" />
+		</field>
+		<field name="instance(Campus).telephone" display-name="联系电话">
+			<depend name="required" />
+			<depend name="cellorphone" />
+		</field>
+		<field name="instance(Campus).sequence" display-name="序号">
+			<depend name="required" />
+			<depend name="integer" />
+		</field>
+	</range>
+</validation-config>

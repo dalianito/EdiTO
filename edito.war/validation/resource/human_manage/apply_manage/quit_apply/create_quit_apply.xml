@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE validation-config SYSTEM "../validation-config.dtd">
+<validation-config>
+	<range id="formA" show-error="alert" show-type="all">
+		<field name="instance(Quit).employeeUuid" display-name="员工姓名">
+			<depend name="required" />
+		</field>
+		<field name="instance(Quit).departmentUuid" display-name="组织机构">
+			<depend name="required" />
+		</field>
+		<field name="instance(Quit).departureTypeUuid" display-name="离职类别">
+			<depend name="required" />
+		</field>
+		<field name="instance(Quit).departureTime" display-name="离职时间">
+			<depend name="required" />
+		</field>
+		<field name="instance(Quit).reason" display-name="离职原因">
+			<depend name="required" />
+		</field>
+	</range>
+</validation-config>

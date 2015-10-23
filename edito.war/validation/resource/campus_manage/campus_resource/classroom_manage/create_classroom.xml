@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE validation-config SYSTEM "../validation-config.dtd">
+<validation-config>
+	<range id="formA" show-error="alert" show-type="all">
+		<field name="instance(Classroom).doorplate" display-name="门牌号">
+			<depend name="required" />
+		</field>
+		<field name="instance(Classroom).numberOf" display-name="人数上限">
+			<depend name="required" />
+		</field>
+		<field name="instance(Classroom).classroomTypeUuid" display-name="教师类型">
+			<depend name="required" />
+		</field>
+	</range>
+</validation-config>

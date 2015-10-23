@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<init-conf id="web">
+	<load-class name="com.ito.fai.init.InitializeLog">
+		<invoke-method name="addLog">
+			<param name="name" value="web" />
+			<param name="options" type="dictionary" value="level=debug;pattern=%d{yyyy-MM-dd HH:mm:ss}%X{user} %-5p [%t]: %m%n;file=/ito/web.log;rolling-type=time;rolling-threshold=-1;" />
+		</invoke-method>
+	</load-class>
+	<load-class name="com.ito.fai.init.InitializeConstant" reload="true">
+		<invoke-method name="addConstant">
+			<param name="file" value="constant.xml" />
+		</invoke-method>
+	</load-class> 
+    <load-class name="com.ito.fai.init.InitializeJndi" reload="true">
+		<invoke-method name="addContext">
+			<param name="ctx" value="ejbContext" />
+			<param name="env" type="dictionary" value="java.naming.provider.url=jnp://127.0.0.1:1199;java.naming.factory.initial=org.jnp.interfaces.NamingContextFactory;java.naming.factory.url.pkgs=org.jboss.naming:org.jnp.interfaces;" />
+		</invoke-method>
+		<invoke-method name="addReference">
+			<param name="file" value="reference.xml" />
+		</invoke-method>
+	</load-class>
+</init-conf>

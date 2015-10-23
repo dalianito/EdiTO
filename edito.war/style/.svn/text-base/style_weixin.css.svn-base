@@ -1,0 +1,138 @@
+ /* global */
+img {
+	border: 0px;
+}
+a {
+	color: #330099;
+	text-decoration: none;
+}
+a.xh {
+	color: #330099;
+	text-decoration: none;
+}
+a:visited {
+	color: #330099;
+	text-decoration: none;
+}
+a:hover {
+	color: #990000;
+	text-decoration: none;
+}
+body table, body input, body select, body textarea {
+	font-size: 20px;
+}
+
+/* main page layout */
+.header {
+	position: fixed;
+	width: 100%;
+	height: 50px;
+	top: 0px;
+	left: 0px;
+	background-color: #30528D;
+	text-align: center;
+	color: white;
+	font-size: 25px;
+}
+.content {
+	width: 100%;
+	margin-top: 60px;
+	background-color: #FFFFFF;
+	text-align: center;
+	color: #000000;
+	font-size: 20px;
+}
+.liner1 {
+	width: 100%;
+	height: 1px;
+	background-color: #CDCDCD;
+}
+.liner2 {
+	width: 100%;
+	height: 9px;
+}
+.footer {
+	width: 100%;
+	height: 45px;
+	text-align: center;
+	color: #888888;
+	font-size: 15px;
+}
+
+/* table: which has input area */
+.InputPanel {
+	border-collapse: collapse;
+	border-style: solid;
+	border-color: #D4DDE6;
+	border-width: 1px 1px 0px 0px;
+	background-color: #FCFCFC;
+	color: #000000;
+	margin: 0px 0px 0px 0px;
+	padding: 2px 3px;
+}
+.InputPanel th {
+	font-size: 20px;
+	background-color: #DFE9f5;
+	border-style: solid;
+	border-color: #D4DDE6;
+	border-width: 0px 0px 1px 1px;
+	padding: 0px 0px 0px 0px;
+	margin: 0px 0px 0px 0px;
+	text-align: center;
+	color: #374471;
+	height: 20px;
+}
+.InputPanel td {
+	font-size: 20px;
+	border-style: solid;
+	border-color: #D4DDE6;
+	border-width: 0px 0px 1px 1px;
+	padding: 3px 0px 3px 5px;
+	margin: 0px 0px 0px 0px;
+	text-align: left;
+	vertical-align: center;
+	height: 20px;
+}
+
+/* table : which shows the info with different color*/
+.InfoListPanel_color {
+	border-collapse: collapse;
+	border-style: solid;
+	border-color: #CDCDCD;
+	border-width: 1px 1px 0px 0px;
+	padding: 2px 3px;
+}
+.InfoListPanel_color th{
+	font-size: 20px;
+	background-color: #F6F8D3;
+	border-style: solid;
+	border-color: #CDCDCD;
+	border-width: 0px 0px 1px 1px;
+	padding: 3px 0px 1px 3px;
+	text-align: center;
+	color: #666666;
+	height: 20px;
+}
+.InfoListPanel_color td {
+	font-size: 20px;
+	border-style: solid;
+	border-color: #CDCDCD;
+	border-width: 0px 0px 1px 1px;
+	vertical-align: center;
+	height: 20px;
+}
+
+.tr1{
+	text-align: center;
+	background-color: #FFFFFF;
+}
+.tr2{
+	text-align: center;
+	background-color: #EFEFEF;
+}
+
+.InfoListPanel_time {
+}
+.InfoListPanel_time tr{
+	text-align: center;
+}

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE urlrewrite PUBLIC "-//tuckey.org//DTD UrlRewrite 2.6//EN" "http://tuckey.org/res/dtds/urlrewrite2.6.dtd">
+<!--填选菜单-->
+<urlrewrite>
+	<rule>
+		<from>^/ajaxs/drop/menu/query_cls_drop_menu_cname.html$</from>
+		<to>/pages/drop/menu/queryClsDropMenuCName.action</to>
+	</rule>
+	<rule>
+		<from>^/ajaxs/drop/menu/query_cls_drop_menu_cchinese.html$</from>
+		<to>/pages/drop/menu/queryClsDropMenuCChinese.action</to>
+	</rule>
+	<rule>
+		<from>^/ajaxs/drop/menu/query_cls_info.html$</from>
+		<to>/pages/drop/menu/queryClsInfo.action</to>
+	</rule>
+	<rule>
+		<from>^/ajaxs/drop/menu/query_person_drop_menu.html$</from>
+		<to>/pages/drop/menu/queryPersonDropMenu.action</to>
+	</rule>
+	<rule>
+		<from>^/ajaxs/drop/menu/query_person_info.html$</from>
+		<to>/pages/drop/menu/queryPersonInfo.action</to>
+	</rule>
+	<rule>
+		<from>^/ajaxs/drop/menu/query_employee_drop_menu.html$</from>
+		<to>/pages/drop/menu/queryEmployeeDropMenu.action</to>
+	</rule>
+	<rule>
+		<from>^/ajaxs/drop/menu/query_employee_info.html$</from>
+		<to>/pages/drop/menu/queryEmployeeInfo.action</to>
+	</rule>
+	<rule>
+		<from>^/ajaxs/drop/menu/query_material_drop_menu.html$</from>
+		<to>/pages/drop/menu/queryMaterialDropMenu.action</to>
+	</rule>
+	<rule>
+		<from>^/ajaxs/drop/menu/query_material_info.html$</from>
+		<to>/pages/drop/menu/queryMaterialInfo.action</to>
+	</rule>
+	<rule>
+		<from>^/ajaxs/drop/menu/query_course_drop_menu.html$</from>
+		<to>/pages/drop/menu/queryCourseDropMenu.action</to>
+	</rule>
+	<rule>
+		<from>^/ajaxs/drop/menu/query_course_info.html$</from>
+		<to>/pages/drop/menu/queryCourseInfo.action</to>
+	</rule>
+</urlrewrite>

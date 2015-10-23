@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+<!--系统管理-->
+<struts>
+	<package name="resource-system-manage" extends="struts-default" namespace="/pages/resource/system/manage">
+		<!--岗位权限管理-->
+		<action name="queryJobAuthority" class="com.ito.edito.action.query.QueryJobAction">
+		</action>
+		<action name="manageJobRole" class="com.ito.edito.action.get.GetJobAction">
+			<result>/pages/resource/system_manage/job_authority/manage_job_role.jsp</result>
+		</action>
+		<action name="getJobRole" class="com.ito.edito.action.get.GetJobRoleAction">
+		</action>
+		<action name="createJobRole" class="com.ito.edito.action.create.CreateJobRoleAction">
+		</action>
+		<action name="deleteJobRole" class="com.ito.edito.action.delete.DeleteJobRoleAction">
+		</action>
+
+		<!--员工权限管理-->
+		<action name="queryEmployee" class="com.ito.edito.action.query.QueryEmployeeAction">
+		</action>
+		<action name="manageEmployeeRole" class="com.ito.edito.action.get.GetEmployeeAction">
+			<result>/pages/resource/system_manage/authority_manage/manage_employee_role.jsp</result>
+		</action>
+		<action name="getSystemRole" class="com.ito.edito.action.get.GetSystemRoleAction">
+		</action>
+		<action name="getEmployeeRole" class="com.ito.edito.action.get.GetEmployeeRoleAction">
+		</action>
+		<action name="createEmployeeRole" class="com.ito.edito.action.create.CreateEmployeeRoleAction">
+		</action>
+		<action name="deleteEmployeeRole" class="com.ito.edito.action.delete.DeleteEmployeeRoleAction">
+		</action>
+		<action name="manageApprovalRole" class="com.ito.edito.action.get.GetEmployeeAction">
+			<result>/pages/resource/system_manage/authority_manage/manage_approval_role.jsp</result>
+		</action>
+		<action name="getApprovalRole" class="com.ito.edito.action.get.GetApprovalRoleAction">
+		</action>
+		<action name="getEmployeeApprovalRole" class="com.ito.edito.action.get.GetEmployeeApprovalRoleAction">
+		</action>
+		<action name="createEmployeeApprovalRole" class="com.ito.edito.action.create.CreateEmployeeApprovalRoleAction">
+		</action>
+		<action name="deleteEmployeeApprovalRole" class="com.ito.edito.action.delete.DeleteEmployeeApprovalRoleAction">
+		</action>
+
+		<!--校区信息管理-->
+		<action name="queryCampusInfo" class="com.ito.edito.action.query.QueryCampusInfoAction">
+		</action>
+		<action name="createCampus" class="com.ito.edito.action.create.CreateCampusAction">
+		</action>
+		<action name="forwardEditCampus" class="com.ito.edito.action.get.GetCampusAction">
+			<result>/pages/resource/system_manage/campus_info/edit_campus_info.jsp</result>
+		</action>
+		<action name="queryCampusEmployee" class="com.ito.edito.action.query.QueryCampusEmployeeAction">
+		</action>
+		<action name="queryCampusEmployeeNo" class="com.ito.edito.action.get.GetCampusEmployeeNoAction">
+		</action>
+		<action name="removeCampus" class="com.ito.edito.action.update.UpdateCampusAction">
+		</action>
+	</package>
+</struts>

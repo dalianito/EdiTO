@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE validation-config SYSTEM "../validation-config.dtd">
+<validation-config>
+	<range id="formA" show-error="alert" show-type="all">
+		<field name="instance(InterviewRecord).intervieweeUuid" display-name="被面谈人">
+			<depend name="required" />
+		</field>
+		<field name="instance(InterviewRecord).intervieweeCampusUuid" display-name="校区">
+			<depend name="required" />
+		</field>
+		<field name="instance(InterviewRecord).intervieweeDepartmentUuid" display-name="组织机构">
+			<depend name="required" />
+		</field>
+		<field name="instance(InterviewRecord).intervieweeJobUuid" display-name="岗位">
+			<depend name="required" />
+		</field>
+		<field name="instance(InterviewRecord).interviewDate" display-name="面谈时间">
+			<depend name="required" />
+		</field>
+	</range>
+</validation-config>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE validation-config SYSTEM "../validation-config.dtd">
+<validation-config>
+	<range id="formA" show-error="alert" show-type="all">
+		<field name="instance(PublicityApplication).departmentUuid" display-name="组织机构">
+			<depend name="required" />
+		</field>
+		<field name="instance(PublicityApplication).campusUuid" display-name="校区">
+			<depend name="required" />
+		</field>
+		<field name="instance(PublicityApplication).description" display-name="活动描述">
+			<depend name="required" />
+		</field>
+		<field name="instance(PublicityApplication).location" display-name="活动地点">
+			<depend name="required" />
+		</field>
+		<field name="instance(PublicityApplication).copyContent" display-name="文案">
+			<depend name="required" />
+		</field>
+		<field name="instance(PreParticipatorInfo).employeeUuid" display-name="预参与员工">
+			<depend name="required" />
+		</field>
+		<field name="instance(PublicityApplication).preCost" display-name="预估成本">
+			<depend name="required" />
+		</field>
+		<field name="instance(PropagandaMaterialInfo).applicationMaterialUuid" display-name="申请物料">
+			<depend name="required" />
+		</field>
+		<field name="instance(PropagandaMaterialInfo).applicationNumber" display-name="申请数量">
+			<depend name="required" />
+		</field>
+		<field name="instance(PropagandaMaterialInfo).applicationMaterialSizeUuid" display-name="规格要求 尺寸(成品)">
+			<depend name="required" />
+		</field>
+		<field name="instance(PropagandaMaterialInfo).applicationMaterialColorUuid" display-name="规格要求 色彩">
+			<depend name="required" />
+		</field>
+		<field name="instance(PropagandaMaterialInfo).applicationMaterialTextureUuid" display-name="规格要求 材质">
+			<depend name="required" />
+		</field>
+	</range>
+</validation-config>

@@ -1,0 +1,55 @@
+10
+
+dir
+11064
+http://116.3.15.26:9080/svn/Code/trunk/EDITO/edito.ear/edito.war/pages/resource/material_manage
+http://116.3.15.26:9080/svn/Code
+
+
+
+2015-06-02T02:49:18.838475Z
+10550
+sean_liu
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+cf6ca526-cdea-4347-9027-75da84ccdc1b
+
+material_allocate
+dir
+
+material_usage
+dir
+
+list_manage
+dir
+
+material_generate
+dir
+
+material_list
+dir
+
+type_manage
+dir
+
+material_damage
+dir
+
+apply_manage
+dir
+
+material_accept
+dir
+

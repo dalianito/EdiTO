@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE urlrewrite PUBLIC "-//tuckey.org//DTD UrlRewrite 2.6//EN" "http://tuckey.org/res/dtds/urlrewrite2.6.dtd">
+<!--审批工作-->
+<urlrewrite>
+	<!--网络宣传审阅-->
+	<rule>
+		<from>^/whttps/wechat/approval/work/wechat_network_review.whtml_(\S+)$</from>
+		<to>/pages/wechat/approval/work/getWechatNetworkReview.action?employeeUuid=$1</to>
+	</rule>
+	<rule>
+		<from>^/whttps/wechat/approval/work/wechat_query_network_review.whtml_(\S+)$</from>
+		<to>/pages/wechat/approval_work/wechat_query_network_review.jsp?employeeUuid=$1</to>
+	</rule>
+	<rule>
+		<from>^/views/wechat/approval/work/forward_view_network.whtml$</from>
+		<to>/pages/wechat/approval/work/forwardViewNetWork.action</to>
+	</rule>
+	<rule>
+		<from>^/whttps/wechat/approval/work/forward_network_review.whtml$</from>
+		<to>/pages/wechat/approval/work/getWechatViewNetworkReview.action</to>
+	</rule>
+	<rule>
+		<from>^/ajaxs/wechat/approval/work/query_wechat_network_review.whtml$</from>
+		<to>/pages/wechat/approval/work/queryWechatNetworkReview.action</to>
+	</rule>
+	<rule>
+		<from>^/whttps/wechat/approval/work/wechat_network_review_back.whtml_(\S+)$</from>
+		<to>/pages/wechat/approval/work/getWechatNetworkReview.action?employeeUuid=$1</to>
+	</rule>
+	<rule>
+		<from>^/whttps/wechat/approval/work/wechat_network_review_create.whtml$</from>
+		<to>/pages/wechat/approval/work/wechatNetworkReview.action</to>
+	</rule>
+
+	<!-- 日志审阅 -->
+	<rule>
+		<from>^/whttps/wechat/approval/work/wechat_work_review.whtml_(\S+)$</from>
+		<to>/pages/wechat/approval/work/getWechatWorkReview.action?employeeUuid=$1</to>
+	</rule>
+	<rule>
+		<from>^/whttps/wechat/approval/work/wechat_query_review.whtml_(\S+)$</from>
+		<to>/pages/wechat/approval_work/wechat_query_workrecord_review.jsp?employeeUuid=$1</to>
+	</rule>
+	<rule>
+		<from>^/views/wechat/approval/work/forward_view_workRecord.whtml$</from>
+		<to>/pages/wechat/approval/work/forwardViewWorkRecord.action</to>
+	</rule>
+	<rule>
+		<from>^/ajaxs/wechat/approval/work/query_workRecord_review.whtml$</from>
+		<to>/pages/wechat/approval/work/workRecordReview.action</to>
+	</rule>
+	<rule>
+		<from>^/whttps/wechat/approval/work/forward_workRecord_review.whtml$</from>
+		<to>/pages/wechat/approval/work/forwardEditoWorkRecord.action</to>
+	</rule>
+
+	<rule>
+		<from>^/whttps/wechat/approval/work/edito_workRecord_review.whtml$</from>
+		<to>/pages/wechat/approval/work/createWechatWorkRecordReview.action</to>
+	</rule>
+
+	<!--请假审批-->
+	<rule>
+		<from>^/whttps/wechat/approval/work/wechat_leave_approval.whtml_(\S+)$</from>
+		<to>/pages/wechat/approval/work/getWechatLeaveApproval.action?employeeUuid=$1</to>
+	</rule>
+	<rule>
+		<from>^/whttps/wechat/approval/work/wechat_query_leave_approval.whtml_(\S+)$</from>
+		<to>/pages/wechat/approval/work/getWechatQueryLeaveApproval.action?employeeUuid=$1</to>
+	</rule>
+	<rule>
+		<from>^/ajaxs/wechat/approval/work/wechat_leave_approval.whtml$</from>
+		<to>/pages/wechat/approval/work/queryWechatLeaveApproval.action</to>
+	</rule>
+	<rule>
+		<from>^/whttps/wechat/approval/work/wechat_forward_approval_leave.whtml$</from>
+		<to>/pages/wechat/approval/work/wechatForwardApprovalLeave.action</to>
+	</rule>
+	<rule>
+		<from>^/whttps/wechat/approval/work/wechat_approval_leave.whtml$</from>
+		<to>/pages/wechat/approval/work/wechatApprovalLeave.action</to>
+	</rule>
+	<rule>
+		<from>^/views/wechat/approval/work/forward_wechat_view_leave_apply.whtml$</from>
+		<to>/pages/wechat/approval/work/forwardViewLeaveApply.action</to>
+	</rule>
+</urlrewrite>

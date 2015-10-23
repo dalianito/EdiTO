@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+<!--树形菜单-->
+<struts>
+	<package name="tree" extends="struts-default" namespace="/pages/tree">
+		<action name="getTreeDescription" class="com.ito.edito.action.tree.GetTreeDescriptionAction">	
+		</action>
+		<action name="getDataOfBaseTree" class="com.ito.edito.action.tree.GetDataOfBaseTreeAction">	
+		</action>
+		<action name="getDataOfInitBaseTree" class="com.ito.edito.action.tree.GetDataOfInitBaseTreeAction">	
+		</action>
+	</package>
+</struts>

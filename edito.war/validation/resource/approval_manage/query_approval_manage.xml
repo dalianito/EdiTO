@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE validation-config SYSTEM "../validation-config.dtd">
+<validation-config>
+	<range id="form" show-error="alert" show-type="all">
+		<field name="instance(RegularApproval).attendanceMark" display-name="出勤情况分数">
+			<depend name="required" />
+			<depend name="integer" />
+		</field>
+		<field name="instance(RegularApproval).behaviorMark" display-name="行为规范分数">
+			<depend name="required" />
+			<depend name="integer" />
+		</field>
+		<field name="instance(RegularApproval).responsibilityMark" display-name="工作责任感分数">
+			<depend name="required" />
+			<depend name="integer" />
+		</field>
+		<field name="instance(RegularApproval).diligenceMark" display-name="工作勤懒分数">
+			<depend name="required" />
+			<depend name="integer" />
+		</field>
+		<field name="instance(RegularApproval).skillMark" display-name="工作技能分数">
+			<depend name="required" />
+			<depend name="integer" />
+		</field>
+		<field name="instance(RegularApproval).coordinationMark" display-name="沟通协调分数">
+			<depend name="required" />
+			<depend name="integer" />
+		</field>
+		<field name="instance(RegularApproval).planMark" display-name="策划能力分数">
+			<depend name="required" />
+			<depend name="integer" />
+		</field>
+		<field name="instance(RegularApproval).executeMark" display-name="执行能力分数">
+			<depend name="required" />
+			<depend name="integer" />
+		</field>
+		<field name="instance(RegularApproval).qualityMark" display-name="工作业绩/质量分数">
+			<depend name="required" />
+			<depend name="integer" />
+		</field>
+		<field name="instance(RegularApproval).efficiencyMark" display-name="工作效率分数">
+			<depend name="required" />
+			<depend name="integer" />
+		</field>
+		<field name="instance(RegularApproval).leaveCount" display-name="请假次数">
+			<depend name="required" />
+			<depend name="integer" />
+		</field>
+		<field name="instance(RegularApproval).lateCount" display-name="迟到次数">
+			<depend name="required" />
+			<depend name="integer" />
+		</field>
+		<field name="instance(RegularApproval).absenceCount" display-name="旷工次数">
+			<depend name="required" />
+			<depend name="integer" />
+		</field>
+		
+	</range>
+</validation-config>

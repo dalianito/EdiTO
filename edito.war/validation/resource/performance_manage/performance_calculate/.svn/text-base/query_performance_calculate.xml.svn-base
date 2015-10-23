@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE validation-config SYSTEM "../validation-config.dtd">
+<validation-config>
+	<range id="formA" show-error="alert" show-type="all">
+		<field name="instance(PerfAttendance).perfAttendanceM0" display-name="考勤 正常 上午">
+			<depend name="required" />
+			<depend name="integer" />
+		</field>
+		<field name="instance(PerfAttendance).perfAttendanceA0" display-name="考勤 正常 下午">
+			<depend name="required" />
+			<depend name="integer" />
+		</field>
+		<field name="instance(PerfAttendance).perfAttendanceM14" display-name="考勤 上课 上午">
+			<depend name="required" />
+			<depend name="integer" />
+		</field>
+		<field name="instance(PerfAttendance).perfAttendanceA14" display-name="考勤 上课 下午">
+			<depend name="required" />
+			<depend name="integer" />
+		</field>
+		<field name="instance(PerfAttendance).perfAttendanceM1" display-name="考勤 公休 上午">
+			<depend name="required" />
+			<depend name="integer" />
+		</field>
+		<field name="instance(PerfAttendance).perfAttendanceA1" display-name="考勤 公休 下午">
+			<depend name="required" />
+			<depend name="integer" />
+		</field>
+		<field name="instance(PerfAttendance).perfAttendanceM2" display-name="考勤 串休 上午">
+			<depend name="required" />
+			<depend name="integer" />
+		</field>
+		<field name="instance(PerfAttendance).perfAttendanceA2" display-name="考勤 串休 下午">
+			<depend name="required" />
+			<depend name="integer" />
+		</field>
+		<field name="instance(PerfAttendance).perfAttendanceM3" display-name="考勤 分校 上午">
+			<depend name="required" />
+			<depend name="integer" />
+		</field>
+		<field name="instance(PerfAttendance).perfAttendanceA3" display-name="考勤 分校 下午">
+			<depend name="required" />
+			<depend name="integer" />
+		</field>
+		<field name="instance(PerfAttendance).perfAttendanceM4" display-name="考勤 外出 上午">
+			<depend name="required" />
+			<depend name="integer" />
+		</field>
+		<field name="instance(PerfAttendance).perfAttendanceA4" display-name="考勤 外出 下午">
+			<depend name="required" />
+			<depend name="integer" />
+		</field>
+		<field name="instance(PerfAttendance).perfAttendanceM5" display-name="考勤 迟到 上午">
+			<depend name="required" />
+			<depend name="integer" />
+		</field>
+		<field name="instance(PerfAttendance).perfAttendanceA5" display-name="考勤 迟到 下午">
+			<depend name="required" />
+			<depend name="integer" />
+		</field>
+		<field name="instance(PerfAttendance).perfAttendanceM6" display-name="考勤 早退 上午">
+			<depend name="required" />
+			<depend name="integer" />
+		</field>
+		<field name="instance(PerfAttendance).perfAttendanceA6" display-name="考勤 早退 下午">
+			<depend name="required" />
+			<depend name="integer" />
+		</field>
+		<field name="instance(PerfAttendance).perfAttendanceM7" display-name="考勤 旷工 上午">
+			<depend name="required" />
+			<depend name="integer" />
+		</field>
+		<field name="instance(PerfAttendance).perfAttendanceA7" display-name="考勤 旷工 下午">
+			<depend name="required" />
+			<depend name="integer" />
+		</field>
+		<field name="instance(PerfAttendance).perfAttendanceM8" display-name="考勤 事假 上午">
+			<depend name="required" />
+			<depend name="integer" />
+		</field>
+		<field name="instance(PerfAttendance).perfAttendanceA8" display-name="考勤 事假 下午">
+			<depend name="required" />
+			<depend name="integer" />
+		</field>
+		<field name="instance(PerfAttendance).perfAttendanceM9" display-name="考勤 病假 上午">
+			<depend name="required" />
+			<depend name="integer" />
+		</field>
+		<field name="instance(PerfAttendance).perfAttendanceA9" display-name="考勤 病假 下午">
+			<depend name="required" />
+			<depend name="integer" />
+		</field>
+		<field name="instance(PerfAttendance).perfAttendanceM10" display-name="考勤 丧假 上午">
+			<depend name="required" />
+			<depend name="integer" />
+		</field>
+		<field name="instance(PerfAttendance).perfAttendanceA10" display-name="考勤 丧假 下午">
+			<depend name="required" />
+			<depend name="integer" />
+		</field>
+		<field name="instance(PerfAttendance).perfAttendanceM11" display-name="考勤 婚假 上午">
+			<depend name="required" />
+			<depend name="integer" />
+		</field>
+		<field name="instance(PerfAttendance).perfAttendanceA11" display-name="考勤 婚假 下午">
+			<depend name="required" />
+			<depend name="integer" />
+		</field>
+		<field name="instance(PerfAttendance).perfAttendanceM15" display-name="考勤 产假 上午">
+			<depend name="required" />
+			<depend name="integer" />
+		</field>
+		<field name="instance(PerfAttendance).perfAttendanceA15" display-name="考勤 产假 下午">
+			<depend name="required" />
+			<depend name="integer" />
+		</field>
+		<field name="instance(PerfAttendance).perfAttendanceM12" display-name="考勤 出差 上午">
+			<depend name="required" />
+			<depend name="integer" />
+		</field>
+		<field name="instance(PerfAttendance).perfAttendanceA12" display-name="考勤 出差 下午">
+			<depend name="required" />
+			<depend name="integer" />
+		</field>
+		<field name="instance(PerfAttendance).perfAttendanceM13" display-name="考勤 其他 上午">
+			<depend name="required" />
+			<depend name="integer" />
+		</field>
+		<field name="instance(PerfAttendance).perfAttendanceA13" display-name="考勤 其他 下午">
+			<depend name="required" />
+			<depend name="integer" />
+		</field>
+		<field name="instance(PerfAttendance).perfAttendanceE0" display-name="考勤 晚上 休息">
+			<depend name="required" />
+			<depend name="integer" />
+		</field>
+		<field name="instance(PerfAttendance).perfAttendanceE1" display-name="考勤 晚上 上课">
+			<depend name="required" />
+			<depend name="integer" />
+		</field>
+		<field name="instance(PerfAttendance).perfAttendanceE2" display-name="考勤 晚上 值班">
+			<depend name="required" />
+			<depend name="integer" />
+		</field>
+		<field name="instance(PerfBehaviour).perfBehaviour0" display-name="行为规范 日志">
+			<depend name="required" />
+			<depend name="integer" />
+		</field>
+		<field name="instance(PerfBehaviour).perfBehaviourS0" display-name="行为规范 应写日志">
+			<depend name="required" />
+			<depend name="integer" />
+		</field>
+		<field name="instance(PerfBehaviour).perfBehaviour1" display-name="行为规范 发帖">
+			<depend name="required" />
+			<depend name="integer" />
+		</field>
+		<field name="instance(PerfBehaviour).perfBehaviourS1" display-name="行为规范 应发帖">
+			<depend name="required" />
+			<depend name="integer" />
+		</field>
+		<field name="instance(PerfBehaviour).perfBehaviour2" display-name="行为规范 缺席早会">
+			<depend name="required" />
+			<depend name="integer" />
+		</field>
+		<field name="instance(PerfBehaviour).perfBehaviour3" display-name="行为规范 缺席夕会">
+			<depend name="required" />
+			<depend name="integer" />
+		</field>
+		<field name="instance(PerfBehaviour).perfBehaviourM4" display-name="行为规范 工装 上午">
+			<depend name="required" />
+			<depend name="integer" />
+		</field>
+		<field name="instance(PerfBehaviour).perfBehaviourA4" display-name="行为规范 工装 下午">
+			<depend name="required" />
+			<depend name="integer" />
+		</field>
+		<field name="instance(PerfBehaviour).perfBehaviourE4" display-name="行为规范 工装 晚上">
+			<depend name="required" />
+			<depend name="integer" />
+		</field>
+		<field name="instance(PerfBehaviour).perfBehaviourM5" display-name="行为规范 工牌 上午">
+			<depend name="required" />
+			<depend name="integer" />
+		</field>
+		<field name="instance(PerfBehaviour).perfBehaviourA5" display-name="行为规范 工牌 下午">
+			<depend name="required" />
+			<depend name="integer" />
+		</field>
+		<field name="instance(PerfBehaviour).perfBehaviourE5" display-name="行为规范 工牌 晚上">
+			<depend name="required" />
+			<depend name="integer" />
+		</field>
+		<field name="instance(PerfBehaviour).perfBehaviourM6" display-name="行为规范 卫生 上午">
+			<depend name="required" />
+			<depend name="integer" />
+		</field>
+		<field name="instance(PerfBehaviour).perfBehaviourA6" display-name="行为规范 卫生 下午">
+			<depend name="required" />
+			<depend name="integer" />
+		</field>
+		<field name="instance(PerfBehaviour).perfBehaviourE6" display-name="行为规范 卫生 晚上">
+			<depend name="required" />
+			<depend name="integer" />
+		</field>
+		<field name="instance(PerfBehaviour).perfBehaviourM7" display-name="行为规范 脱岗 上午">
+			<depend name="required" />
+			<depend name="integer" />
+		</field>
+		<field name="instance(PerfBehaviour).perfBehaviourA7" display-name="行为规范 脱岗 下午">
+			<depend name="required" />
+			<depend name="integer" />
+		</field>
+		<field name="instance(PerfBehaviour).perfBehaviourE7" display-name="行为规范 脱岗 晚上">
+			<depend name="required" />
+			<depend name="integer" />
+		</field>
+		<field name="instance(PerfBehaviour).perfBehaviourM8" display-name="行为规范 吃东西 上午">
+			<depend name="required" />
+			<depend name="integer" />
+		</field>
+		<field name="instance(PerfBehaviour).perfBehaviourA8" display-name="行为规范 吃东西 下午">
+			<depend name="required" />
+			<depend name="integer" />
+		</field>
+		<field name="instance(PerfBehaviour).perfBehaviourE8" display-name="行为规范 吃东西 晚上">
+			<depend name="required" />
+			<depend name="integer" />
+		</field>
+		<field name="instance(PerfBehaviour).perfBehaviourM9" display-name="行为规范 看电影 上午">
+			<depend name="required" />
+			<depend name="integer" />
+		</field>
+		<field name="instance(PerfBehaviour).perfBehaviourA9" display-name="行为规范 看电影 下午">
+			<depend name="required" />
+			<depend name="integer" />
+		</field>
+		<field name="instance(PerfBehaviour).perfBehaviourE9" display-name="行为规范 看电影 晚上">
+			<depend name="required" />
+			<depend name="integer" />
+		</field>
+		<field name="instance(PerfBehaviour).perfBehaviourM10" display-name="行为规范 听歌 上午">
+			<depend name="required" />
+			<depend name="integer" />
+		</field>
+		<field name="instance(PerfBehaviour).perfBehaviourA10" display-name="行为规范 听歌 下午">
+			<depend name="required" />
+			<depend name="integer" />
+		</field>
+		<field name="instance(PerfBehaviour).perfBehaviourE10" display-name="行为规范 听歌 晚上">
+			<depend name="required" />
+			<depend name="integer" />
+		</field>
+		<field name="instance(PerfBehaviour).perfBehaviourM11" display-name="行为规范 睡觉 上午">
+			<depend name="required" />
+			<depend name="integer" />
+		</field>
+		<field name="instance(PerfBehaviour).perfBehaviourA11" display-name="行为规范 睡觉 下午">
+			<depend name="required" />
+			<depend name="integer" />
+		</field>
+		<field name="instance(PerfBehaviour).perfBehaviourE11" display-name="行为规范 睡觉 晚上">
+			<depend name="required" />
+			<depend name="integer" />
+		</field>
+		<field name="instance(PerfBehaviour).perfBehaviourM12" display-name="行为规范 其他娱乐 上午">
+			<depend name="required" />
+			<depend name="integer" />
+		</field>
+		<field name="instance(PerfBehaviour).perfBehaviourA12" display-name="行为规范 其他娱乐 下午">
+			<depend name="required" />
+			<depend name="integer" />
+		</field>
+		<field name="instance(PerfBehaviour).perfBehaviourE12" display-name="行为规范 其他娱乐 晚上">
+			<depend name="required" />
+			<depend name="integer" />
+		</field>
+		<field name="instance(PerfBehaviour).perfBehaviour13" display-name="行为规范 投诉">
+			<depend name="required" />
+			<depend name="integer" />
+		</field>
+	</range>
+</validation-config>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE validation-config SYSTEM "../validation-config.dtd">
+<validation-config>
+	<range id="formA" show-error="alert" show-type="all">
+		<field name="instance(MaterialType).description" display-name="物资类别">
+			<depend name="required" />
+		</field>
+	</range>
+
+	<range id="formB" show-error="alert" show-type="all">
+		<field name="instance(MaterialType).description" display-name="物资类别">
+			<depend name="required" />
+		</field>
+	</range>
+</validation-config>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE validation-config SYSTEM "../validation-config.dtd">
+<validation-config>
+	<range id="formA" show-error="alert" show-type="all">
+		<field name="instance(PropagandaMaterialInfo).acceptStateUuid" display-name="验收状态">
+			<depend name="required" />
+		</field>
+		<field name="instance(PropagandaMaterialInfo).usedNumber" display-name="使用数量">
+			<depend name="required" />
+		</field>
+		<field name="instance(ParticipatorInfo).employeeUuid" display-name="参与人员">
+			<depend name="required" />
+		</field>
+		<field name="instance(PublicityApplication).cost" display-name="实际成本">
+			<depend name="required" />
+		</field>
+		<field name="instance(PublicityApplication).effect" display-name="活动效果">
+			<depend name="required" />
+		</field>
+		<field name="instance(PublicityApplication).evaluate" display-name="评价">
+			<depend name="required" />
+		</field>
+	</range>
+</validation-config>

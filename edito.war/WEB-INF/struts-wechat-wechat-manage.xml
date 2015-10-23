@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" "http://struts.apache.org/dtds/struts-2.0.dtd">
+<!--微信管理-->
+<struts>
+	<package name="wechat-wechat-manage" extends="struts-default" namespace="/pages/wechat/wechat/manage">
+		<!--关联账户-->
+		<action name="verifyUser" class="com.ito.edito.action.get.GetUserVerifyAction">
+		</action>
+		<!--取消关联账户-->
+		<action name="unverifyUser" class="com.ito.edito.action.get.GetUnUserVerifyAction">
+		</action>
+	</package>
+</struts>

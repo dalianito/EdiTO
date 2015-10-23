@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE validation-config SYSTEM "../validation-config.dtd">
+<validation-config>
+	<range id="formA" show-error="alert" show-type="all">
+		<field name="instance(RegularApplication).debrief" display-name="试用期述职">
+			<depend name="required" />
+		</field>
+		<field name="instance(RegularApplication).workPlan" display-name="转正后工作开展计划">
+			<depend name="required" />
+		</field>
+		<field name="instance(RegularApplication).fromDt" display-name="试用期开始时间">
+			<depend name="required" />
+		</field>
+		<field name="instance(RegularApplication).toDt" display-name="试用期结束时间">
+			<depend name="required" />
+		</field>
+	</range>
+</validation-config>
