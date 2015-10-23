@@ -41,3 +41,11 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
+
+# Generated files
+release/
+lib/ejb-doc.zip
+lib/ejb.jar
+lib/schema.jar
+sql/ddl/create.sql
+edito.war/WEB-INF/classes/
