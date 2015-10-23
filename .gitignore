@@ -52,3 +52,5 @@ edito.war/WEB-INF/classes/
 edito.war/.classpath
 init.war/WEB-INF/class.xml
 init.war/WEB-INF/mapping.xml
+.classpath
+.project
