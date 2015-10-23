@@ -49,3 +49,6 @@ lib/ejb.jar
 lib/schema.jar
 sql/ddl/create.sql
 edito.war/WEB-INF/classes/
+edito.war/.classpath
+init.war/WEB-INF/class.xml
+init.war/WEB-INF/mapping.xml
