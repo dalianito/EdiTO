@@ -54,3 +54,4 @@ init.war/WEB-INF/class.xml
 init.war/WEB-INF/mapping.xml
 .classpath
 .project
+mysql-xa-ds.xml
