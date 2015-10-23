@@ -55,3 +55,9 @@ init.war/WEB-INF/mapping.xml
 .classpath
 .project
 mysql-xa-ds.xml
+ejb/classes/
+ejb/docs_temp/
+schema/classes/
+schema/generated/
+edito.war/WEB-INF/init-conf.xml
+init.war/WEB-INF/init-conf.xml
