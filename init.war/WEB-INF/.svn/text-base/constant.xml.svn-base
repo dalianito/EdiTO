@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<constants>
-	<constant scope="server" name="queuelog.open" value="false" />
-	<constant scope="server" name="distributed" value="false" />
-</constants>

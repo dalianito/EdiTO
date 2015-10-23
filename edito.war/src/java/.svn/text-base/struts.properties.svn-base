@@ -1,3 +1,0 @@
-struts.locale=zh_CN
-struts.configuration.xml.reload=true
-struts.multipart.maxSize=209715200

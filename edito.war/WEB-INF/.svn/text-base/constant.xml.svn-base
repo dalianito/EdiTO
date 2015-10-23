@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<constants>
-	<constant scope="web" name="path.upload.resource.dir" value="D:\jboss-edito\server\default\deploy\upload.war\" />
-	<constant scope="web" name="path.upload.resource.url" value="http://115.159.76.231/upload/" />
-	<constant scope="web" name="path.domain.url" value="http://115.159.76.231" />
-</constants>

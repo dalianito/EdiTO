@@ -1,9 +1,0 @@
-# THE CASTOR PROPERTIES FILE
-# This file specifies values for Castor run-time 
-# which may be configured by the user.
-# $Id: castor.properties,v 1.4 2004/01/09 09:07:23 kvisco Exp $
-
-#
-# True if all documents should be indented on output by default
-#
-org.exolab.castor.indent=true
